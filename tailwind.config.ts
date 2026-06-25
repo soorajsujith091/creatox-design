@@ -26,6 +26,7 @@ const config: Config = {
       },
       fontFamily: {
         heading: ["var(--font-heading)", "Space Grotesk", "sans-serif"],
+        display: ["var(--font-outfit)", "Outfit", "sans-serif"],
         body: ["var(--font-body)", "DM Sans", "sans-serif"],
         mono: ["var(--font-mono)", "monospace"],
       },
