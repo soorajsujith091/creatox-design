@@ -4,17 +4,25 @@ import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { gsap } from "gsap";
+import { Phone } from "lucide-react";
 import {
-  Pin,
-  Palette,
-  Phone,
-} from "lucide-react";
+  FaInstagram,
+  FaFacebookF,
+  FaYoutube,
+  FaLinkedinIn,
+  FaPinterestP,
+  FaBehance,
+} from "react-icons/fa";
 import { navLinks } from "@/data/navigation";
 import { socialLinks, companyInfo } from "@/data/stats";
 
 const iconMap: Record<string, React.ComponentType<{ size?: number | string; className?: string }>> = {
-  PinIcon: Pin,
-  Palette,
+  Instagram: FaInstagram as React.ComponentType<{ size?: number | string; className?: string }>,
+  Facebook: FaFacebookF as React.ComponentType<{ size?: number | string; className?: string }>,
+  Youtube: FaYoutube as React.ComponentType<{ size?: number | string; className?: string }>,
+  Linkedin: FaLinkedinIn as React.ComponentType<{ size?: number | string; className?: string }>,
+  PinIcon: FaPinterestP as React.ComponentType<{ size?: number | string; className?: string }>,
+  Palette: FaBehance as React.ComponentType<{ size?: number | string; className?: string }>,
 };
 
 export function Navbar() {
@@ -122,7 +130,7 @@ export function Navbar() {
       <nav
         className={`fixed top-0 left-0 w-full z-[100] transition-all duration-300 ${
           isScrolled
-            ? "bg-[#0A0A0Aee] backdrop-blur-md border-b border-border"
+            ? "bg-[#FFFFFFee] backdrop-blur-md border-b border-[#E8E8E8]"
             : "bg-transparent"
         }`}
         role="navigation"
@@ -135,7 +143,7 @@ export function Navbar() {
             className="flex items-center gap-0 shrink-0"
             aria-label="Creatox Designs Home"
           >
-            <span className="font-heading text-[18px] font-bold text-white tracking-[0.04em]">
+            <span className="font-heading text-[18px] font-bold text-[#0A0A0A] tracking-[0.04em]">
               CREATOX
             </span>
             <span className="text-red text-[18px] ml-[2px]">●</span>
@@ -147,7 +155,7 @@ export function Navbar() {
               <Link
                 key={link.name}
                 href={link.href}
-                className={`nav-link font-body text-[14px] text-white tracking-[0.04em] hover:text-white transition-colors ${
+                className={`nav-link font-body text-[14px] text-[#0A0A0A] tracking-[0.04em] hover:text-red transition-colors ${
                   pathname === link.href ? "active" : ""
                 }`}
               >
@@ -160,13 +168,13 @@ export function Navbar() {
           <div className="hidden md:flex items-center gap-6">
             <a
               href={`tel:${companyInfo.phone1.replace(/\s/g, "")}`}
-              className="font-mono text-[12px] text-gray hover:text-white transition-colors"
+              className="font-mono text-[12px] text-gray hover:text-[#0A0A0A] transition-colors"
             >
               {companyInfo.phone1}
             </a>
             <Link
               href="/contact-us/"
-              className="border border-white text-white text-[14px] px-5 py-2 font-body hover:bg-red hover:border-red transition-all duration-300"
+              className="border border-[#0A0A0A] text-[#0A0A0A] text-[14px] px-5 py-2 font-body hover:bg-red hover:border-red hover:text-white transition-all duration-300"
             >
               Start a Project →
             </Link>
@@ -181,15 +189,15 @@ export function Navbar() {
           >
             <span
               ref={hamburgerTopRef}
-              className="block w-6 h-[2px] bg-white origin-center"
+              className="block w-6 h-[2px] bg-[#0A0A0A] origin-center"
             />
             <span
               ref={hamburgerMidRef}
-              className="block w-6 h-[2px] bg-white origin-center"
+              className="block w-6 h-[2px] bg-[#0A0A0A] origin-center"
             />
             <span
               ref={hamburgerBotRef}
-              className="block w-6 h-[2px] bg-white origin-center"
+              className="block w-6 h-[2px] bg-[#0A0A0A] origin-center"
             />
           </button>
         </div>
@@ -199,14 +207,14 @@ export function Navbar() {
       {isMobileMenuOpen && (
         <div
           ref={mobileMenuRef}
-          className="fixed inset-0 bg-black z-[105] flex flex-col justify-center px-8 opacity-0 md:hidden"
+          className="fixed inset-0 bg-white z-[105] flex flex-col justify-center px-8 opacity-0 md:hidden"
         >
           <div ref={mobileLinksRef} className="flex flex-col gap-6 mb-12">
             {navLinks.map((link) => (
               <Link
                 key={link.name}
                 href={link.href}
-                className={`mobile-link font-heading text-[36px] text-white opacity-0 ${
+                className={`mobile-link font-heading text-[36px] text-[#0A0A0A] opacity-0 ${
                   pathname === link.href
                     ? "border-l-[3px] border-red pl-4"
                     : "pl-4"
@@ -246,14 +254,17 @@ export function Navbar() {
                   href={social.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  aria-label={social.name}
-                  className="text-white hover:text-red transition-colors duration-300"
+                  aria-label={`Follow on ${social.name}`}
+                  className="text-[#333] hover:text-red transition-colors duration-300"
                 >
-                  {IconComponent ? <IconComponent size={24} /> : <span className="text-[14px] font-mono">{social.name.substring(0,2)}</span>}
+                  {IconComponent ? <IconComponent size={24} /> : <span className="text-[14px] font-mono">{social.name.substring(0, 2)}</span>}
                 </a>
               );
             })}
           </div>
+
+          {/* Divider */}
+          <div className="border-t border-[#E8E8E8] mb-8" />
 
           {/* CTA */}
           <Link

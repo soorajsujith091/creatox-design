@@ -41,12 +41,12 @@ export function CTABanner() {
 
   return (
     <section className="relative py-32 bg-black overflow-hidden flex items-center" aria-label="Call to Action">
-      {/* Radial Glow */}
+      {/* Subtle red gradient — bottom-right, premium feel on dark bg */}
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
           background:
-            "radial-gradient(circle at 100% 100%, #E4002B18 0%, transparent 60%)",
+            "linear-gradient(135deg, transparent 60%, rgba(228,0,43,0.12) 100%)",
         }}
         aria-hidden="true"
       />

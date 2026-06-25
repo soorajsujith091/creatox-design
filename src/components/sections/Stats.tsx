@@ -1,16 +1,13 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { stats, badges } from "@/data/stats";
 import { SectionLabel } from "../SectionLabel";
-
-gsap.registerPlugin(ScrollTrigger);
 
 export function Stats() {
   const sectionRef = useRef<HTMLElement>(null);
   const numbersRef = useRef<(HTMLSpanElement | null)[]>([]);
+  const hasAnimated = useRef(false);
 
   useEffect(() => {
     const prefersReducedMotion = window.matchMedia(
@@ -24,34 +21,55 @@ export function Stats() {
       return;
     }
 
-    const ctx = gsap.context(() => {
-      numbersRef.current.forEach((el, i) => {
-        if (!el) return;
-        
-        const targetValue = stats[i].numericValue;
-        
-        gsap.to(el, {
-          innerHTML: targetValue,
-          duration: 2,
-          ease: "power2.out",
-          snap: { innerHTML: 1 },
-          scrollTrigger: {
-            trigger: sectionRef.current,
-            start: "top 80%",
-            once: true,
-          },
-          onUpdate: function() {
-            el.innerHTML = Math.round(this.targets()[0].innerHTML).toString();
+    // Counter animation using IntersectionObserver + requestAnimationFrame
+    const animateCounter = (el: HTMLSpanElement, target: number, duration: number = 2000) => {
+      const start = performance.now();
+      const easeOut = (t: number) => 1 - Math.pow(1 - t, 3);
+
+      const update = (now: number) => {
+        const elapsed = now - start;
+        const progress = Math.min(elapsed / duration, 1);
+        const easedProgress = easeOut(progress);
+        const current = Math.round(easedProgress * target);
+        el.textContent = String(current);
+        if (progress < 1) {
+          requestAnimationFrame(update);
+        } else {
+          el.textContent = String(target);
+        }
+      };
+
+      requestAnimationFrame(update);
+    };
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && !hasAnimated.current) {
+            hasAnimated.current = true;
+            numbersRef.current.forEach((el, i) => {
+              if (!el) return;
+              // Stagger: 0, 150, 300, 450ms
+              setTimeout(() => {
+                animateCounter(el, stats[i].numericValue, 2000);
+              }, i * 150);
+            });
+            observer.disconnect();
           }
         });
-      });
-    });
+      },
+      { threshold: 0.3 }
+    );
 
-    return () => ctx.revert();
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => observer.disconnect();
   }, []);
 
   return (
-    <section ref={sectionRef} className="py-24 bg-black px-6" aria-label="Achievements">
+    <section ref={sectionRef} className="py-24 bg-[#F7F7F7] px-6" aria-label="Achievements">
       <div className="max-w-[1400px] mx-auto">
         <SectionLabel text="ACHIEVEMENT" />
 
@@ -59,9 +77,9 @@ export function Stats() {
           {stats.map((stat, i) => (
             <div 
               key={stat.label} 
-              className={`flex flex-col items-center text-center ${i !== stats.length - 1 ? 'md:border-r border-border' : ''}`}
+              className={`flex flex-col items-center text-center ${i !== stats.length - 1 ? 'md:border-r border-[#E0E0E0]' : ''}`}
             >
-              <div className="flex items-baseline font-heading text-fluid-3xl text-white font-bold mb-2">
+              <div className="flex items-baseline font-heading text-fluid-3xl text-[#0A0A0A] font-bold mb-2">
                 <span ref={(el) => { numbersRef.current[i] = el }}>
                   0
                 </span>
@@ -78,7 +96,7 @@ export function Stats() {
           {badges.map((badge) => (
             <div 
               key={badge}
-              className="border border-[#333] px-4 py-2 rounded-[2px] font-mono text-[11px] text-gray uppercase tracking-wide text-center"
+              className="bg-white border border-[#E8E8E8] px-4 py-2 rounded-[2px] font-mono text-[11px] text-[#555555] uppercase tracking-wide text-center shadow-[0_2px_8px_rgba(0,0,0,0.04)]"
             >
               {badge}
             </div>

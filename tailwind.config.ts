@@ -9,14 +9,20 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        black: "#0A0A0A",
-        surface: "#111111",
-        surface2: "#1A1A1A",
+        // Backgrounds (light theme)
+        black: "#0A0A0A",       // kept for dark sections: footer, CTA, ticker, preloader
+        surface: "#F7F7F7",     // alternate section bg (was #111111)
+        surface2: "#F0F0F0",    // card hover, elevated (was #1A1A1A)
+        bgDark: "#0A0A0A",      // explicit dark bg for dark sections
+        // Text
+        white: "#FFFFFF",
+        gray: "#888888",        // muted text (unchanged)
+        // Brand
         red: "#E4002B",
         redDark: "#B8001F",
-        white: "#FFFFFF",
-        gray: "#888888",
-        border: "#222222",
+        // Borders
+        border: "#E8E8E8",      // was #222222
+        borderMed: "#D0D0D0",
       },
       fontFamily: {
         heading: ["var(--font-heading)", "Space Grotesk", "sans-serif"],

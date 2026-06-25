@@ -22,7 +22,7 @@ function PillarIcon({ type }: { type: string }) {
   if (type === "orb") {
     return (
       <div className="w-12 h-12 rounded-full relative overflow-hidden animate-pulse-glow">
-        <div className="absolute inset-0 bg-gradient-to-tr from-purple-900/40 to-red/60" />
+        <div className="absolute inset-0 bg-gradient-to-tr from-purple-200/60 to-red/40" />
       </div>
     );
   }
@@ -69,12 +69,12 @@ export function ThreePillars() {
   }, []);
 
   return (
-    <section className="py-24 bg-black px-6" aria-label="What We Do">
+    <section className="py-24 bg-[#F7F7F7] px-6" aria-label="What We Do">
       <div className="max-w-[1400px] mx-auto">
         <SectionLabel text="WHAT WE DO" />
 
         <div className="mb-16">
-          <h2 className="font-heading text-fluid-3xl text-white font-semibold mb-4 leading-tight">
+          <h2 className="font-heading text-fluid-3xl text-[#0A0A0A] font-semibold mb-4 leading-tight">
             Design. Digital. Development.
           </h2>
           <p className="font-body text-gray text-fluid-base">
@@ -92,7 +92,7 @@ export function ThreePillars() {
               ref={(el) => {
                 cardsRef.current[i] = el;
               }}
-              className="bg-surface border border-border p-8 rounded-[4px] card-hover flex flex-col h-full min-h-[420px] opacity-0"
+              className="bg-white border border-[#E8E8E8] p-8 rounded-[4px] card-hover flex flex-col h-full min-h-[420px] opacity-0 shadow-[0_2px_12px_rgba(0,0,0,0.06)]"
               style={
                 typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches
                   ? { opacity: 1 }
@@ -104,21 +104,21 @@ export function ThreePillars() {
               </div>
 
               <div className="flex items-center gap-3 mb-6">
-                <span className="font-mono text-[11px] text-red transition-transform duration-300 group-hover:scale-125">
+                <span className="font-mono text-[11px] text-red transition-transform duration-300">
                   {pillar.number}
                 </span>
-                <h3 className="font-heading text-[28px] text-white">
+                <h3 className="font-heading text-[28px] text-[#0A0A0A]">
                   {pillar.title}
                 </h3>
               </div>
 
-              <p className="font-body text-[15px] text-gray leading-relaxed mb-auto">
+              <p className="font-body text-[15px] text-[#555555] leading-relaxed mb-auto">
                 {pillar.description}
               </p>
 
               <Link
                 href={pillar.link}
-                className="inline-block mt-8 font-mono text-[12px] text-red hover:text-white transition-colors"
+                className="inline-block mt-8 font-mono text-[12px] text-red hover:text-[#0A0A0A] transition-colors"
               >
                 {pillar.cta}
               </Link>

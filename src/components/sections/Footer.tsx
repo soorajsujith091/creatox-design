@@ -2,14 +2,22 @@
 
 import Link from "next/link";
 import {
-  Pin,
-  Palette,
-} from "lucide-react";
+  FaInstagram,
+  FaFacebookF,
+  FaYoutube,
+  FaLinkedinIn,
+  FaPinterestP,
+  FaBehance,
+} from "react-icons/fa";
 import { companyInfo, socialLinks, footerServices, footerCompany } from "@/data/stats";
 
 const iconMap: Record<string, React.ComponentType<{ size?: number | string; className?: string }>> = {
-  PinIcon: Pin,
-  Palette,
+  Instagram: FaInstagram as React.ComponentType<{ size?: number | string; className?: string }>,
+  Facebook: FaFacebookF as React.ComponentType<{ size?: number | string; className?: string }>,
+  Youtube: FaYoutube as React.ComponentType<{ size?: number | string; className?: string }>,
+  Linkedin: FaLinkedinIn as React.ComponentType<{ size?: number | string; className?: string }>,
+  PinIcon: FaPinterestP as React.ComponentType<{ size?: number | string; className?: string }>,
+  Palette: FaBehance as React.ComponentType<{ size?: number | string; className?: string }>,
 };
 
 export function Footer() {
@@ -46,10 +54,14 @@ export function Footer() {
                     href={social.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    aria-label={social.name}
-                    className="text-[#555] hover:text-red transition-colors duration-300 hover:scale-110"
+                    aria-label={`Follow on ${social.name}`}
+                    className="text-[#888888] hover:text-red transition-colors duration-300 hover:scale-110"
                   >
-                    {IconComponent ? <IconComponent size={24} /> : <span className="text-[14px] font-mono">{social.name.substring(0,2)}</span>}
+                    {IconComponent ? (
+                      <IconComponent size={20} />
+                    ) : (
+                      <span className="text-[14px] font-mono">{social.name.substring(0, 2)}</span>
+                    )}
                   </a>
                 );
               })}
@@ -132,7 +144,7 @@ export function Footer() {
                 type="email"
                 placeholder="Your email"
                 required
-                className="flex-1 bg-surface border border-[#333] text-white px-4 py-2.5 text-[14px] font-body focus:border-red focus:outline-none placeholder:text-[#555] transition-colors"
+                className="flex-1 bg-[#111111] border border-[#333] text-white px-4 py-2.5 text-[14px] font-body focus:border-red focus:outline-none placeholder:text-[#555] transition-colors"
                 aria-label="Email for newsletter"
               />
               <button

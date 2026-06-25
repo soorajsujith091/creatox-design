@@ -26,17 +26,11 @@ export function StoryTicker() {
       "(prefers-reduced-motion: reduce)"
     ).matches;
     if (prefersReducedMotion) return;
-
-    if (trackRef.current) {
-      // Calculate width of one set of items for seamless loop
-      // GSAP handles the cloning/looping visually better than plain CSS for complex layouts sometimes,
-      // but CSS marquee is often smoother for pure text. We'll stick to CSS animation here as defined in globals.css
-      // for better performance, but ensure we have enough content to fill wide screens.
-    }
+    // CSS animation handles the marquee
   }, []);
 
   return (
-    <section className="bg-black py-16 overflow-hidden marquee-container" aria-hidden="true">
+    <section className="bg-[#0A0A0A] py-16 overflow-hidden marquee-container" aria-hidden="true">
       <div className="flex overflow-hidden whitespace-nowrap" ref={containerRef}>
         <div 
           ref={trackRef} 
@@ -44,16 +38,18 @@ export function StoryTicker() {
         >
           {/* Repeat the text array enough times to fill ultra-wide screens smoothly */}
           {[...Array(4)].map((_, i) => (
-            <div key={`ticker-group-${i}`} className="flex items-center mx-4 shrink-0">
+            <div key={`ticker-group-${i}`} className="flex items-center shrink-0">
               {textArray.map((item, j) => {
-                let className = "font-heading text-fluid-ticker font-bold mx-4 uppercase tracking-[-0.02em] leading-none ";
+                let className = "font-heading text-fluid-ticker font-bold uppercase tracking-[-0.02em] leading-none ";
                 
-                if (item.style === "filled") {
-                  className += "text-white";
-                } else if (item.style === "stroke") {
-                  className += "text-stroke-white";
+                // BUG FIX: Add explicit horizontal margin on each word span for proper spacing
+                if (item.style === "separator") {
+                  className += "text-red text-[0.5em] -translate-y-[0.1em] mx-8";
+                } else if (item.style === "filled") {
+                  className += "text-white mx-4";
                 } else {
-                  className += "text-red text-[0.5em] -translate-y-[0.1em]"; // Adjust separator position/size relative to huge text
+                  // stroke — stays white stroke on dark bg
+                  className += "text-stroke-white mx-4";
                 }
 
                 return (
