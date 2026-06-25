@@ -1,0 +1,154 @@
+"use client";
+
+import { useState } from "react";
+import Image from "next/image";
+import Link from "next/link";
+import { companyInfo } from "@/data/stats";
+import { SectionLabel } from "../SectionLabel";
+
+export function ContactMini() {
+  const [isSubmitted, setIsSubmitted] = useState(false);
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    // Frontend only - show success state
+    setIsSubmitted(true);
+  };
+
+  return (
+    <section className="py-24 bg-surface px-6" aria-label="Get In Touch">
+      <div className="max-w-[1400px] mx-auto flex flex-col lg:flex-row gap-16 lg:gap-24">
+        
+        {/* Left Column - Director Info */}
+        <div className="lg:w-[45%] flex flex-col">
+          <SectionLabel text="GET IN TOUCH" />
+          
+          <h2 className="font-heading text-fluid-2xl text-white font-semibold leading-[1.2] mb-12">
+            Have a project in mind? We&apos;d love to hear from you.
+          </h2>
+
+          <div className="mb-12">
+            <div className="flex items-center gap-6 mb-8">
+              <div className="w-[100px] h-[100px] rounded-full border-2 border-red relative overflow-hidden shrink-0">
+                <Image
+                  src={companyInfo.directorImage}
+                  alt={companyInfo.directorName}
+                  fill
+                  className="object-cover"
+                />
+              </div>
+              <div>
+                <div className="font-mono text-[11px] text-red uppercase tracking-widest mb-1">
+                  Director
+                </div>
+                <div className="font-heading text-[24px] text-white font-semibold">
+                  {companyInfo.directorName}
+                </div>
+              </div>
+            </div>
+
+            <div className="flex flex-col gap-3 font-body">
+              <a
+                href={`tel:${companyInfo.phone1.replace(/\s/g, "")}`}
+                className="text-[15px] text-white hover:text-red transition-colors w-fit"
+              >
+                📞 {companyInfo.phone1}
+              </a>
+              <a
+                href={`tel:${companyInfo.phone2.replace(/\s/g, "")}`}
+                className="text-[14px] text-gray hover:text-white transition-colors w-fit"
+              >
+                📞 {companyInfo.phone2}
+              </a>
+              <a
+                href={`mailto:${companyInfo.email}`}
+                className="text-[14px] text-gray hover:text-white transition-colors w-fit"
+              >
+                📧 {companyInfo.email}
+              </a>
+              <div className="text-[13px] text-gray leading-relaxed max-w-[280px]">
+                📍 {companyInfo.address}
+              </div>
+            </div>
+          </div>
+
+          <Link
+            href="/contact-us/"
+            className="inline-block bg-red text-white px-6 py-3 text-[14px] font-body text-center hover:bg-redDark transition-colors duration-300 w-fit"
+          >
+            Let&apos;s Talk →
+          </Link>
+        </div>
+
+        {/* Right Column - Quick Form */}
+        <div className="lg:w-[55%]">
+          {!isSubmitted ? (
+            <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+              <input
+                type="text"
+                required
+                placeholder="Your Name"
+                className="w-full bg-black border border-[#333] text-white px-4 py-3 rounded-[4px] focus:border-red focus:outline-none placeholder:text-[#444] transition-colors"
+              />
+              <input
+                type="email"
+                required
+                placeholder="Your Email"
+                className="w-full bg-black border border-[#333] text-white px-4 py-3 rounded-[4px] focus:border-red focus:outline-none placeholder:text-[#444] transition-colors"
+              />
+              <input
+                type="tel"
+                placeholder="+91 XXXXX XXXXX"
+                className="w-full bg-black border border-[#333] text-white px-4 py-3 rounded-[4px] focus:border-red focus:outline-none placeholder:text-[#444] transition-colors"
+              />
+              <select
+                className="w-full bg-black border border-[#333] text-white px-4 py-3 rounded-[4px] focus:border-red focus:outline-none transition-colors appearance-none"
+                defaultValue=""
+              >
+                <option value="" disabled className="text-[#444]">
+                  Select a Service
+                </option>
+                <option value="Social Media Management">Social Media Management</option>
+                <option value="Branding and Design">Branding and Design</option>
+                <option value="Creative Web Design">Creative Web Design</option>
+                <option value="Ads and Campaigns">Ads and Campaigns</option>
+                <option value="E-commerce Development">E-commerce Development</option>
+                <option value="Web and Mobile Apps">Web and Mobile Apps</option>
+                <option value="Productions | SEO">Productions | SEO</option>
+                <option value="Influencer Marketing & PR">Influencer Marketing & PR</option>
+                <option value="Advertising">Advertising</option>
+              </select>
+              <textarea
+                rows={4}
+                placeholder="Tell us about your project..."
+                className="w-full bg-black border border-[#333] text-white px-4 py-3 rounded-[4px] focus:border-red focus:outline-none placeholder:text-[#444] transition-colors resize-none"
+              />
+              <button
+                type="submit"
+                className="w-full bg-red text-white py-3.5 mt-2 rounded-[4px] font-body text-[14px] hover:bg-redDark transition-colors duration-300"
+              >
+                Send Message →
+              </button>
+            </form>
+          ) : (
+            <div className="h-full min-h-[400px] flex flex-col items-center justify-center bg-black border border-[#333] rounded-[4px] p-8 text-center">
+              <div className="w-16 h-16 rounded-full bg-red/10 flex items-center justify-center text-red mb-6">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M20 6 9 17l-5-5"/>
+                </svg>
+              </div>
+              <h3 className="font-heading text-[24px] text-white font-semibold mb-2">Message Sent</h3>
+              <p className="font-body text-gray">We&apos;ll be in touch shortly!</p>
+              <button 
+                onClick={() => setIsSubmitted(false)}
+                className="mt-8 text-red font-mono text-[12px] hover:text-white transition-colors"
+              >
+                Send another message
+              </button>
+            </div>
+          )}
+        </div>
+      </div>
+    </section>
+  );
+}
