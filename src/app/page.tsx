@@ -1,10 +1,9 @@
-import { Hero } from "@/components/sections/Hero";
-import { TickerMarquee } from "@/components/sections/TickerMarquee";
+import { ReferenceHome } from "@/components/sections/ReferenceHome";
 import { ThreePillars } from "@/components/sections/ThreePillars";
 import { ServicesAccordion } from "@/components/sections/ServicesAccordion";
 import { StoryTicker } from "@/components/sections/StoryTicker";
 import { OurStory } from "@/components/sections/OurStory";
-import { SelectedWorks } from "@/components/sections/SelectedWorks";
+import { WorksWheelSection } from "@/components/sections/WorksWheelSection";
 import { Stats } from "@/components/sections/Stats";
 import { GrandMalabarExpo } from "@/components/sections/GrandMalabarExpo";
 import { Testimonials } from "@/components/sections/Testimonials";
@@ -16,18 +15,17 @@ import { Footer } from "@/components/sections/Footer";
 export default function Home() {
   return (
     <>
-      <Hero />
-      <TickerMarquee />
+      <ReferenceHome />
       <ThreePillars />
-      <ServicesAccordion />
+      <div id="services"><ServicesAccordion /></div>
       <StoryTicker />
-      <OurStory />
-      <SelectedWorks />
+      <div id="about"><OurStory /></div>
+      <WorksWheelSection />
       <Stats />
       <GrandMalabarExpo />
-      <Testimonials />
+      <div id="testimonials"><Testimonials /></div>
       <BlogGrid />
-      <ContactMini />
+      <div id="contact"><ContactMini /></div>
       <CTABanner />
       <Footer />
     </>

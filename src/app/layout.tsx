@@ -1,36 +1,35 @@
 import type { Metadata } from "next";
-import { Inter, Space_Mono, Space_Grotesk, Outfit } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 import { CustomCursor } from "@/components/CustomCursor";
 import { Preloader } from "@/components/Preloader";
 import { Navbar } from "@/components/Navbar";
 import { MobileStickyBar } from "@/components/MobileStickyBar";
 import { PageTransition } from "@/components/PageTransition";
+import { ScrollToTop } from "@/components/ScrollToTop";
 
-const inter = Inter({
-  subsets: ["latin"],
+const dmSans = localFont({
+  src: "./fonts/DMSans-Latin.woff2",
+  weight: "400 700",
   variable: "--font-body",
   display: "swap",
 });
 
-const spaceMono = Space_Mono({
-  subsets: ["latin"],
-  weight: ["400", "700"],
+const jetBrainsMono = localFont({
+  src: "./fonts/JetBrainsMono-Latin.woff2",
+  weight: "400 700",
   variable: "--font-mono",
   display: "swap",
 });
 
-const spaceGrotesk = Space_Grotesk({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+const clashDisplay = localFont({
+  src: [
+    { path: "./fonts/ClashDisplay-400.woff2", weight: "400", style: "normal" },
+    { path: "./fonts/ClashDisplay-500.woff2", weight: "500", style: "normal" },
+    { path: "./fonts/ClashDisplay-600.woff2", weight: "600", style: "normal" },
+    { path: "./fonts/ClashDisplay-700.woff2", weight: "700", style: "normal" },
+  ],
   variable: "--font-heading",
-  display: "swap",
-});
-
-const outfit = Outfit({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800", "900"],
-  variable: "--font-outfit",
   display: "swap",
 });
 
@@ -65,9 +64,9 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${spaceMono.variable} ${spaceGrotesk.variable} ${outfit.variable}`}
+      className={`${dmSans.variable} ${jetBrainsMono.variable} ${clashDisplay.variable}`}
     >
-      <body className="bg-white text-[#0A0A0A] font-body antialiased">
+      <body className="bg-black text-white font-body antialiased">
         <a href="#main-content" className="skip-to-content">
           Skip to main content
         </a>
@@ -87,6 +86,7 @@ export default function RootLayout({
         </PageTransition>
 
         <MobileStickyBar />
+        <ScrollToTop />
       </body>
     </html>
   );

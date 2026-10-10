@@ -81,7 +81,7 @@ export function CustomCursor() {
   return (
     <div
       ref={cursorRef}
-      className="fixed top-0 left-0 pointer-events-none z-[9999] mix-blend-difference transition-[width,height] duration-300 ease-out"
+      className="creatox-custom-cursor fixed top-0 left-0 pointer-events-none z-[9999] mix-blend-difference transition-[width,height] duration-300 ease-out"
       style={{
         width: isHovering ? "56px" : "16px",
         height: isHovering ? "56px" : "16px",

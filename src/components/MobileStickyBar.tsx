@@ -19,7 +19,7 @@ export function MobileStickyBar() {
         Call Now
       </a>
       <Link
-        href="/contact-us/"
+        href="/#contact"
         className="flex-1 flex items-center justify-center py-4 bg-red text-white font-mono text-[13px] hover:bg-redDark transition-colors"
       >
         Start a Project →

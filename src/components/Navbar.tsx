@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
+import { BrandLogo } from "@/components/BrandLogo";
 import { usePathname } from "next/navigation";
 import { gsap } from "gsap";
 import { Phone } from "lucide-react";
@@ -143,10 +144,7 @@ export function Navbar() {
             className="flex items-center gap-0 shrink-0"
             aria-label="Creatox Designs Home"
           >
-            <span className="font-heading text-[18px] font-bold text-[#0A0A0A] tracking-[0.04em]">
-              CREATOX
-            </span>
-            <span className="text-red text-[18px] ml-[2px]">●</span>
+            <BrandLogo className="w-[140px] md:w-[160px]" />
           </Link>
 
           {/* Desktop Center Links */}

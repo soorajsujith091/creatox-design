@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { BrandLogo } from "@/components/BrandLogo";
 import {
   FaInstagram,
   FaFacebookF,
@@ -35,10 +36,7 @@ export function Footer() {
               className="flex items-center gap-0 shrink-0 mb-3 w-fit"
               aria-label="Creatox Designs Home"
             >
-              <span className="font-heading text-[28px] font-bold text-white tracking-[0.08em]">
-                CREATOX
-              </span>
-              <span className="text-red text-[28px] ml-[2px]">●</span>
+              <BrandLogo className="w-[200px]" />
             </Link>
             
             <p className="font-body text-[14px] text-[#666] max-w-xs leading-relaxed mb-6">

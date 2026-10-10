@@ -25,10 +25,9 @@ const config: Config = {
         borderMed: "#D0D0D0",
       },
       fontFamily: {
-        heading: ["var(--font-heading)", "Space Grotesk", "sans-serif"],
-        display: ["var(--font-outfit)", "Outfit", "sans-serif"],
+        heading: ["var(--font-heading)", "Clash Display", "sans-serif"],
         body: ["var(--font-body)", "DM Sans", "sans-serif"],
-        mono: ["var(--font-mono)", "monospace"],
+        mono: ["var(--font-mono)", "JetBrains Mono", "monospace"],
       },
       animation: {
         "marquee": "marquee 35s linear infinite",
