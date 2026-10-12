@@ -38,7 +38,7 @@ export function ServicesAccordion() {
   };
 
   return (
-    <section className="py-24 bg-[#111111] px-6" aria-label="Our Expertise">
+    <section className="py-24 bg-black px-6" aria-label="Our Expertise">
       <div className="max-w-[1400px] mx-auto flex flex-col lg:flex-row gap-16 lg:gap-24">
         {/* Left Column */}
         <div className="lg:w-[40%] flex flex-col items-start">
@@ -64,7 +64,7 @@ export function ServicesAccordion() {
                 <div
                   key={service.id}
                   className={`border-b border-[#303030] relative group ${
-                    isOpen ? "bg-[#FAFAFA] pl-5" : ""
+                    isOpen ? "bg-black pl-5" : "bg-black"
                   } transition-all duration-300`}
                 >
                   {/* Left Active Border */}
