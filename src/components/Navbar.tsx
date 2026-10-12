@@ -131,7 +131,7 @@ export function Navbar() {
       <nav
         className={`fixed top-0 left-0 w-full z-[100] transition-all duration-300 ${
           isScrolled
-            ? "bg-[#FFFFFFee] backdrop-blur-md border-b border-[#E8E8E8]"
+            ? "bg-[#0A0A0Aee] backdrop-blur-md border-b border-[#303030]"
             : "bg-transparent"
         }`}
         role="navigation"
@@ -144,7 +144,7 @@ export function Navbar() {
             className="flex items-center gap-0 shrink-0"
             aria-label="Creatox Designs Home"
           >
-            <BrandLogo className="w-[140px] md:w-[160px]" />
+            <BrandLogo className="w-[140px] md:w-[160px]" priority />
           </Link>
 
           {/* Desktop Center Links */}
@@ -153,7 +153,7 @@ export function Navbar() {
               <Link
                 key={link.name}
                 href={link.href}
-                className={`nav-link font-body text-[14px] text-[#0A0A0A] tracking-[0.04em] hover:text-red transition-colors ${
+                className={`nav-link font-body text-[14px] text-white tracking-[0.04em] hover:text-red transition-colors ${
                   pathname === link.href ? "active" : ""
                 }`}
               >
@@ -166,13 +166,13 @@ export function Navbar() {
           <div className="hidden md:flex items-center gap-6">
             <a
               href={`tel:${companyInfo.phone1.replace(/\s/g, "")}`}
-              className="font-mono text-[12px] text-gray hover:text-[#0A0A0A] transition-colors"
+              className="font-mono text-[12px] text-gray hover:text-white transition-colors"
             >
               {companyInfo.phone1}
             </a>
             <Link
               href="/contact-us/"
-              className="border border-[#0A0A0A] text-[#0A0A0A] text-[14px] px-5 py-2 font-body hover:bg-red hover:border-red hover:text-white transition-all duration-300"
+              className="border border-[#BBBBBB] text-white text-[14px] px-5 py-2 font-body hover:bg-red hover:border-red hover:text-white transition-all duration-300"
             >
               Start a Project →
             </Link>
@@ -205,14 +205,14 @@ export function Navbar() {
       {isMobileMenuOpen && (
         <div
           ref={mobileMenuRef}
-          className="fixed inset-0 bg-white z-[105] flex flex-col justify-center px-8 opacity-0 md:hidden"
+          className="fixed inset-0 bg-[#111111] z-[105] flex flex-col justify-center px-8 opacity-0 md:hidden"
         >
           <div ref={mobileLinksRef} className="flex flex-col gap-6 mb-12">
             {navLinks.map((link) => (
               <Link
                 key={link.name}
                 href={link.href}
-                className={`mobile-link font-heading text-[36px] text-[#0A0A0A] opacity-0 ${
+                className={`mobile-link font-heading text-[36px] text-white opacity-0 ${
                   pathname === link.href
                     ? "border-l-[3px] border-red pl-4"
                     : "pl-4"
@@ -253,7 +253,7 @@ export function Navbar() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={`Follow on ${social.name}`}
-                  className="text-[#333] hover:text-red transition-colors duration-300"
+                  className="text-[#CCCCCC] hover:text-red transition-colors duration-300"
                 >
                   {IconComponent ? <IconComponent size={24} /> : <span className="text-[14px] font-mono">{social.name.substring(0, 2)}</span>}
                 </a>
@@ -262,7 +262,7 @@ export function Navbar() {
           </div>
 
           {/* Divider */}
-          <div className="border-t border-[#E8E8E8] mb-8" />
+          <div className="border-t border-[#303030] mb-8" />
 
           {/* CTA */}
           <Link

@@ -30,6 +30,6 @@ export function Preloader() {
 
   if (isComplete) return null;
   return <div ref={containerRef} className="fixed inset-0 z-[10000] bg-black flex items-center justify-center" aria-hidden="true">
-    <div ref={logoRef}><BrandLogo className="w-[240px] md:w-[320px] p-5" /></div>
+    <div ref={logoRef}><BrandLogo className="w-[240px] md:w-[320px] p-5" priority /></div>
   </div>;
 }

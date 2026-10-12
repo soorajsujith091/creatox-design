@@ -101,7 +101,7 @@ export function CTABanner() {
           </Link>
           <Link
             href="/projects/"
-            className="border border-white text-white px-8 py-4 text-[14px] font-body text-center hover:bg-white hover:text-black transition-all duration-300 w-full sm:w-auto"
+            className="border border-white text-white px-8 py-4 text-[14px] font-body text-center hover:bg-[#111111] hover:text-white transition-all duration-300 w-full sm:w-auto"
           >
             View Our Work ↗
           </Link>

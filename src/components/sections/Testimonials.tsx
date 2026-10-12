@@ -1,127 +1,60 @@
-"use client";
+﻿"use client";
 
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import useEmblaCarousel from "embla-carousel-react";
-import Autoplay from "embla-carousel-autoplay";
+import { motion, useReducedMotion } from "framer-motion";
+import { ArrowLeft, ArrowRight, ArrowUpRight, Pause, Play, X } from "lucide-react";
 import { testimonials } from "@/data/testimonials";
-import { SectionLabel } from "../SectionLabel";
+import "./testimonials.css";
+
+const covers = ["/images/project-beverage-concept.png", "/images/project-hotel-concept.png", "/images/project-sports-concept.png", "/images/creatox-our-story.png", "/images/agency-runners.png"];
+const headlines = ["Friendly, helpful and built around our business.", "Branding and a website that exceeded expectations.", "Professional from proposal to execution.", "A cohesive identity. A stronger online presence.", "Creative ideas and a supportive team."];
+const labels = ["E-COMMERCE", "BRANDING", "PARTNERSHIP", "DIGITAL GROWTH", "CREATIVE DIRECTION"];
 
 export function Testimonials() {
-  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true }, [
-    Autoplay({ delay: 5000, stopOnInteraction: true }),
-  ]);
-  const [selectedIndex, setSelectedIndex] = useState(0);
-
-  const scrollPrev = useCallback(() => {
-    if (emblaApi) emblaApi.scrollPrev();
-  }, [emblaApi]);
-
-  const scrollNext = useCallback(() => {
-    if (emblaApi) emblaApi.scrollNext();
-  }, [emblaApi]);
-
-  const scrollTo = useCallback(
-    (index: number) => {
-      if (emblaApi) emblaApi.scrollTo(index);
-    },
-    [emblaApi]
-  );
-
-  const onSelect = useCallback(() => {
-    if (!emblaApi) return;
-    setSelectedIndex(emblaApi.selectedScrollSnap());
-  }, [emblaApi, setSelectedIndex]);
+  const reduced = useReducedMotion();
+  const [emblaRef, api] = useEmblaCarousel({ loop: true, align: "center", duration: reduced ? 0 : 35 });
+  const [selected, setSelected] = useState(0);
+  const [paused, setPaused] = useState(false);
+  const [interacting, setInteracting] = useState(false);
+  const [story, setStory] = useState<number | null>(null);
+  const dialog = useRef<HTMLDialogElement>(null);
+  const select = useCallback(() => { if (api) setSelected(api.selectedScrollSnap()); }, [api]);
 
   useEffect(() => {
-    if (!emblaApi) return;
-    onSelect();
-    emblaApi.on("select", onSelect);
-    emblaApi.on("reInit", onSelect);
-  }, [emblaApi, onSelect]);
+    if (!api) return;
+    select(); api.on("select", select); api.on("reInit", select);
+    return () => { api.off("select", select); api.off("reInit", select); };
+  }, [api, select]);
+  useEffect(() => {
+    if (!api || reduced || paused || interacting || story !== null) return;
+    const timer = window.setInterval(() => { if (!document.hidden) api.scrollNext(); }, 6000);
+    return () => window.clearInterval(timer);
+  }, [api, reduced, paused, interacting, story]);
+  useEffect(() => { if (story !== null) dialog.current?.showModal(); else dialog.current?.close(); }, [story]);
+  const navigate = (direction: number) => { setPaused(true); if (direction < 0) api?.scrollPrev(); else api?.scrollNext(); };
 
-  return (
-    <section className="py-24 bg-[#F7F7F7] px-6 relative overflow-hidden" aria-label="Client Testimonials">
-      
-      {/* Giant Decorative Quote */}
-      <div 
-        className="absolute top-4 left-8 font-heading text-[280px] text-red leading-none pointer-events-none select-none"
-        style={{ opacity: 0.06 }}
-        aria-hidden="true"
-      >
-        &quot;
+  return <section className="client-stories" aria-labelledby="client-stories-title">
+    <motion.header initial={reduced ? false : { opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: .65 }}>
+      <span className="client-stories-eyebrow">/ CLIENT LOVE</span>
+      <h2 id="client-stories-title">Why do ambitious brands<br/>love working with <span>Creatox?</span></h2>
+      <p>Real feedback. Shared ambition. Lasting relationships.</p>
+    </motion.header>
+    <div className="client-stories-carousel" role="region" aria-roledescription="carousel" aria-label="Client testimonials" onMouseEnter={() => setInteracting(true)} onMouseLeave={() => setInteracting(false)} onFocusCapture={() => setInteracting(true)} onBlurCapture={e => { if (!e.currentTarget.contains(e.relatedTarget)) setInteracting(false); }} onKeyDown={e => { if (e.key === "ArrowLeft") { e.preventDefault(); navigate(-1); } if (e.key === "ArrowRight") { e.preventDefault(); navigate(1); } }}>
+      <div className="client-stories-viewport" ref={emblaRef}>
+        <div className="client-stories-track">{testimonials.map((item, index) => <article key={item.id} className={`client-story-slide ${selected === index ? "is-current" : ""}`} aria-roledescription="slide" aria-label={`${index + 1} of ${testimonials.length}`}>
+          <button className="client-story-card" onClick={() => { setPaused(true); setStory(index); }} aria-label={`Read testimonial from ${item.clientName}`}>
+            <img src={covers[index]} alt="" loading="lazy" width={600} height={800}/>
+            <span className="client-story-shade" aria-hidden="true"/>
+            <span className="client-story-top"><span className="client-story-category">{labels[index]}</span><span className="client-story-business">{item.logoUrl ? <img src={item.logoUrl} alt={item.businessName ?? item.clientName}/> : <span>{item.businessName ?? (index === 1 ? "BEST WESTERN" : item.clientName)}</span>}</span></span>
+            <span className="client-story-bottom"><span className="client-story-quote">{item.headline ?? headlines[index]}</span><span className="client-story-description">{item.quote}</span><span className="client-story-name">{item.clientName}</span><span className="client-story-role">{item.clientLabel}</span><span className="client-story-action">{item.videoUrl ? <><Play size={14} fill="currentColor"/> Play story {item.isDemoVideo && <span className="client-story-demo">DEMO</span>}</> : <>Read story <ArrowUpRight size={16}/></>}</span></span>
+          </button>
+        </article>)}</div>
       </div>
-
-      <div className="max-w-[1400px] mx-auto relative z-10">
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-8">
-          <div>
-            <SectionLabel text="CLIENT LOVE" />
-            <h2 className="font-heading text-fluid-2xl text-[#0A0A0A] font-semibold mt-4">
-              See Why Clients Love Working With Us
-            </h2>
-          </div>
-          
-          {/* Controls */}
-          <div className="flex items-center gap-6">
-            {/* Dots */}
-            <div className="flex gap-2">
-              {testimonials.map((_, index) => (
-                <button
-                  key={index}
-                  onClick={() => scrollTo(index)}
-                  className={`h-2 rounded-full transition-all duration-300 ${
-                    index === selectedIndex ? "bg-red w-4" : "bg-[#CCCCCC] w-2"
-                  }`}
-                  aria-label={`Go to testimonial ${index + 1}`}
-                />
-              ))}
-            </div>
-
-            {/* Arrows */}
-            <div className="flex gap-2">
-              <button
-                onClick={scrollPrev}
-                className="w-10 h-10 border border-[#D0D0D0] flex items-center justify-center text-[#0A0A0A] hover:border-red hover:bg-red hover:text-white transition-all duration-300"
-                aria-label="Previous testimonial"
-              >
-                ←
-              </button>
-              <button
-                onClick={scrollNext}
-                className="w-10 h-10 border border-[#D0D0D0] flex items-center justify-center text-[#0A0A0A] hover:border-red hover:bg-red hover:text-white transition-all duration-300"
-                aria-label="Next testimonial"
-              >
-                →
-              </button>
-            </div>
-          </div>
-        </div>
-
-        {/* Carousel — embla handles single-slide display via overflow-hidden */}
-        <div className="overflow-hidden" ref={emblaRef}>
-          <div className="flex">
-            {testimonials.map((testimonial) => (
-              <div
-                key={testimonial.id}
-                className="flex-[0_0_100%] min-w-0"
-              >
-                <div className="max-w-4xl pr-8">
-                  <blockquote className="font-body text-fluid-xl text-[#0A0A0A] italic font-light leading-[1.7] mb-10">
-                    &quot;{testimonial.quote}&quot;
-                  </blockquote>
-                  <div>
-                    <div className="font-body text-[16px] text-[#0A0A0A] font-bold mb-1">
-                      {testimonial.clientName}
-                    </div>
-                    <div className="font-mono text-[13px] text-gray">
-                      {testimonial.clientLabel}
-                    </div>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-    </section>
-  );
+      <button className="client-story-arrow is-prev" onClick={() => navigate(-1)} aria-label="Previous testimonial"><ArrowLeft size={20}/></button>
+      <button className="client-story-arrow is-next" onClick={() => navigate(1)} aria-label="Next testimonial"><ArrowRight size={20}/></button>
+    </div>
+    <div className="client-stories-controls"><div className="client-story-dots">{testimonials.map((item, i) => <button key={item.id} aria-label={`Show testimonial ${i + 1}`} aria-current={i === selected ? "true" : undefined} onClick={() => { setPaused(true); api?.scrollTo(i); }}><span className={i === selected ? "is-active" : ""}/></button>)}</div>{!reduced && <button className="client-story-pause" onClick={() => setPaused(!paused)} aria-label={paused ? "Play testimonials" : "Pause testimonials"}>{paused ? <Play size={15}/> : <Pause size={15}/>} {paused ? "Play" : "Pause"}</button>}</div>
+    <dialog ref={dialog} className="client-story-dialog" onCancel={() => setStory(null)} onClose={() => { dialog.current?.querySelector("video")?.pause(); setStory(null); }} onClick={e => { if (e.target === e.currentTarget) setStory(null); }} data-lenis-prevent>{story !== null && <><button className="client-story-close" onClick={() => setStory(null)} aria-label="Close testimonial"><X size={22}/></button><span className="client-stories-eyebrow">/ CLIENT STORY</span>{testimonials[story].isDemoVideo && <p className="client-story-demo-note">Demo playback only. This sample video is not a client testimonial; the original recording will be added later.</p>}{testimonials[story].videoUrl && <video key={testimonials[story].videoUrl} src={testimonials[story].videoUrl} controls playsInline preload="metadata" className="client-story-video"/>}<blockquote>“{testimonials[story].quote}”</blockquote><strong>{testimonials[story].clientName}</strong><p>{testimonials[story].clientLabel}</p><a href="#contact" onClick={() => setStory(null)}>Start your project <ArrowUpRight size={18}/></a></>}</dialog>
+  </section>;
 }

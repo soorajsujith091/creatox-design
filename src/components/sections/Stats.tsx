@@ -69,7 +69,7 @@ export function Stats() {
   }, []);
 
   return (
-    <section ref={sectionRef} className="py-24 bg-[#F7F7F7] px-6" aria-label="Achievements">
+    <section ref={sectionRef} className="py-24 bg-black px-6" aria-label="Achievements">
       <div className="max-w-[1400px] mx-auto">
         <SectionLabel text="ACHIEVEMENT" />
 
@@ -79,7 +79,7 @@ export function Stats() {
               key={stat.label} 
               className={`flex flex-col items-center text-center ${i !== stats.length - 1 ? 'md:border-r border-[#E0E0E0]' : ''}`}
             >
-              <div className="flex items-baseline font-heading text-fluid-3xl text-[#0A0A0A] font-bold mb-2">
+              <div className="flex items-baseline font-heading text-fluid-3xl text-white font-bold mb-2">
                 <span ref={(el) => { numbersRef.current[i] = el }}>
                   0
                 </span>
@@ -96,7 +96,7 @@ export function Stats() {
           {badges.map((badge) => (
             <div 
               key={badge}
-              className="bg-white border border-[#E8E8E8] px-4 py-2 rounded-[2px] font-mono text-[11px] text-[#555555] uppercase tracking-wide text-center shadow-[0_2px_8px_rgba(0,0,0,0.04)]"
+              className="bg-[#111111] border border-[#303030] px-4 py-2 rounded-[2px] font-mono text-[11px] text-[#BBBBBB] uppercase tracking-wide text-center shadow-[0_2px_8px_rgba(0,0,0,0.04)]"
             >
               {badge}
             </div>

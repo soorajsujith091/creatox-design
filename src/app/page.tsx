@@ -1,6 +1,7 @@
 import { ReferenceHome } from "@/components/sections/ReferenceHome";
 import { ThreePillars } from "@/components/sections/ThreePillars";
 import { ServicesAccordion } from "@/components/sections/ServicesAccordion";
+import { SelectedCreatoxWork } from "@/components/sections/SelectedCreatoxWork";
 import { StoryTicker } from "@/components/sections/StoryTicker";
 import { OurStory } from "@/components/sections/OurStory";
 import { WorksWheelSection } from "@/components/sections/WorksWheelSection";
@@ -18,6 +19,7 @@ export default function Home() {
     <>
       <ReferenceHome><ThreePillars /></ReferenceHome>
       <div id="services"><ServicesAccordion /></div>
+      <SelectedCreatoxWork />
       <StoryTicker />
       <div id="about"><OurStory /></div>
       <CinematicHero aria-label="Creatox branding and digital experience showcase" />

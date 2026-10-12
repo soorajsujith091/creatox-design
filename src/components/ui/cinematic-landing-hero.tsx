@@ -388,7 +388,7 @@ export function CinematicHero({
                           <span className="text-[10px] text-neutral-400 uppercase tracking-widest font-bold mb-1">Digital experience concept</span>
                           <span className="text-xl font-bold tracking-tight text-white drop-shadow-md">Brand studio</span>
                         </div>
-                        <div className="w-9 h-9 rounded-full bg-white/5 text-neutral-200 flex items-center justify-center font-bold text-sm border border-white/10 shadow-lg shadow-black/50">C</div>
+                        <div className="w-9 h-9 rounded-full bg-[#111111]/5 text-neutral-200 flex items-center justify-center font-bold text-sm border border-white/10 shadow-lg shadow-black/50">C</div>
                       </div>
 
                       <div className="phone-widget relative w-44 h-44 mx-auto flex items-center justify-center mb-8 drop-shadow-[0_15px_25px_rgba(0,0,0,0.8)]">
@@ -403,7 +403,7 @@ export function CinematicHero({
                       </div>
 
                       <div className="phone-widget widget-depth rounded-2xl overflow-hidden"><img src="/images/project-beverage-concept.png" alt="Generated beverage brand concept" className="w-full h-[95px] object-cover" loading="lazy"/><div className="p-3"><span className="text-sm font-semibold">Branding + Web design</span><p className="text-xs text-neutral-400 mt-1">Strategy. Design. Digital.</p></div></div>
-                      <div className="absolute bottom-2 left-1/2 -translate-x-1/2 w-[120px] h-[4px] bg-white/20 rounded-full shadow-[0_1px_2px_rgba(0,0,0,0.5)]" />
+                      <div className="absolute bottom-2 left-1/2 -translate-x-1/2 w-[120px] h-[4px] bg-[#111111]/20 rounded-full shadow-[0_1px_2px_rgba(0,0,0,0.5)]" />
                     </div>
                   </div>
                 </div>

@@ -24,7 +24,7 @@ export const blogPosts: BlogPost[] = [
       "The Art of Storytelling: How Human-Focused Videos Drive Conversions",
     date: "Feb 27, 2025",
     image:
-      "https://creatoxdesigns.com/wp-content/uploads/2025/02/man-woman-creating-podcast-together-scaled-1-800x800.jpg",
+      "/images/creatox-our-story.png",
     tags: ["Branding", "Marketing"],
     link: "/the-art-of-storytelling/",
   },

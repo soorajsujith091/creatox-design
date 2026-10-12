@@ -14,3 +14,10 @@
 @media(max-width:900px){.creatox-wheel-desktop{display:none}.creatox-wheel-cards{display:grid}.creatox-works-heading{display:block}.creatox-works-heading p{margin-top:20px}}
 @media(max-width:600px){.creatox-works{padding:50px 24px 30px}.creatox-wheel-cards{grid-template-columns:1fr;gap:30px}.creatox-works-heading p{font-size:14px}.creatox-works-footer{flex-direction:column;align-items:flex-start;gap:5px}}
 @media(prefers-reduced-motion:reduce){.creatox-wheel-desktop{display:none}.creatox-wheel-cards{display:grid}.creatox-work-cover img{transition:none}}
+/* Dark theme */
+.creatox-works{background:#000;color:#fff}.creatox-works-heading p{color:#bbb}
+.creatox-tilted-reel{background:#000;border-color:#303030}
+.creatox-reel-top{color:#aaa}.creatox-reel-top button{background:#202020;color:#fff}
+.creatox-reel-top button:hover{background:#e4002b}.creatox-reel-caption{color:#fff}
+.creatox-work-card p{color:#bbb}.creatox-works-footer{border-color:#303030;color:#aaa}
+.creatox-works-footer a,.creatox-work-link{color:#ff5372}

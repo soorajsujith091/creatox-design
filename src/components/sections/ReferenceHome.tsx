@@ -8,8 +8,8 @@ import { projects as creatoxProjects } from "@/data/projects";
 import { projectCoverImages } from "@/data/project-cover-images";
 import { ParallaxComponent } from "@/components/ui/parallax-scrolling";
 import { BrandLogo } from "@/components/BrandLogo";
-import { NotchedProjectCard } from "@/components/ui/notched-project-card";
 import { StickyScrollStack } from "@/components/ui/sticky-scroll-stack";
+import { AgencyIntro } from "@/components/sections/AgencyIntro";
 import "./reference-home.css";
 
 // Local adaptation of Bundui's 21st.dev Magnetic Button interaction:
@@ -63,26 +63,8 @@ export function ReferenceHome({ children }: { children?: ReactNode }) {
         <div className="ref-hero-middle" data-parallax-layer="2"><p>Brand identities, websites and campaigns<br/>that help your business connect and grow.<br/><span>Made with love in Kannur, Kerala.</span></p><div className="ref-actions"><MagneticButton><a className="ref-button ref-dark-button" href="#contact">Start a project <span><ArrowRight size={20}/></span></a></MagneticButton><MagneticButton><a className="ref-button ref-white-button" href="#selected-work">Explore our work</a></MagneticButton></div></div>
         <div className="ref-hero-bottom" data-parallax-layer="4"><a className="ref-stat-card" href="#about"><span className="ref-stat-symbol"><BrandLogo className="w-full px-2 py-2" /></span><span>6+ years of creativity<br/>1k+ successful projects<span className="ref-stat-arrows"><ArrowRight size={15}/></span></span></a><div className="ref-mini-cards"><a className="ref-mini ref-mini-dark" href="#work"><BrandLogo className="w-full px-2 py-2" /><span>Branding. Websites.<br/>Social media.<br/>Built around you.</span></a><button className="ref-mini ref-mini-nature" aria-label="Explore Desham Brings project" onClick={() => setActive(1)}><span>BRAND<br/>STRATEGY</span><ArrowUpRight size={20}/></button><button className="ref-mini ref-mini-yellow" aria-label="Explore Best Western Plus project" onClick={() => setActive(0)}><span>CREATE.<br/>CONNECT.<br/>GROW.</span><Plus size={25}/></button></div></div>
       </section>
-      <section className="ref-trust" id="work" aria-label="Trusted by teams at scale">
-        <div className="ref-eyebrows"><span>/ SELECTED CREATOX WORK</span><a href="#services">DESIGN & DIGITAL SERVICES <ArrowUpRight size={12}/></a></div>
-        <div className="ref-trust-heading"><motion.h2 {...reveal}>GOOD DESIGN.<br/><span className="ref-inline-arrow">↗</span> REAL CONNECTIONS.</motion.h2><motion.p {...reveal}>We blend creativity, strategy and technology to build brands that <span>look premium and perform with purpose.</span></motion.p></div>
-        <div className="ref-notched-grid">{creatoxProjects.slice(0, 3).map(project => <NotchedProjectCard
-          key={project.id}
-          href={`https://creatoxdesigns.com${project.link}`}
-          title={project.title}
-          description={project.description}
-          image={projectCoverImages[project.id] ?? project.image}
-          imageAlt={`${project.title} — generated illustrative concept cover`}
-          badge={project.tags[0]}
-          tags={project.tags}
-          surface="#ffffff"
-          accent="#e4002b"
-          accentForeground="#ffffff"
-          className="ref-notched-card"
-        />)}</div>
-        <div className="ref-trust-footer"><span>YOUR NEXT CHAPTER STARTS HERE.</span><a href="#contact">Let’s create something together <ArrowUpRight size={18}/></a></div>
-      </section>
-      {children && <div className="ref-third-section">{children}</div>}
+      <AgencyIntro />
+ {children && <div className="ref-third-section">{children}</div>}
     </StickyScrollStack>
     <dialog data-lenis-prevent ref={dialog} className="ref-dialog" onCancel={() => setActive(null)} onClick={e => { if (e.target === e.currentTarget) setActive(null); }} onClose={() => setActive(null)}>{active !== null && <><button className="ref-dialog-close" aria-label="Close project details" onClick={() => setActive(null)}><X/></button><img src={projects[active].image} alt={projects[active].title} onError={e => { e.currentTarget.style.display = "none"; }}/><div><span>CREATOX / SELECTED WORK</span><h2>{projects[active].title}</h2><p>{projects[active].detail}</p><a href={`mailto:${companyInfo.email}?subject=${encodeURIComponent(`Project enquiry: ${projects[active].title}`)}`} className="ref-button ref-white-button">Discuss a similar project <ArrowUpRight size={18}/></a></div></>}</dialog>
   </div></ParallaxComponent>;

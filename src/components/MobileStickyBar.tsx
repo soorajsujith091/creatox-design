@@ -6,13 +6,13 @@ import { Phone } from "lucide-react";
 export function MobileStickyBar() {
   return (
     <div
-      className="fixed bottom-0 left-0 w-full z-50 bg-white border-t border-[#E8E8E8] flex md:hidden"
+      className="fixed bottom-0 left-0 w-full z-50 bg-[#111111] border-t border-[#303030] flex md:hidden"
       role="complementary"
       aria-label="Quick actions"
     >
       <a
         href="tel:+918086082888"
-        className="flex-1 flex items-center justify-center gap-2 py-4 text-[#0A0A0A] font-mono text-[13px] border-r border-[#E8E8E8] hover:bg-[#F7F7F7] transition-colors"
+        className="flex-1 flex items-center justify-center gap-2 py-4 text-white font-mono text-[13px] border-r border-[#303030] hover:bg-black transition-colors"
         aria-label="Call now"
       >
         <Phone size={16} />

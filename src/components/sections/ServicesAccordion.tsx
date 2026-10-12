@@ -38,17 +38,17 @@ export function ServicesAccordion() {
   };
 
   return (
-    <section className="py-24 bg-white px-6" aria-label="Our Expertise">
+    <section className="py-24 bg-[#111111] px-6" aria-label="Our Expertise">
       <div className="max-w-[1400px] mx-auto flex flex-col lg:flex-row gap-16 lg:gap-24">
         {/* Left Column */}
         <div className="lg:w-[40%] flex flex-col items-start">
           <SectionLabel text="OUR EXPERTISE" />
-          <h2 className="font-heading text-fluid-2xl text-[#0A0A0A] font-semibold leading-[1.1] mb-10 sticky top-32">
+          <h2 className="font-heading text-fluid-2xl text-white font-semibold leading-[1.1] mb-10 sticky top-32">
             Everything your brand needs to dominate online.
           </h2>
           <Link
             href="/service/branding-and-design/"
-            className="hidden lg:inline-block border border-[#0A0A0A] text-[#0A0A0A] px-7 py-3.5 text-[14px] font-body text-center hover:bg-red hover:text-white hover:border-red transition-all duration-300"
+            className="hidden lg:inline-block border border-[#BBBBBB] text-white px-7 py-3.5 text-[14px] font-body text-center hover:bg-red hover:text-white hover:border-red transition-all duration-300"
           >
             See All Services →
           </Link>
@@ -56,14 +56,14 @@ export function ServicesAccordion() {
 
         {/* Right Column - Accordion */}
         <div className="lg:w-[60%] flex flex-col">
-          <div className="border-t border-[#E8E8E8]" role="tablist">
+          <div className="border-t border-[#303030]" role="tablist">
             {services.map((service, i) => {
               const isOpen = openIndex === i;
 
               return (
                 <div
                   key={service.id}
-                  className={`border-b border-[#E8E8E8] relative group ${
+                  className={`border-b border-[#303030] relative group ${
                     isOpen ? "bg-[#FAFAFA] pl-5" : ""
                   } transition-all duration-300`}
                 >
@@ -91,7 +91,7 @@ export function ServicesAccordion() {
                         {service.number}
                       </span>
                       <span
-                        className={`font-body text-[18px] text-[#0A0A0A] transition-transform duration-250 ${
+                        className={`font-body text-[18px] text-white transition-transform duration-250 ${
                           isOpen ? "translate-x-2" : "group-hover:translate-x-2"
                         }`}
                       >
@@ -99,7 +99,7 @@ export function ServicesAccordion() {
                       </span>
                     </div>
                     <span
-                      className="text-[#0A0A0A] text-2xl font-light transition-transform duration-300 origin-center"
+                      className="text-white text-2xl font-light transition-transform duration-300 origin-center"
                       style={{
                         transform: isOpen ? "rotate(45deg)" : "rotate(0deg)",
                       }}
@@ -120,12 +120,12 @@ export function ServicesAccordion() {
                     style={{ height: i === 0 ? "auto" : 0 }}
                   >
                     <div className="pb-8 px-6 lg:px-8 pl-[60px] lg:pl-[68px]">
-                      <p className="font-body text-[15px] text-[#555555] leading-relaxed max-w-xl mb-6">
+                      <p className="font-body text-[15px] text-[#BBBBBB] leading-relaxed max-w-xl mb-6">
                         {service.description}
                       </p>
                       <Link
                         href={service.link}
-                        className="inline-block font-mono text-[12px] text-red hover:text-[#0A0A0A] transition-colors"
+                        className="inline-block font-mono text-[12px] text-red hover:text-white transition-colors"
                       >
                         View Service →
                       </Link>
@@ -138,7 +138,7 @@ export function ServicesAccordion() {
 
           <Link
             href="/service/branding-and-design/"
-            className="lg:hidden mt-10 border border-[#0A0A0A] text-[#0A0A0A] px-7 py-3.5 text-[14px] font-body text-center hover:bg-red hover:text-white hover:border-red transition-all duration-300 self-start"
+            className="lg:hidden mt-10 border border-[#BBBBBB] text-white px-7 py-3.5 text-[14px] font-body text-center hover:bg-red hover:text-white hover:border-red transition-all duration-300 self-start"
           >
             See All Services →
           </Link>

@@ -24,10 +24,6 @@ export function WorksWheelSection() {
       <div className="creatox-reel-top"><span>CREATIVITY IN EVERY DIRECTION.</span><button type="button" onClick={() => setPaused(!paused)} aria-label={paused ? "Play project reel" : "Pause project reel"} aria-pressed={paused}>{paused ? <Play size={16}/> : <Pause size={16}/>}<span>{paused ? "Play" : "Pause"}</span></button></div>
       <p className="creatox-reel-caption">Brand stories, brought into focus.</p>
     </TiltedGridHero>
-    <div className="creatox-reel-projects">{featuredProjects.map(project => <a key={project.id} href={`https://creatoxdesigns.com${project.link}`} className="creatox-work-card">
-      <div className="creatox-work-cover"><img src={projectCoverImages[project.id] ?? project.image} alt={`${project.title} illustrative concept cover`} loading="lazy" width={740} height={555}/><span>{project.tags.join(" / ")}</span></div>
-      <h3>{project.title}<ArrowUpRight size={22}/></h3><p>{project.description}</p><span className="creatox-work-link">View project <ArrowUpRight size={16}/></span>
-    </a>)}</div>
     <footer className="creatox-works-footer"><span>Have something in mind?</span><a href="#contact">Let’s build your next chapter <ArrowUpRight size={20}/></a></footer>
   </section>;
 }
