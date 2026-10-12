@@ -1,0 +1,4 @@
+.next-dev/
+.next/
+node_modules/
+.git/
