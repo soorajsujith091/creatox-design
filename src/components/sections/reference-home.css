@@ -19,9 +19,10 @@ body:has(.reference-home) .creatox-custom-cursor{display:none}
 
 /* Creatox brand: red, charcoal and clean white surfaces. */
 .ref-frame.ref-scroll-stack{overflow:clip;position:relative;isolation:isolate}
-.ref-scroll-stack .ref-hero{position:sticky;top:var(--stack-top,0px);z-index:0}
-.ref-scroll-stack .ref-trust{position:relative;z-index:1}
-@media(prefers-reduced-motion:reduce){.ref-scroll-stack .ref-hero{position:relative;top:auto}}
+.ref-scroll-stack .ref-hero{position:relative;z-index:0}
+.ref-scroll-stack .ref-trust{position:sticky;top:var(--stack-top,0px);z-index:1}
+.ref-scroll-stack .ref-third-section{position:relative;z-index:2;background:#fff;color:#0a0a0a}
+@media(prefers-reduced-motion:reduce){.ref-scroll-stack .ref-trust{position:relative;top:auto}}
 .ref-notched-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:32px;margin-top:64px}
 .ref-notched-card{min-width:0;color:#0a0a0a}
 .ref-notched-card .bg-muted{background:#ececec}

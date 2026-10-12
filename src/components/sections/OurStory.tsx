@@ -1,7 +1,8 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { SectionLabel } from "../SectionLabel";
@@ -9,7 +10,6 @@ import { SectionLabel } from "../SectionLabel";
 gsap.registerPlugin(ScrollTrigger);
 
 export function OurStory() {
-  const [videoError, setVideoError] = useState(false);
   const textContainerRef = useRef<HTMLDivElement>(null);
   const visualContainerRef = useRef<HTMLDivElement>(null);
 
@@ -96,29 +96,13 @@ export function OurStory() {
         <div className="w-full md:w-[45%] relative" ref={visualContainerRef}>
           <div className="relative rounded-[4px] border border-[#E8E8E8] overflow-hidden md:sticky md:top-32 w-full aspect-square md:aspect-auto md:h-[600px] bg-[#F7F7F7] shadow-[0_4px_24px_rgba(0,0,0,0.08)]">
 
-            {!videoError ? (
-              <video
-                src="https://creatoxdesigns.com/wp-content/uploads/2026/02/3d-glass-rotating-transparent-cube-and-circle-2026-01-28-03-20-02-utc.mp4"
-                autoPlay
-                muted
-                loop
-                playsInline
-                className="absolute inset-0 w-full h-full object-cover"
-                onError={() => setVideoError(true)}
-              />
-            ) : (
-              /* Fallback 3D CSS Cube */
-              <div className="absolute inset-0 flex items-center justify-center">
-                 <div className="relative w-32 h-32 perspective-1000 animate-spin-slow" style={{ transformStyle: 'preserve-3d' }}>
-                    <div className="absolute inset-0 border border-red/50 shadow-[0_0_20px_rgba(228,0,43,0.2)] bg-red/5" style={{ transform: 'translateZ(64px)' }} />
-                    <div className="absolute inset-0 border border-red/50 shadow-[0_0_20px_rgba(228,0,43,0.2)] bg-red/5" style={{ transform: 'translateZ(-64px) rotateY(180deg)' }} />
-                    <div className="absolute inset-0 border border-red/50 shadow-[0_0_20px_rgba(228,0,43,0.2)] bg-red/5" style={{ transform: 'translateX(64px) rotateY(90deg)' }} />
-                    <div className="absolute inset-0 border border-red/50 shadow-[0_0_20px_rgba(228,0,43,0.2)] bg-red/5" style={{ transform: 'translateX(-64px) rotateY(-90deg)' }} />
-                    <div className="absolute inset-0 border border-red/50 shadow-[0_0_20px_rgba(228,0,43,0.2)] bg-red/5" style={{ transform: 'translateY(64px) rotateX(-90deg)' }} />
-                    <div className="absolute inset-0 border border-red/50 shadow-[0_0_20px_rgba(228,0,43,0.2)] bg-red/5" style={{ transform: 'translateY(-64px) rotateX(90deg)' }} />
-                 </div>
-              </div>
-            )}
+            <Image
+              src="/images/creatox-our-story.png"
+              alt="Red sculptural ribbon surrounding a glass cube, representing creativity and connection"
+              fill
+              sizes="(max-width: 767px) 100vw, 45vw"
+              className="object-cover"
+            />
           </div>
         </div>
       </div>

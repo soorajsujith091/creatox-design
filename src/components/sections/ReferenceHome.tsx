@@ -5,6 +5,7 @@ import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { ArrowRight, ArrowUpRight, Menu, X, Plus } from "lucide-react";
 import { companyInfo } from "@/data/stats";
 import { projects as creatoxProjects } from "@/data/projects";
+import { projectCoverImages } from "@/data/project-cover-images";
 import { ParallaxComponent } from "@/components/ui/parallax-scrolling";
 import { BrandLogo } from "@/components/BrandLogo";
 import { NotchedProjectCard } from "@/components/ui/notched-project-card";
@@ -29,10 +30,10 @@ function Mark({ className = "" }: { className?: string }) {
 
 const projects = creatoxProjects.slice(0, 3).map(project => ({
   title: project.title, tag: project.tags[0], headline: project.tags.join(" + "),
-  image: project.image, detail: project.description, foot: "View project details",
+  image: projectCoverImages[project.id] ?? project.image, detail: project.description, foot: "View project details",
 }));
 
-export function ReferenceHome() {
+export function ReferenceHome({ children }: { children?: ReactNode }) {
   const [menu, setMenu] = useState(false);
   const [active, setActive] = useState<number | null>(null);
   const dialog = useRef<HTMLDialogElement>(null);
@@ -70,8 +71,8 @@ export function ReferenceHome() {
           href={`https://creatoxdesigns.com${project.link}`}
           title={project.title}
           description={project.description}
-          image={project.image}
-          imageAlt={`${project.title} project by Creatox Designs`}
+          image={projectCoverImages[project.id] ?? project.image}
+          imageAlt={`${project.title} — generated illustrative concept cover`}
           badge={project.tags[0]}
           tags={project.tags}
           surface="#ffffff"
@@ -81,6 +82,7 @@ export function ReferenceHome() {
         />)}</div>
         <div className="ref-trust-footer"><span>YOUR NEXT CHAPTER STARTS HERE.</span><a href="#contact">Let’s create something together <ArrowUpRight size={18}/></a></div>
       </section>
+      {children && <div className="ref-third-section">{children}</div>}
     </StickyScrollStack>
     <dialog data-lenis-prevent ref={dialog} className="ref-dialog" onCancel={() => setActive(null)} onClick={e => { if (e.target === e.currentTarget) setActive(null); }} onClose={() => setActive(null)}>{active !== null && <><button className="ref-dialog-close" aria-label="Close project details" onClick={() => setActive(null)}><X/></button><img src={projects[active].image} alt={projects[active].title} onError={e => { e.currentTarget.style.display = "none"; }}/><div><span>CREATOX / SELECTED WORK</span><h2>{projects[active].title}</h2><p>{projects[active].detail}</p><a href={`mailto:${companyInfo.email}?subject=${encodeURIComponent(`Project enquiry: ${projects[active].title}`)}`} className="ref-button ref-white-button">Discuss a similar project <ArrowUpRight size={18}/></a></div></>}</dialog>
   </div></ParallaxComponent>;

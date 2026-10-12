@@ -1,0 +1,28 @@
+.creatox-cinematic{--color-foreground:#0a0a0a;background:#f7f7f7;color:#0a0a0a;min-height:680px}
+.creatox-cinematic h2,.creatox-cinematic h3{font-family:var(--font-heading),sans-serif}
+.creatox-cinematic .cta-wrapper>p{color:#555}
+.creatox-cinematic a{min-height:48px;cursor:pointer}
+.creatox-cinematic a:focus-visible{outline:3px solid #e4002b;outline-offset:5px}
+.creatox-cinematic .btn-modern-light{background:#e4002b;color:white}
+.creatox-cinematic .btn-modern-light:hover{background:#b8001f}
+.creatox-cinematic .progress-ring{stroke-dashoffset:60}
+.creatox-cinematic .card-left-text p{color:#ddd}
+.creatox-cinematic .premium-depth-card{background:linear-gradient(110deg,rgba(0,0,0,.72),rgba(0,0,0,.35) 55%,rgba(0,0,0,.65)),url('/images/WhatsApp%20Image%202026-10-12%20at%2012.56.42%20PM.jpeg') center/cover no-repeat}
+@media(max-width:767px),(prefers-reduced-motion:reduce){
+  .creatox-cinematic{height:auto;min-height:0;display:flex;flex-direction:column;gap:35px;padding:55px 20px;overflow:hidden}
+  .creatox-cinematic .gsap-reveal{visibility:visible}
+  .creatox-cinematic .hero-text-wrapper,.creatox-cinematic .cta-wrapper{position:relative;width:100%;padding:0}
+  .creatox-cinematic .hero-text-wrapper h2{font-size:clamp(30px,6vw,54px);line-height:1.15}
+  .creatox-cinematic .cinematic-card-stage{position:relative;width:100%;pointer-events:auto}
+  .creatox-cinematic .main-card{width:100%;height:auto;min-height:640px;border-radius:28px}
+  .creatox-cinematic .main-card>div:last-child{display:flex;flex-direction:column;gap:15px;padding:30px 16px}
+  .creatox-cinematic .mockup-scroll-wrapper{height:390px;flex-shrink:0}
+  .creatox-cinematic .mockup-scroll-wrapper>div{transform:scale(.64)}
+  .creatox-cinematic .card-left-text p{display:block;font-size:14px;margin-top:15px;max-width:400px}
+  .creatox-cinematic .cta-wrapper{order:3}
+  .creatox-cinematic .cta-wrapper h2{font-size:clamp(30px,5vw,50px);margin-bottom:20px}
+  .creatox-cinematic .cta-wrapper>p{font-size:16px;margin-bottom:24px}
+  .creatox-cinematic .floating-badge{max-width:200px}
+  .creatox-cinematic .film-grain{display:none}
+}
+@media(prefers-reduced-motion:reduce){.creatox-cinematic *{transition:none!important;animation:none!important}}

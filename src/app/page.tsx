@@ -11,15 +11,16 @@ import { BlogGrid } from "@/components/sections/BlogGrid";
 import { ContactMini } from "@/components/sections/ContactMini";
 import { CTABanner } from "@/components/sections/CTABanner";
 import { Footer } from "@/components/sections/Footer";
+import { CinematicHero } from "@/components/ui/cinematic-landing-hero";
 
 export default function Home() {
   return (
     <>
-      <ReferenceHome />
-      <ThreePillars />
+      <ReferenceHome><ThreePillars /></ReferenceHome>
       <div id="services"><ServicesAccordion /></div>
       <StoryTicker />
       <div id="about"><OurStory /></div>
+      <CinematicHero aria-label="Creatox branding and digital experience showcase" />
       <WorksWheelSection />
       <Stats />
       <GrandMalabarExpo />

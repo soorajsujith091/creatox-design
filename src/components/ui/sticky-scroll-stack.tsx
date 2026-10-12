@@ -10,12 +10,12 @@ export const StickyScrollStack = forwardRef<HTMLDivElement, HTMLAttributes<HTMLD
     useImperativeHandle(ref, () => stackRef.current!, []);
     useEffect(() => {
       const stack = stackRef.current;
-      const hero = stack?.querySelector<HTMLElement>(".ref-hero");
-      if (!stack || !hero) return;
-      const measure = () => stack.style.setProperty("--stack-top", `${Math.min(0, window.innerHeight - hero.offsetHeight)}px`);
+      const precedingSection = stack?.querySelector<HTMLElement>(".ref-trust");
+      if (!stack || !precedingSection) return;
+      const measure = () => stack.style.setProperty("--stack-top", `${Math.min(0, window.innerHeight - precedingSection.offsetHeight)}px`);
       measure();
       const observer = new ResizeObserver(measure);
-      observer.observe(hero);
+      observer.observe(precedingSection);
       window.addEventListener("resize", measure);
       return () => { observer.disconnect(); window.removeEventListener("resize", measure); };
     }, []);
