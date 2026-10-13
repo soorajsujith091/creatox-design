@@ -1,0 +1,20 @@
+.contact-studio{background:#000;padding-block:clamp(48px,6vw,96px)}
+.contact-studio-panel{display:grid;grid-template-columns:1fr 1fr;background:#fff;color:#000;border:1px solid #fff}
+.contact-studio-details{padding:clamp(28px,5vw,80px);border-right:1px solid #0002}
+.contact-studio-details h2{font-family:var(--font-heading),sans-serif;font-size:clamp(48px,6vw,94px);line-height:.98;letter-spacing:-.06em;font-weight:600}.contact-studio-details h2 span{color:#e4002b}
+.contact-studio-details h3{font-family:var(--font-heading),sans-serif;font-size:24px;line-height:1.2;letter-spacing:-.03em;font-weight:500;margin-top:48px}
+.contact-studio-directory{display:grid;gap:24px;margin-top:36px}.contact-studio-directory dt{font-size:11px;color:#0009;margin-bottom:8px}.contact-studio-directory dd{font-size:14px;line-height:1.6}.contact-studio-directory dd>a{display:flex;align-items:center;gap:6px;min-height:32px;overflow-wrap:anywhere}.contact-studio-directory address{font-style:normal;max-width:280px}.contact-studio-directory a:hover{color:#e4002b}.contact-studio-map-link{text-decoration:underline;text-underline-offset:4px;margin-top:8px}
+.contact-studio-right{display:flex;flex-direction:column;justify-content:flex-end}
+.contact-studio-welcome{display:flex;align-items:center;gap:24px;padding:48px 32px;min-height:200px}.contact-studio-welcome>svg{flex-shrink:0;color:#e4002b}.contact-studio-welcome p{font-size:14px;line-height:1.6;max-width:330px}
+.contact-studio-form{background:#111;color:#fff;padding:clamp(24px,3vw,48px)}.contact-studio-form h3{font-family:var(--font-heading),sans-serif;font-size:22px;font-weight:400;margin-bottom:32px}
+.contact-studio-fields{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:24px}
+.contact-studio-form label{display:block;font-size:12px;color:#fffc}.contact-studio-form label>span{color:#e4002b}
+.contact-studio-form input,.contact-studio-form select,.contact-studio-form textarea{display:block;width:100%;min-width:0;background:transparent;border:0;border-bottom:1px solid #ffffff55;border-radius:0;color:#fff;min-height:44px;padding:10px 0;font:inherit;font-size:16px}.contact-studio-form select option{background:#111;color:#fff}.contact-studio-form textarea{resize:vertical;min-height:90px}
+.contact-studio-form input:focus,.contact-studio-form select:focus,.contact-studio-form textarea:focus{outline:2px solid #e4002b;outline-offset:4px;border-bottom-color:#e4002b}
+.contact-studio-form button{display:flex;align-items:center;justify-content:center;gap:12px;min-height:48px;width:100%;margin-top:32px;background:#e4002b;color:#fff;padding:14px 18px;font-size:13px}.contact-studio-form button:hover{background:#fff;color:#000}
+.contact-studio-form-note,.contact-studio-form-status{font-size:11px;line-height:1.6;margin-top:14px;color:#fffb}.contact-studio-form-status a{text-decoration:underline;overflow-wrap:anywhere}
+.contact-studio-location{display:flex;align-items:center;gap:16px;min-height:112px;padding:28px 36px;background:#111;color:#fff;border:1px solid #ffffff25;border-top:0}.contact-studio-location>svg{color:#e4002b}.contact-studio-location>span{display:grid;gap:6px;font-size:13px}.contact-studio-location strong{font-family:var(--font-heading),sans-serif;font-size:22px;font-weight:400}.contact-studio-location>svg:last-child{margin-left:auto}
+.contact-studio a:focus-visible,.contact-studio button:focus-visible{outline:2px solid #e4002b;outline-offset:4px}
+@media(max-width:900px){.contact-studio-details{padding:32px}.contact-studio-welcome{padding:32px 24px;gap:16px}.contact-studio-welcome>svg{width:40px}}
+@media(max-width:767px){.contact-studio-panel{grid-template-columns:1fr}.contact-studio-details{border-right:0;border-bottom:1px solid #0002;padding:32px 24px}.contact-studio-details h2{font-size:clamp(48px,12vw,76px)}.contact-studio-details h3{margin-top:32px;font-size:22px}.contact-studio-welcome{min-height:0;padding:28px 24px}.contact-studio-form{padding:32px 24px}.contact-studio-location{padding:24px;min-height:96px}}
+@media(max-width:400px){.contact-studio-fields{grid-template-columns:1fr;gap:20px}}

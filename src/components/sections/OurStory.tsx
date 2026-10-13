@@ -1,113 +1,31 @@
-"use client";
-
-import { useEffect, useRef } from "react";
-import Link from "next/link";
 import Image from "next/image";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import Link from "next/link";
+import { ArrowUpRight, MapPin, Sparkles } from "lucide-react";
 import { SectionLabel } from "../SectionLabel";
-
-gsap.registerPlugin(ScrollTrigger);
+import { stats } from "@/data/stats";
+import "./our-story.css";
 
 export function OurStory() {
-  const textContainerRef = useRef<HTMLDivElement>(null);
-  const visualContainerRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const prefersReducedMotion = window.matchMedia(
-      "(prefers-reduced-motion: reduce)"
-    ).matches;
-    if (prefersReducedMotion) return;
-
-    const ctx = gsap.context(() => {
-      // Fade and slide text content
-      gsap.fromTo(
-        textContainerRef.current?.children || [],
-        { y: 30, opacity: 0 },
-        {
-          y: 0,
-          opacity: 1,
-          duration: 0.8,
-          stagger: 0.15,
-          ease: "power3.out",
-          scrollTrigger: {
-            trigger: textContainerRef.current,
-            start: "top 80%",
-            once: true,
-          },
-        }
-      );
-
-      // Fade visual container
-      gsap.fromTo(
-        visualContainerRef.current,
-        { opacity: 0, scale: 0.95 },
-        {
-          opacity: 1,
-          scale: 1,
-          duration: 1,
-          ease: "power2.out",
-          scrollTrigger: {
-            trigger: visualContainerRef.current,
-            start: "top 70%",
-            once: true,
-          },
-        }
-      );
-    });
-
-    return () => ctx.revert();
-  }, []);
-
-  return (
-    <section className="py-24 bg-black px-6 overflow-hidden" aria-label="Our Story">
-      <div className="max-w-[1400px] mx-auto flex flex-col md:flex-row gap-16 md:gap-8 items-center">
-        {/* Left Content */}
-        <div className="w-full md:w-[55%] flex flex-col" ref={textContainerRef}>
-          <div className="opacity-0">
-             <SectionLabel text="OUR STORY" />
-          </div>
-         
-          <div className="mb-8 opacity-0">
-            {/* "Since" with dark stroke on white/light bg */}
-            <span className="font-heading text-[clamp(80px,10vw,140px)] leading-[0.8] text-stroke-dark block">
-              Since
-            </span>
-            <span className="font-heading text-[clamp(80px,10vw,140px)] leading-[0.8] text-red font-bold block">
-              2019
-            </span>
-          </div>
-
-          <p className="font-body text-[17px] text-[#BBBBBB] leading-[1.9] max-w-md mb-10 opacity-0">
-            In a world driven by clicks, conversations, and constant change, we took our first step with a bold belief — that brands deserve more than visibility; they deserve a voice. We began not just as marketers, but as storytellers, strategists, and dreamers, turning ideas into impact and strategies into growth.
-          </p>
-
-          <div className="opacity-0">
-            <Link
-              href="/about-us/"
-              className="inline-block border border-[#BBBBBB] text-white px-6 py-3 text-[14px] font-body text-center hover:bg-red hover:text-white hover:border-red transition-all duration-300"
-            >
-              Know More →
-            </Link>
-          </div>
-        </div>
-
-        {/* Right Visual */}
-        <div className="w-full md:w-[45%] relative" ref={visualContainerRef}>
-          <div className="relative rounded-[4px] border border-[#303030] overflow-hidden md:sticky md:top-32 w-full aspect-square md:aspect-auto md:h-[600px] bg-black shadow-[0_4px_24px_rgba(0,0,0,0.08)]">
-
-            <div className="absolute inset-0">
-            <Image
-              src="/images/creatox-our-story.png"
-              alt="Red sculptural ribbon surrounding a glass cube, representing creativity and connection"
-              fill
-              sizes="(max-width: 767px) 100vw, 45vw"
-              className="object-cover"
-            />
-            </div>
-          </div>
-        </div>
+  return <section className="our-story site-gutter" aria-labelledby="our-story-heading">
+    <header className="our-story-header">
+      <div><SectionLabel text="OUR STORY" /><h2 id="our-story-heading">Creative at heart.<br /><span>Connected by purpose.</span></h2></div>
+      <p>Since 2019, we have brought design, strategy and digital thinking together to help brands find their voice. Built in Kannur. Made to connect.</p>
+    </header>
+    <div className="our-story-cards">
+      <div className="our-story-experience">
+        <Image src="/images/creatox-our-story.png" alt="Red sculptural ribbon surrounding a glass cube, symbolising creativity and connection" fill sizes="(max-width: 767px) 100vw, 32vw" />
+        <dl className="our-story-stats">{stats.slice(0, 2).map(stat => <div key={stat.label}><dt>{stat.label}</dt><dd>{stat.value}</dd></div>)}</dl>
       </div>
-    </section>
-  );
+      <article className="our-story-statement">
+        <div className="our-story-wordmark"><Sparkles size={24} aria-hidden="true" /><span>Creatox<span className="our-story-wordmark-dot">®</span></span></div>
+        <p className="our-story-belief">Brands deserve more than visibility.<br />They deserve <span>a voice.</span></p>
+        <p className="our-story-signature">Our belief, since 2019</p>
+        <Link href="/about-us/" className="our-story-about">Discover our story <ArrowUpRight size={18} aria-hidden="true" /></Link>
+      </article>
+      <figure className="our-story-team">
+        <div className="our-story-team-photo"><Image src="/images/WhatsApp%20Image%202026-10-12%20at%2012.56.42%20PM.jpeg" alt="Creatox Designs team together at the Kannur office" fill sizes="(max-width: 767px) 100vw, 42vw" /></div>
+        <figcaption><MapPin size={17} aria-hidden="true" /><span>Creative minds. Kannur, Kerala.</span><ArrowUpRight size={18} aria-hidden="true" /></figcaption>
+      </figure>
+    </div>
+  </section>;
 }

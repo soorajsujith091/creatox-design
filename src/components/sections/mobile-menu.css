@@ -1,0 +1,8 @@
+.ref-nav .ref-logo{min-width:44px;min-height:44px;justify-content:center}
+.ref-hero .ref-menu{background:#111;border-color:#ffffff25;overflow:hidden;max-height:calc(100svh - 110px);overflow-y:auto}
+.ref-hero .ref-menu a{display:flex;align-items:center;justify-content:flex-start;gap:14px;min-height:52px;color:#fff}
+.ref-menu-number{display:grid;place-items:center;flex-shrink:0;width:32px;height:32px;border:1px solid #e4002b;border-radius:50%;font-family:var(--font-mono),monospace;font-size:10px;color:#ff5373}
+.ref-menu-text{flex:1}
+.ref-hero .ref-menu a:hover,.ref-hero .ref-menu a:focus-visible{color:#ff5373}
+.ref-hero .ref-menu a:last-child{border-bottom:0}
+@media(max-width:767px){.ref-hero .ref-menu{width:min(340px,calc(100% - 40px));right:20px;padding:20px}.ref-hero .ref-menu a{font-size:17px}}

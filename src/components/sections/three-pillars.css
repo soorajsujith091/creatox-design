@@ -3,6 +3,16 @@
 .expertise-columns-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));max-width:1660px;margin:auto;border-top:1px solid #ffffff20}
 .expertise-column{position:relative;isolation:isolate;overflow:hidden;display:flex;flex-direction:column;align-items:flex-start;padding:65px clamp(25px,3.9vw,80px) 80px;min-height:490px;border-right:1px solid #ffffff20}
 .expertise-column:last-child{border-right:0}
+.expertise-column-art{position:absolute;right:-45px;top:25px;width:190px;height:190px;z-index:-1;pointer-events:none;opacity:.14;color:#ff5373}
+.expertise-column-art span{position:absolute;display:block;border:2px solid currentColor}
+.expertise-column-art-0{animation:expertise-art-turn 36s linear infinite}.expertise-column-art-0 span{inset:20%;border-radius:22%;transform:rotate(25deg)}.expertise-column-art-0 span:nth-child(2){inset:10%;transform:rotate(55deg)}.expertise-column-art-0 span:nth-child(3){inset:0;transform:rotate(85deg)}
+.expertise-column-art-1{animation:expertise-art-float 9s ease-in-out infinite}.expertise-column-art-1 span{width:100px;height:100px;left:10px;top:50px;transform:rotate(30deg) skewY(-12deg);border-radius:8px}.expertise-column-art-1 span:nth-child(2){left:40px;top:30px}.expertise-column-art-1 span:nth-child(3){left:70px;top:10px}
+.expertise-column-art-2{animation:expertise-art-float 11s ease-in-out infinite reverse}.expertise-column-art-2 span{inset:0;border-radius:50%;animation:expertise-art-pulse 6s ease-in-out infinite}.expertise-column-art-2 span:nth-child(2){inset:18%;animation-delay:-2s}.expertise-column-art-2 span:nth-child(3){inset:36%;animation-delay:-4s;background:#e4002b20}
+@keyframes expertise-art-turn{to{transform:rotate(360deg)}}
+@keyframes expertise-art-float{0%,100%{transform:translate(0,0) rotate(-6deg)}50%{transform:translate(-14px,16px) rotate(6deg)}}
+@keyframes expertise-art-pulse{0%,100%{opacity:.5;scale:.9}50%{opacity:1;scale:1}}
+@media(max-width:767px){.expertise-column-art{width:150px;height:150px;right:-30px;top:16px;opacity:.1}.expertise-column-art-1{scale:.8;transform-origin:top right}}
+@media(prefers-reduced-motion:reduce){.expertise-column-art,.expertise-column-art span{animation:none!important}}
 .expertise-column h2{font-family:var(--font-heading),sans-serif;font-size:clamp(32px,3.1vw,56px);font-weight:400;line-height:1.12;letter-spacing:-.045em;margin:0 0 28px}
 .expertise-column p{font-family:var(--font-body),sans-serif;color:#ddd;font-size:clamp(14px,1.05vw,18px);line-height:1.5;max-width:410px;margin:0 0 44px}
 .expertise-column a{display:inline-flex;align-items:center;justify-content:center;min-height:48px;border:1px solid #ddd;border-radius:40px;padding:12px 18px;font-size:12px;line-height:1.4;color:#fff;margin-top:auto;transition:background .25s,border-color .25s,transform .25s}
@@ -12,7 +22,25 @@
 .expertise-column-0 .expertise-column-glow{border-radius:70% 35% 0 0;background:radial-gradient(ellipse at 45% 65%,#65112435,transparent 75%)}
 .expertise-column-1 .expertise-column-glow{background:radial-gradient(ellipse at 20% 100%,#e4002b40,transparent 65%),radial-gradient(ellipse at 90% 100%,#3a0b1535,transparent 60%)}
 .expertise-column-2 .expertise-column-glow{opacity:.3}
-.expertise-column:hover .expertise-column-glow{opacity:1;transform:scale(1.08)}
+.expertise-column{transition:background-color .5s ease}
+.expertise-column::after{content:"";position:absolute;bottom:0;left:0;right:0;height:3px;background:#e4002b;transform:scaleX(0);transform-origin:left;transition:transform .55s cubic-bezier(.22,1,.36,1);pointer-events:none}
+.expertise-column h2,.expertise-column p{transition:transform .55s cubic-bezier(.22,1,.36,1),color .4s ease}
+.expertise-column a{gap:10px;transition:background .3s ease,border-color .3s ease,transform .4s ease,box-shadow .4s ease}
+.expertise-column-arrow{display:inline-block;font-size:18px;line-height:1;transition:transform .4s cubic-bezier(.22,1,.36,1)}
+.expertise-column:focus-within{background-color:#100407}
+.expertise-column:focus-within::after{transform:scaleX(1)}
+.expertise-column:focus-within .expertise-column-glow{opacity:1;transform:scale(1.2) translateY(-5%)}
+.expertise-column:focus-within h2,.expertise-column:focus-within p{transform:translateY(-8px)}
+.expertise-column:focus-within a{background:#e4002b;border-color:#e4002b;box-shadow:0 8px 30px #e4002b26}
+.expertise-column:focus-within .expertise-column-arrow{transform:translate(3px,-3px)}
+@media(hover:hover) and (pointer:fine){
+  .expertise-column:hover{background-color:#100407}
+  .expertise-column:hover::after{transform:scaleX(1)}
+  .expertise-column:hover .expertise-column-glow{opacity:1;transform:scale(1.2) translateY(-5%)}
+  .expertise-column:hover h2,.expertise-column:hover p{transform:translateY(-8px)}
+  .expertise-column:hover a{background:#e4002b;border-color:#e4002b;box-shadow:0 8px 30px #e4002b26}
+  .expertise-column:hover .expertise-column-arrow{transform:translate(3px,-3px)}
+}
 @media(max-width:1000px){.expertise-columns{padding-left:24px;padding-right:24px}.expertise-column{padding:45px 25px 55px;min-height:470px}.expertise-column h2{font-size:34px}.expertise-column p{font-size:14px}}
 @media(max-width:767px){.expertise-columns{padding-top:45px}.expertise-columns-grid{grid-template-columns:1fr}.expertise-column{border-right:0;border-bottom:1px solid #ffffff20;min-height:0;padding:40px 15px 45px}.expertise-column:last-child{border-bottom:0}.expertise-column h2{font-size:40px;margin-bottom:22px}.expertise-column p{font-size:16px;max-width:100%;margin-bottom:30px}.expertise-column a{font-size:12px}}
-@media(prefers-reduced-motion:reduce){.expertise-column *{transition:none!important}.expertise-column:hover .expertise-column-glow,.expertise-column a:hover{transform:none}}
+@media(prefers-reduced-motion:reduce){.expertise-column,.expertise-column::after,.expertise-column *{transition:none!important}.expertise-column:hover .expertise-column-glow,.expertise-column:focus-within .expertise-column-glow,.expertise-column:hover h2,.expertise-column:hover p,.expertise-column:focus-within h2,.expertise-column:focus-within p,.expertise-column:hover .expertise-column-arrow,.expertise-column:focus-within .expertise-column-arrow,.expertise-column a:hover{transform:none}}

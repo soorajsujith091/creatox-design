@@ -10,14 +10,16 @@ import { GrandMalabarExpo } from "@/components/sections/GrandMalabarExpo";
 import { Testimonials } from "@/components/sections/Testimonials";
 import { BlogGrid } from "@/components/sections/BlogGrid";
 import { ContactMini } from "@/components/sections/ContactMini";
-import { CTABanner } from "@/components/sections/CTABanner";
 import { Footer } from "@/components/sections/Footer";
 import { CinematicHero } from "@/components/ui/cinematic-landing-hero";
+import "./home-layout.css";
+import { AgencyFilm } from "@/components/sections/AgencyFilm";
 
 export default function Home() {
   return (
-    <>
+    <div className="home-layout">
       <ReferenceHome><ThreePillars /></ReferenceHome>
+      <AgencyFilm />
       <div id="services"><ServicesAccordion /></div>
       <SelectedCreatoxWork />
       <StoryTicker />
@@ -29,8 +31,7 @@ export default function Home() {
       <div id="testimonials"><Testimonials /></div>
       <BlogGrid />
       <div id="contact"><ContactMini /></div>
-      <CTABanner />
       <Footer />
-    </>
+    </div>
   );
 }

@@ -263,6 +263,7 @@ export function CinematicHero({
           end: () => `+=${window.innerHeight * 3}`,
           invalidateOnRefresh: true,
           pin: true,
+          pinSpacing: true,
           scrub: 1,
           anticipatePin: 1,
         },
@@ -301,8 +302,11 @@ export function CinematicHero({
         .to(".main-card", { y: -window.innerHeight - 300, ease: "power3.in", duration: 1.5 });
 
     }, containerRef);
-
-    return () => ctx.revert();
+    const refreshFrame = requestAnimationFrame(() => {
+      ScrollTrigger.sort();
+      ScrollTrigger.refresh();
+    });
+    return () => { cancelAnimationFrame(refreshFrame); ctx.revert(); };
   },[metricValue]); 
 
   return (

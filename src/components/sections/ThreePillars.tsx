@@ -17,9 +17,10 @@ export function ThreePillars() {
     <div className="expertise-columns-label"><SectionLabel text="WHAT WE DO"/></div>
     <div className="expertise-columns-grid">{disciplines.map((discipline, index) => <motion.article key={discipline.title} className={`expertise-column expertise-column-${index}`} initial={reduced ? false : { opacity: 0, y: 25 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: .7, delay: index * .12 }}>
       <div className="expertise-column-glow" aria-hidden="true"/>
+      <div className={`expertise-column-art expertise-column-art-${index}`} aria-hidden="true"><span/><span/><span/></div>
       <h2>{discipline.heading[0]}<br/>{discipline.heading[1]}</h2>
       <p>{discipline.description}</p>
-      <a href={`https://creatoxdesigns.com${discipline.link}`}>{discipline.button}</a>
+      <a href={`https://creatoxdesigns.com${discipline.link}`}><span>{discipline.button}</span><span className="expertise-column-arrow" aria-hidden="true">↗</span></a>
     </motion.article>)}</div>
   </section>;
 }

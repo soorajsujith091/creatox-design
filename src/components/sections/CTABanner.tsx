@@ -51,7 +51,7 @@ export function CTABanner() {
         aria-hidden="true"
       />
 
-      <div className="relative z-10 max-w-[1400px] mx-auto px-6 w-full" ref={containerRef}>
+      <div className="relative z-10 site-content site-gutter w-full" ref={containerRef}>
         <h2 className="font-heading text-[clamp(52px,10vw,140px)] leading-[0.9] tracking-tight font-bold mb-6">
           <div
             ref={(el) => { wordsRef.current[0] = el; }}

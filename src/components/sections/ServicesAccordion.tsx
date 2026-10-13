@@ -1,149 +1,38 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
+import { useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
-import { gsap } from "gsap";
+import { ArrowLeft, ArrowRight, ArrowUpRight } from "lucide-react";
 import { services } from "@/data/services";
 import { SectionLabel } from "../SectionLabel";
+import "./expertise-grid.css";
+
+const serviceDetails: Record<string, { tags: string[]; image: string; alt: string }> = {
+  "branding-design": { tags: ["Brand strategy", "Visual identity", "Logo design", "Print design"], image: "/images/creatox-our-story.png", alt: "Red sculptural brand artwork illustrating creative design" },
+  "social-media": { tags: ["Content strategy", "Social campaigns", "Community management"], image: "/images/project-beverage-concept.png", alt: "Beverage brand concept showcasing visual content and packaging" },
+  "web-design": { tags: ["Responsive websites", "UI / UX", "Web development"], image: "/images/project-hotel-concept.png", alt: "Premium hotel brand concept for a digital experience" },
+  "ads-campaigns": { tags: ["Google Ads", "Meta Ads", "Campaign strategy"], image: "/images/project-sports-concept.png", alt: "Sports event concept illustrating campaign creative" },
+  "productions": { tags: ["Brand films", "Photography", "Video production"], image: "/images/agency-runners.png", alt: "Creative campaign imagery for visual storytelling" },
+  "ecommerce": { tags: ["Online stores", "Product pages", "Checkout experiences"], image: "/images/project-beverage-concept.png", alt: "Product brand concept for an online store" },
+};
 
 export function ServicesAccordion() {
-  const [openIndex, setOpenIndex] = useState<number | null>(0); // First open by default
-  const contentRefs = useRef<(HTMLDivElement | null)[]>([]);
-
-  useEffect(() => {
-    // Animate height changes for accordion content
-    contentRefs.current.forEach((el, i) => {
-      if (!el) return;
-
-      if (i === openIndex) {
-        gsap.to(el, {
-          height: "auto",
-          opacity: 1,
-          duration: 0.4,
-          ease: "power2.out",
-        });
-      } else {
-        gsap.to(el, {
-          height: 0,
-          opacity: 0,
-          duration: 0.3,
-          ease: "power2.inOut",
-        });
-      }
-    });
-  }, [openIndex]);
-
-  const toggleAccordion = (index: number) => {
-    setOpenIndex(openIndex === index ? null : index);
-  };
-
-  return (
-    <section className="py-24 bg-black px-6" aria-label="Our Expertise">
-      <div className="max-w-[1400px] mx-auto flex flex-col lg:flex-row gap-16 lg:gap-24">
-        {/* Left Column */}
-        <div className="lg:w-[40%] flex flex-col items-start">
-          <SectionLabel text="OUR EXPERTISE" />
-          <h2 className="font-heading text-fluid-2xl text-white font-semibold leading-[1.1] mb-10 sticky top-32">
-            Everything your brand needs to dominate online.
-          </h2>
-          <Link
-            href="/service/branding-and-design/"
-            className="hidden lg:inline-block border border-[#BBBBBB] text-white px-7 py-3.5 text-[14px] font-body text-center hover:bg-red hover:text-white hover:border-red transition-all duration-300"
-          >
-            See All Services →
-          </Link>
-        </div>
-
-        {/* Right Column - Accordion */}
-        <div className="lg:w-[60%] flex flex-col">
-          <div className="border-t border-[#303030]" role="tablist">
-            {services.map((service, i) => {
-              const isOpen = openIndex === i;
-
-              return (
-                <div
-                  key={service.id}
-                  className={`border-b border-[#303030] relative group ${
-                    isOpen ? "bg-black pl-5" : "bg-black"
-                  } transition-all duration-300`}
-                >
-                  {/* Left Active Border */}
-                  <div
-                    className={`absolute left-0 top-0 bottom-0 w-[3px] bg-red transition-opacity duration-300 ${
-                      isOpen ? "opacity-100" : "opacity-0"
-                    }`}
-                  />
-
-                  <button
-                    className="w-full py-8 px-6 lg:px-8 flex items-center justify-between text-left focus:outline-none"
-                    onClick={() => toggleAccordion(i)}
-                    aria-expanded={isOpen}
-                    aria-controls={`content-${service.id}`}
-                    id={`tab-${service.id}`}
-                    role="tab"
-                  >
-                    <div className="flex items-center gap-6">
-                      <span
-                        className={`font-mono text-[11px] transition-colors duration-300 ${
-                          isOpen ? "text-red" : "text-red/60 group-hover:text-red"
-                        }`}
-                      >
-                        {service.number}
-                      </span>
-                      <span
-                        className={`font-body text-[18px] text-white transition-transform duration-250 ${
-                          isOpen ? "translate-x-2" : "group-hover:translate-x-2"
-                        }`}
-                      >
-                        {service.title}
-                      </span>
-                    </div>
-                    <span
-                      className="text-white text-2xl font-light transition-transform duration-300 origin-center"
-                      style={{
-                        transform: isOpen ? "rotate(45deg)" : "rotate(0deg)",
-                      }}
-                      aria-hidden="true"
-                    >
-                      +
-                    </span>
-                  </button>
-
-                  <div
-                    id={`content-${service.id}`}
-                    role="tabpanel"
-                    aria-labelledby={`tab-${service.id}`}
-                    ref={(el) => {
-                      contentRefs.current[i] = el;
-                    }}
-                    className="overflow-hidden opacity-0"
-                    style={{ height: i === 0 ? "auto" : 0 }}
-                  >
-                    <div className="pb-8 px-6 lg:px-8 pl-[60px] lg:pl-[68px]">
-                      <p className="font-body text-[15px] text-[#BBBBBB] leading-relaxed max-w-xl mb-6">
-                        {service.description}
-                      </p>
-                      <Link
-                        href={service.link}
-                        className="inline-block font-mono text-[12px] text-red hover:text-white transition-colors"
-                      >
-                        View Service →
-                      </Link>
-                    </div>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-
-          <Link
-            href="/service/branding-and-design/"
-            className="lg:hidden mt-10 border border-[#BBBBBB] text-white px-7 py-3.5 text-[14px] font-body text-center hover:bg-red hover:text-white hover:border-red transition-all duration-300 self-start"
-          >
-            See All Services →
-          </Link>
-        </div>
-      </div>
-    </section>
-  );
+  const [page, setPage] = useState(0);
+  return <section className="expertise-showcase site-gutter" aria-labelledby="expertise-heading">
+    <header className="expertise-showcase-header">
+      <div><SectionLabel text="OUR EXPERTISE" /><h2 id="expertise-heading">Popular <span>services.</span></h2><p>From brand identity to websites and digital campaigns, we bring the creative and technical skills your business needs to grow.</p></div>
+      <div className="expertise-showcase-controls"><button type="button" onClick={() => setPage(0)} disabled={page === 0} aria-label="Previous services" aria-controls="expertise-service-grid"><ArrowLeft size={20} aria-hidden="true" /></button><button type="button" onClick={() => setPage(1)} disabled={page === 1} aria-label="Next services" aria-controls="expertise-service-grid"><ArrowRight size={20} aria-hidden="true" /></button></div>
+    </header>
+    <div className="expertise-service-grid" id="expertise-service-grid">
+      {services.map((service, index) => {
+        const detail = serviceDetails[service.id];
+        return <article key={service.id} className={`expertise-service-pair ${index % 4 >= 2 ? "expertise-service-pair-reverse" : ""}`} hidden={page === 0 ? index >= 4 : index < 4}>
+          <div className="expertise-service-info"><h3>{service.title}</h3><ul aria-label={`${service.title} capabilities`}>{detail.tags.map(tag => <li key={tag}>{tag}</li>)}</ul><p>{service.description}</p><Link href={service.link} aria-label={`Explore ${service.title}`} className="expertise-service-link"><ArrowUpRight size={20} aria-hidden="true" /></Link></div>
+          <div className="expertise-service-image"><Image src={detail.image} alt={detail.alt} fill sizes="(max-width: 600px) 100vw, (max-width: 1000px) 50vw, 25vw" /></div>
+        </article>;
+      })}
+    </div>
+    <div className="expertise-showcase-footer"><span role="status" aria-live="polite">{page === 0 ? "01–04" : "05–06"} / 06 SERVICES</span><a href="#contact">Find the right service for your brand <ArrowUpRight size={16} aria-hidden="true" /></a></div>
+  </section>;
 }

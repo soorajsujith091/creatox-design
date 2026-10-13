@@ -1,0 +1,55 @@
+/* One fluid content width for every homepage section. */
+.home-layout {
+  --section-gutter: clamp(20px, 4vw, 80px);
+  width: 100%;
+  min-width: 0;
+}
+
+.home-layout .site-content {
+  width: 100%;
+  max-width: none;
+  margin-inline: auto;
+  min-width: 0;
+}
+
+.home-layout .site-gutter,
+.home-layout .ref-hero,
+.home-layout .agency-intro,
+.home-layout .expertise-columns,
+.home-layout .ref-trust,
+.home-layout .creatox-works {
+  padding-inline: var(--section-gutter);
+}
+
+/* Remove the inset frame so the hero meets the same viewport edges. */
+.home-layout .reference-home {
+  padding: 0 !important;
+}
+
+.home-layout .reference-home .ref-frame {
+  width: 100%;
+  max-width: none;
+  margin-inline: 0;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.home-layout .expertise-columns-label,
+.home-layout .expertise-columns-grid,
+.home-layout .creatox-works-heading,
+.home-layout .creatox-works-footer,
+.home-layout .client-stories-carousel {
+  max-width: none;
+  width: 100%;
+}
+
+.home-layout .client-stories header {
+  padding-inline: var(--section-gutter);
+}
+
+@media (max-width: 767px) {
+  .home-layout .expertise-column {
+    padding-inline: 24px;
+  }
+}

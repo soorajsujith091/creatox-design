@@ -1,0 +1,26 @@
+.our-story{background:#0a0a0a;color:#fff;padding-block:clamp(48px,6vw,96px)}
+.our-story-header{display:flex;align-items:flex-end;justify-content:space-between;gap:40px;margin-bottom:36px}
+.our-story-header h2{font-family:var(--font-heading),sans-serif;font-size:clamp(32px,3.5vw,56px);font-weight:400;line-height:1.1;letter-spacing:-.04em}.our-story-header h2 span{color:#aaa}
+.our-story-header>p{max-width:440px;color:#bbb;font-size:16px;line-height:1.7}
+.our-story-cards{display:grid;grid-template-columns:1fr .75fr 1.25fr;gap:14px;align-items:stretch}
+.our-story-experience,.our-story-statement,.our-story-team{min-width:0;min-height:clamp(360px,30vw,500px);border-radius:12px;overflow:hidden}
+.our-story-experience{position:relative;background:#171717;border:1px solid #ffffff20}.our-story-experience>img{object-fit:cover}
+.our-story-stats{position:absolute;bottom:8px;left:8px;right:8px;display:grid;gap:5px}
+.our-story-stats>div{display:flex;flex-direction:row-reverse;justify-content:flex-end;align-items:center;gap:16px;background:#f5f5f0ed;color:#111;border-radius:6px;backdrop-filter:blur(12px);padding:18px 16px}
+.our-story-stats dt{font-family:var(--font-mono),monospace;font-size:10px;line-height:1.5;text-transform:uppercase;max-width:110px;letter-spacing:.03em}
+.our-story-stats dd{font-family:var(--font-heading),sans-serif;font-size:clamp(36px,3.3vw,56px);line-height:1;letter-spacing:-.05em}
+.our-story-statement{position:relative;background:#e4002b;color:#fff;padding:clamp(22px,2vw,36px);display:flex;flex-direction:column;isolation:isolate}
+.our-story-statement::before{content:"";position:absolute;right:-32%;top:8%;width:110%;aspect-ratio:1;background:#8d001b;opacity:.18;clip-path:polygon(0 42%,58% 42%,32% 16%,44% 4%,90% 50%,44% 96%,32% 84%,58% 58%,0 58%);z-index:-1;pointer-events:none;animation:our-story-arrow-drift 9s ease-in-out infinite}
+.our-story-statement::after{content:"";position:absolute;right:-50%;bottom:-12%;width:105%;aspect-ratio:1;background:#ffb3c2;opacity:.08;clip-path:polygon(0 42%,58% 42%,32% 16%,44% 4%,90% 50%,44% 96%,32% 84%,58% 58%,0 58%);z-index:-1;pointer-events:none;animation:our-story-arrow-drift 12s ease-in-out infinite reverse}
+@keyframes our-story-arrow-drift{0%,100%{transform:translate(-8px,8px) rotate(-8deg)}50%{transform:translate(14px,-12px) rotate(5deg)}}
+@media(prefers-reduced-motion:reduce){.our-story-statement::before,.our-story-statement::after{animation:none}}
+.our-story-wordmark{display:flex;align-items:center;gap:8px;font-family:var(--font-heading),sans-serif;font-size:23px;font-weight:500}.our-story-wordmark-dot{font-size:11px;vertical-align:super;margin-left:2px}
+.our-story-belief{font-family:var(--font-heading),sans-serif;font-size:clamp(25px,2.3vw,38px);line-height:1.18;letter-spacing:-.035em;margin-top:auto;padding-top:52px}.our-story-belief>span{color:#fff;font-weight:600}
+.our-story-signature{font-family:var(--font-mono),monospace;font-size:10px;margin-top:22px;color:#ffdde4}
+.our-story-about{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:44px;border-top:1px solid #ffffff40;margin-top:26px;padding-top:14px;font-size:12px}
+.our-story-about:hover{color:#ffe0e7}.our-story-about:focus-visible{outline:2px solid #fff;outline-offset:4px}
+.our-story-team{display:flex;flex-direction:column;padding:5px;background:#191919;border:1px solid #ffffff20}
+.our-story-team-photo{position:relative;flex:1;min-height:290px;border-radius:8px;overflow:hidden}.our-story-team-photo img{object-fit:cover;object-position:50% 50%}
+.our-story-team figcaption{display:flex;align-items:center;gap:8px;padding:14px 10px;font-size:12px;color:#ddd}.our-story-team figcaption>svg:first-child{color:#ff5373}.our-story-team figcaption>svg:last-child{margin-left:auto;color:#ff5373}
+@media(max-width:1000px) and (min-width:768px){.our-story-cards{grid-template-columns:1fr 1fr}.our-story-team{grid-column:1/-1;min-height:420px}.our-story-team-photo{min-height:350px}.our-story-header>p{max-width:320px;font-size:14px}}
+@media(max-width:767px){.our-story-header{display:block;margin-bottom:28px}.our-story-header>p{margin-top:24px;font-size:14px}.our-story-cards{grid-template-columns:1fr;gap:16px}.our-story-experience{min-height:380px}.our-story-statement{min-height:340px;padding:28px}.our-story-belief{font-size:32px;max-width:340px;padding-top:40px}.our-story-team{min-height:340px}.our-story-team-photo{min-height:280px}.our-story-team figcaption{font-size:11px}.our-story-stats dd{font-size:48px}}
