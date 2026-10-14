@@ -7,6 +7,7 @@ import { OurStory } from "@/components/sections/OurStory";
 import { WorksWheelSection } from "@/components/sections/WorksWheelSection";
 import { Stats } from "@/components/sections/Stats";
 import { GrandMalabarExpo } from "@/components/sections/GrandMalabarExpo";
+import { MalabarJalolsavam } from "@/components/sections/MalabarJalolsavam";
 import { Testimonials } from "@/components/sections/Testimonials";
 import { BlogGrid } from "@/components/sections/BlogGrid";
 import { ContactMini } from "@/components/sections/ContactMini";
@@ -28,6 +29,7 @@ export default function Home() {
       <WorksWheelSection />
       <Stats />
       <GrandMalabarExpo />
+      <MalabarJalolsavam />
       <div id="testimonials"><Testimonials /></div>
       <BlogGrid />
       <div id="contact"><ContactMini /></div>

@@ -6,6 +6,16 @@
 .expertise-service-grid{display:grid;grid-template-columns:1fr 1fr;border:1px solid #555;border-radius:22px;overflow:hidden;background:#555;gap:1px}
 .expertise-service-pair{display:grid;grid-template-columns:1fr 1fr;min-width:0;background:#111;min-height:280px}
 .expertise-service-pair[hidden]{display:none}
+.expertise-service-image:has(.expertise-sculpture){background:radial-gradient(ellipse at center,#191321 0%,#050505 72%)}
+.expertise-sculpture{position:absolute;inset:0;touch-action:pan-y}
+.expertise-sculpture canvas{display:block;width:100%;height:100%}
+.expertise-service-image:has(.expertise-papillon){background:#000}
+.expertise-papillon-artwork{position:absolute;inset:0;transition:transform .25s ease-out;will-change:transform}
+.expertise-papillon-artwork img{object-fit:contain;transition:none}
+.expertise-service-pair:hover .expertise-papillon-artwork img{transform:none}
+.expertise-papillon-still{display:none}
+@media(prefers-reduced-motion:reduce){.expertise-papillon-artwork{transition:none;transform:none!important}.expertise-papillon-animation{display:none}.expertise-papillon-still{display:block}}
+.expertise-sculpture-fallback{position:absolute;inset:20%;border:24px ridge #b6a1dc;border-radius:50%;transform:rotate(-25deg);box-shadow:0 0 28px #ae85c955,inset 0 0 18px #e4c8ff55}
 .expertise-service-info{position:relative;padding:24px 22px 72px;min-width:0}.expertise-service-info h3{font-family:var(--font-heading),sans-serif;font-size:clamp(16px,1.35vw,24px);font-weight:600;line-height:1.15;text-transform:uppercase;margin-bottom:14px}
 .expertise-service-info ul{display:flex;flex-wrap:wrap;gap:5px;list-style:none}.expertise-service-info li{border:1px solid #666;border-radius:20px;padding:4px 9px;color:#ddd;font-size:10px;line-height:1.4}
 .expertise-service-info p{color:#aaa;font-size:12px;line-height:1.6;margin-top:16px}

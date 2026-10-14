@@ -3,6 +3,18 @@
 .expertise-columns-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));max-width:1660px;margin:auto;border-top:1px solid #ffffff20}
 .expertise-column{position:relative;isolation:isolate;overflow:hidden;display:flex;flex-direction:column;align-items:flex-start;padding:65px clamp(25px,3.9vw,80px) 80px;min-height:490px;border-right:1px solid #ffffff20}
 .expertise-column:last-child{border-right:0}
+.expertise-column-butterfly{position:absolute;top:8px;right:-24px;width:clamp(190px,20vw,300px);aspect-ratio:1;z-index:-2;pointer-events:none;opacity:.45;mix-blend-mode:screen;transform-origin:top right;transform:perspective(700px) rotateX(var(--butterfly-y,0deg)) rotateY(var(--butterfly-x,0deg));transition:transform .3s ease-out,opacity .4s}
+.expertise-column-butterfly img{object-fit:contain;object-position:center}
+.expertise-column-orb{position:absolute;inset:0;animation:expertise-orb-turn 32s linear infinite}
+.expertise-column-orb img{animation:expertise-orb-glow 6s ease-in-out infinite}
+@keyframes expertise-orb-turn{to{transform:rotate(360deg)}}
+@keyframes expertise-orb-glow{0%,100%{filter:brightness(.85);scale:.96}50%{filter:brightness(1.2);scale:1.04}}
+@media(prefers-reduced-motion:reduce){.expertise-column-orb,.expertise-column-orb img{animation:none}}
+.expertise-column-butterfly video{width:100%;height:100%;object-fit:contain;object-position:center;display:block}
+@media(max-width:767px){.expertise-column-butterfly{top:0;right:-20px;width:220px}}
+.expertise-column::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background:linear-gradient(90deg,#0009,transparent),linear-gradient(0deg,#000b,transparent 65%)}
+.expertise-column:hover .expertise-column-butterfly{opacity:.6}
+@media(prefers-reduced-motion:reduce){.expertise-column-butterfly{transform:none!important}}
 .expertise-column-art{position:absolute;right:-45px;top:25px;width:190px;height:190px;z-index:-1;pointer-events:none;opacity:.14;color:#ff5373}
 .expertise-column-art span{position:absolute;display:block;border:2px solid currentColor}
 .expertise-column-art-0{animation:expertise-art-turn 36s linear infinite}.expertise-column-art-0 span{inset:20%;border-radius:22%;transform:rotate(25deg)}.expertise-column-art-0 span:nth-child(2){inset:10%;transform:rotate(55deg)}.expertise-column-art-0 span:nth-child(3){inset:0;transform:rotate(85deg)}

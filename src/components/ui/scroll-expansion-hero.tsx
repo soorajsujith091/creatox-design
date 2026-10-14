@@ -27,12 +27,12 @@ export default function ScrollExpandMedia({ mediaSrc, posterSrc, title, eyebrow,
   const [mounted, setMounted] = useState(false);
   useEffect(() => { setMounted(true); }, []);
   const prefersReducedMotion = mounted && reduced === true;
-  const inView = useInView(sectionRef, { margin: "100px" });
+  const inView = useInView(pinRef, { margin: "100px" });
   const [paused, setPaused] = useState(false);
-  const [manualPlay, setManualPlay] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(false);
   const [failed, setFailed] = useState(false);
   const [videoAspectRatio, setVideoAspectRatio] = useState(16 / 9);
-  const playbackEnabled = mounted && (reduced === false || manualPlay) && !paused;
+  const playbackEnabled = mounted && !paused;
   useEffect(() => {
     if (!mounted || reduced !== false || !pinRef.current || !mediaRef.current) return;
     gsap.registerPlugin(ScrollTrigger);
@@ -61,8 +61,17 @@ export default function ScrollExpandMedia({ mediaSrc, posterSrc, title, eyebrow,
   useEffect(() => {
     const video = videoRef.current;
     if (!video) return;
+    const playWhenReady = () => {
+      if (!inView || !playbackEnabled) return;
+      video.muted = true;
+      video.defaultMuted = true;
+      // Source loading and effect cleanup can abort play(); that isn't a user pause.
+      void video.play().catch(() => {});
+    };
+    video.addEventListener("canplay", playWhenReady);
     if (!inView || !playbackEnabled) video.pause();
-    else video.play().catch(() => setPaused(true));
+    else playWhenReady();
+    return () => video.removeEventListener("canplay", playWhenReady);
   }, [inView, playbackEnabled]);
 
   return <div className="creatox-film">
@@ -77,9 +86,11 @@ export default function ScrollExpandMedia({ mediaSrc, posterSrc, title, eyebrow,
         <div ref={mediaRef} className="creatox-film-media" style={{ aspectRatio: videoAspectRatio, ...(prefersReducedMotion ? { width: "100%", borderRadius: 12 } : {}) }}>
           <video
             ref={videoRef}
-            src={inView && !failed ? mediaSrc : undefined}
+            src={mediaSrc}
             poster={posterSrc}
-            muted loop playsInline preload="none"
+            autoPlay={inView && playbackEnabled} muted loop playsInline preload="metadata"
+            onPlay={() => setIsPlaying(true)}
+            onPause={() => setIsPlaying(false)}
             aria-label="Creatox Designs agency profile film"
             onLoadedMetadata={event => {
               const { videoWidth, videoHeight } = event.currentTarget;
@@ -87,9 +98,12 @@ export default function ScrollExpandMedia({ mediaSrc, posterSrc, title, eyebrow,
             }}
             onError={() => setFailed(true)}
           />
-          {!failed && <button className="creatox-film-control" type="button" onClick={() => { setManualPlay(true); setPaused(playbackEnabled); }} aria-label={playbackEnabled ? "Pause agency film" : "Play agency film"}>
-            {playbackEnabled ? <Pause size={16} aria-hidden="true" /> : <Play size={16} aria-hidden="true" />}
-            <span>{playbackEnabled ? "Pause film" : "Play film"}</span>
+          {!failed && <button className="creatox-film-control" type="button" onClick={() => {
+            if (isPlaying) { setPaused(true); videoRef.current?.pause(); }
+            else { setPaused(false); if (videoRef.current) { videoRef.current.muted = true; void videoRef.current.play().catch(() => {}); } }
+          }} aria-label={isPlaying ? "Pause agency film" : "Play agency film"}>
+            {isPlaying ? <Pause size={16} aria-hidden="true" /> : <Play size={16} aria-hidden="true" />}
+            <span>{isPlaying ? "Pause film" : "Play film"}</span>
           </button>}
           {failed && <p className="creatox-film-error">The film is currently unavailable. Explore our services below.</p>}
         </div>
