@@ -6,9 +6,6 @@ import * as THREE from "three";
 export function BrandRobot() {
   const host = useRef<HTMLDivElement>(null);
   const [failed, setFailed] = useState(false);
-  const [moving, setMoving] = useState(true);
-  const enabled = useRef(true);
-  useEffect(() => { enabled.current = moving; }, [moving]);
   useEffect(() => {
     const el = host.current;
     if (!el) return;
@@ -81,7 +78,7 @@ export function BrandRobot() {
     const draw = (time: number) => {
       frame = requestAnimationFrame(draw);
       if (!visible || document.hidden) return;
-      const animated = enabled.current && !reduced.matches;
+      const animated = !reduced.matches;
       const t = time / 1000;
       bot.position.y = animated ? Math.sin(t * 1.7) * .08 : 0;
       bot.rotation.y += ((animated ? pointer.x * .6 : 0) - bot.rotation.y) * .07;
@@ -99,6 +96,6 @@ export function BrandRobot() {
   }, []);
   return <div className="agency-robot-wrap">
     <div ref={host} className="agency-robot" role="img" aria-label="Interactive 3D Creatox greeting robot with red accents"/>
-    {failed ? <p className="agency-robot-note">Hello from Creatox.</p> : <button type="button" className="agency-robot-toggle" onClick={() => setMoving(!moving)} aria-pressed={!moving}>{moving ? "Pause robot" : "Animate robot"}</button>}
+    {failed && <p className="agency-robot-note">Hello from Creatox.</p>}
   </div>;
 }

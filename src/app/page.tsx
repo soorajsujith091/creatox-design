@@ -2,7 +2,6 @@ import { ReferenceHome } from "@/components/sections/ReferenceHome";
 import { ThreePillars } from "@/components/sections/ThreePillars";
 import { ServicesAccordion } from "@/components/sections/ServicesAccordion";
 import { SelectedCreatoxWork } from "@/components/sections/SelectedCreatoxWork";
-import { StoryTicker } from "@/components/sections/StoryTicker";
 import { OurStory } from "@/components/sections/OurStory";
 import { WorksWheelSection } from "@/components/sections/WorksWheelSection";
 import { Stats } from "@/components/sections/Stats";
@@ -15,6 +14,7 @@ import { Footer } from "@/components/sections/Footer";
 import { CinematicHero } from "@/components/ui/cinematic-landing-hero";
 import "./home-layout.css";
 import { AgencyFilm } from "@/components/sections/AgencyFilm";
+import { BrandsWorkedWith } from "@/components/sections/AgencyIntro";
 
 export default function Home() {
   return (
@@ -22,8 +22,8 @@ export default function Home() {
       <ReferenceHome><ThreePillars /></ReferenceHome>
       <AgencyFilm />
       <div id="services"><ServicesAccordion /></div>
+      <BrandsWorkedWith />
       <SelectedCreatoxWork />
-      <StoryTicker />
       <div id="about"><OurStory /></div>
       <CinematicHero aria-label="Creatox branding and digital experience showcase" />
       <WorksWheelSection />

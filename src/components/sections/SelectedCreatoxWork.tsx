@@ -16,6 +16,8 @@ export function SelectedCreatoxWork() {
   const frameRef = useRef<HTMLDivElement>(null);
   const stickyRef = useRef<HTMLDivElement>(null);
   const reduced = useReducedMotion();
+  const reveal = { hidden: { opacity: 0, y: reduced ? 0 : 32 }, visible: { opacity: 1, y: 0 } };
+  const revealTransition = { duration: reduced ? 0 : 1.3, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] };
   const [distance, setDistance] = useState(0);
   const [stage, setStage] = useState({ height: 564, top: 24 });
   const { scrollYProgress } = useScroll({ target: containerRef, offset: [`start ${stage.top}px`, `end ${stage.height + stage.top}px`] });
@@ -50,11 +52,11 @@ export function SelectedCreatoxWork() {
   }, []);
 
   return <section id="work" className="selected-work-gallery" aria-labelledby="selected-work-heading">
-    <header className="selected-work-intro site-gutter">
-      <div className="selected-work-eyebrow"><span>/ SELECTED CREATOX WORK</span><a href="#services">DESIGN & DIGITAL SERVICES <ArrowUpRight size={14} aria-hidden="true" /></a></div>
-      <div className="selected-work-heading"><h2 id="selected-work-heading">Good design.<br /><span>Real connections.</span></h2><p>We blend creativity, strategy and technology to build brands that look premium and perform with purpose.</p></div>
-      <p className="selected-work-hint"><ArrowDown size={14} aria-hidden="true" /> Scroll to explore our work</p>
-    </header>
+    <motion.header className="selected-work-intro site-gutter" initial="hidden" whileInView="visible" viewport={{ once: true, amount: .2 }} variants={{ hidden: {}, visible: { transition: { staggerChildren: reduced ? 0 : .3 } } }}>
+      <motion.div variants={reveal} transition={revealTransition} className="selected-work-eyebrow"><span>/ SELECTED CREATOX WORK</span><a href="#services">DESIGN & DIGITAL SERVICES <ArrowUpRight size={14} aria-hidden="true" /></a></motion.div>
+      <div className="selected-work-heading"><motion.h2 variants={reveal} transition={revealTransition} id="selected-work-heading">Good design.<br /><span>Real connections.</span></motion.h2><motion.p variants={reveal} transition={revealTransition}>We blend creativity, strategy and technology to build brands that look premium and perform with purpose.</motion.p></div>
+      <motion.p variants={reveal} transition={revealTransition} className="selected-work-hint"><ArrowDown size={14} aria-hidden="true" /> Scroll to explore our work</motion.p>
+    </motion.header>
     <div ref={containerRef} className="selected-work-scroll" style={reduced ? undefined : { height: stage.height + distance }}>
       <div ref={stickyRef} className="selected-work-sticky">
         <div ref={frameRef} className="selected-work-frame">

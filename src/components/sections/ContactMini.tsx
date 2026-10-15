@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
+import { motion, useReducedMotion } from "framer-motion";
 import { ArrowRight, ArrowUpRight, MapPin } from "lucide-react";
 import { companyInfo } from "@/data/stats";
 import { services } from "@/data/services";
@@ -8,6 +9,9 @@ import { SectionLabel } from "../SectionLabel";
 import "./contact-mini.css";
 
 export function ContactMini() {
+  const reduced = useReducedMotion();
+  const reveal = { hidden: { opacity: 0, y: reduced ? 0 : 32 }, visible: { opacity: 1, y: 0 } };
+  const revealTransition = { duration: reduced ? 0 : 1.3, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] };
   const [draftOpened, setDraftOpened] = useState(false);
   const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(companyInfo.address)}`;
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
@@ -20,17 +24,17 @@ export function ContactMini() {
   }
   return <section className="contact-studio site-gutter" aria-labelledby="contact-studio-heading">
     <div className="contact-studio-panel">
-      <div className="contact-studio-details">
-        <SectionLabel text="GET IN TOUCH" />
-        <h2 id="contact-studio-heading">Let’s get<br /><span>in touch.</span></h2>
-        <h3>Have an idea?<br />Say hello to Creatox.</h3>
-        <dl className="contact-studio-directory">
+      <motion.div className="contact-studio-details" initial="hidden" whileInView="visible" viewport={{ once: true, amount: .15 }} variants={{ hidden: {}, visible: { transition: { staggerChildren: reduced ? 0 : .3 } } }}>
+        <motion.div variants={reveal} transition={revealTransition}><SectionLabel text="GET IN TOUCH" /></motion.div>
+        <motion.h2 variants={reveal} transition={revealTransition} id="contact-studio-heading">Let’s get<br /><span>in touch.</span></motion.h2>
+        <motion.h3 variants={reveal} transition={revealTransition}>Have an idea?<br />Say hello to Creatox.</motion.h3>
+        <motion.dl variants={reveal} transition={revealTransition} className="contact-studio-directory">
           <div><dt>Phone</dt><dd><a href={`tel:${companyInfo.phone1.replace(/\s/g, "")}`}>{companyInfo.phone1}</a><a href={`tel:${companyInfo.phone2.replace(/\s/g, "")}`}>{companyInfo.phone2}</a></dd></div>
           <div><dt>Email</dt><dd><a href={`mailto:${companyInfo.email}`}>{companyInfo.email}</a></dd></div>
           <div><dt>Office</dt><dd><address>{companyInfo.address}</address><a href={mapsUrl} target="_blank" rel="noopener noreferrer" className="contact-studio-map-link">See on Google Maps <ArrowUpRight size={16} aria-hidden="true" /></a></dd></div>
-        </dl>
-      </div>
-      <div className="contact-studio-right">
+        </motion.dl>
+      </motion.div>
+      <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, amount: .15 }} variants={reveal} transition={{ ...revealTransition, delay: reduced ? 0 : .3 }} className="contact-studio-right">
         <div className="contact-studio-welcome"><ArrowRight size={64} strokeWidth={1} aria-hidden="true" /><p>We’d love to hear from you.<br />Let’s build a brand, website or campaign that connects with people.</p></div>
         <form className="contact-studio-form" onSubmit={handleSubmit} aria-labelledby="contact-form-heading">
           <h3 id="contact-form-heading">Tell us about your project.</h3>
@@ -45,7 +49,7 @@ export function ContactMini() {
           <p className="contact-studio-form-note">Opens your email app with your details. Send the email there to complete your enquiry.</p>
           {draftOpened && <p className="contact-studio-form-status" role="status">Your email draft is ready. If your email app didn’t open, contact us at <a href={`mailto:${companyInfo.email}`}>{companyInfo.email}</a>.</p>}
         </form>
-      </div>
+      </motion.div>
     </div>
     <a className="contact-studio-location" href={mapsUrl} target="_blank" rel="noopener noreferrer"><MapPin size={24} aria-hidden="true" /><span><strong>Visit our studio</strong><span>{companyInfo.addressShort}</span></span><ArrowUpRight size={24} aria-hidden="true" /></a>
   </section>;

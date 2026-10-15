@@ -1,8 +1,10 @@
 "use client";
 
 import { useState } from "react";
+import { motion, useReducedMotion } from "framer-motion";
 import dynamic from "next/dynamic";
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowLeft, ArrowRight, ArrowUpRight } from "lucide-react";
 import { services } from "@/data/services";
 import { SectionLabel } from "../SectionLabel";
@@ -21,9 +23,16 @@ const serviceDetails: Record<string, { tags: string[] }> = {
 
 export function ServicesAccordion() {
   const [page, setPage] = useState(0);
+  const reduceMotion = useReducedMotion();
+  const reveal = { hidden: { opacity: 0, y: reduceMotion ? 0 : 32 }, visible: { opacity: 1, y: 0 } };
+  const revealTransition = { duration: reduceMotion ? 0 : 1.3, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] };
   return <section className="expertise-showcase site-gutter" aria-labelledby="expertise-heading">
     <header className="expertise-showcase-header">
-      <div><SectionLabel text="OUR EXPERTISE" /><h2 id="expertise-heading">Popular <span>services.</span></h2><p>From brand identity to websites and digital campaigns, we bring the creative and technical skills your business needs to grow.</p></div>
+      <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, amount: .2 }} variants={{ hidden: {}, visible: { transition: { staggerChildren: reduceMotion ? 0 : .3 } } }}>
+        <motion.div variants={reveal} transition={revealTransition}><SectionLabel text="OUR EXPERTISE" /></motion.div>
+        <motion.h2 variants={reveal} transition={revealTransition} id="expertise-heading">Popular <span>services.</span></motion.h2>
+        <motion.p variants={reveal} transition={revealTransition}>From brand identity to websites and digital campaigns, we bring the creative and technical skills your business needs to grow.</motion.p>
+      </motion.div>
       <div className="expertise-showcase-controls"><button type="button" onClick={() => setPage(0)} disabled={page === 0} aria-label="Previous services" aria-controls="expertise-service-grid"><ArrowLeft size={20} aria-hidden="true" /></button><button type="button" onClick={() => setPage(1)} disabled={page === 1} aria-label="Next services" aria-controls="expertise-service-grid"><ArrowRight size={20} aria-hidden="true" /></button></div>
     </header>
     <div className="expertise-service-grid" id="expertise-service-grid">
@@ -31,7 +40,7 @@ export function ServicesAccordion() {
         const detail = serviceDetails[service.id];
         return <article key={service.id} className={`expertise-service-pair ${index % 4 >= 2 ? "expertise-service-pair-reverse" : ""}`} hidden={page === 0 ? index >= 4 : index < 4}>
           <div className="expertise-service-info"><h3>{service.title}</h3><ul aria-label={`${service.title} capabilities`}>{detail.tags.map(tag => <li key={tag}>{tag}</li>)}</ul><p>{service.description}</p><Link href={service.link} aria-label={`Explore ${service.title}`} className="expertise-service-link"><ArrowUpRight size={20} aria-hidden="true" /></Link></div>
-          <div className="expertise-service-image">{(page === 0 ? index < 4 : index >= 4) && <ExpertiseSculpture variant={index} label={service.title} />}</div>
+          <div className="expertise-service-image">{(page === 0 ? index < 4 : index >= 4) && (service.id === "branding-design" ? <Image src="/images/Creatox%20Horizon_%20A%20Futuristic%20Dreamscape.png" alt="Creatox Horizon, a futuristic dreamscape" fill sizes="(max-width: 600px) 100vw, (max-width: 1000px) 50vw, 25vw" /> : service.id === "web-design" ? <Image src="/images/creatox-creative-studio-hero.png" alt="Designer working in a creative studio illuminated by red light trails" fill sizes="(max-width: 600px) 100vw, (max-width: 1000px) 50vw, 25vw" /> : service.id === "ads-campaigns" ? <Image src="/images/Portal%20Over%20a%20Neon%20Cosmic%20Horizon.png" alt="Neon portal over a cosmic horizon" fill sizes="(max-width: 600px) 100vw, (max-width: 1000px) 50vw, 25vw" /> : service.id === "social-media" ? <Image src="/images/Robotic%20Hands%20and%20Glowing%20Starburst%20Emblem.png" alt="Robotic hands and a glowing starburst emblem" fill sizes="(max-width: 600px) 100vw, (max-width: 1000px) 50vw, 25vw" /> : <ExpertiseSculpture variant={index} label={service.title} />)}</div>
         </article>;
       })}
     </div>

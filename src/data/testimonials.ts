@@ -10,14 +10,10 @@ export interface Testimonial {
   isDemoVideo?: boolean;
 }
 
-// Public-domain sample for playback testing, not a client recording.
-const demoVideo = "/videos/testimonial-demo.mp4";
 
 export const testimonials: Testimonial[] = [
   {
     id: 1,
-    videoUrl: demoVideo,
-    isDemoVideo: true,
     quote:
       "The team did a really nice job with my WooCommerce website. They were super friendly and helpful the whole time. Even made product mockups which made listing items so much easier. Finished quickly, price was fair.",
     clientName: "Vivek P",
@@ -25,8 +21,6 @@ export const testimonials: Testimonial[] = [
   },
   {
     id: 2,
-    videoUrl: demoVideo,
-    isDemoVideo: true,
     quote:
       "The branding and website crafted exceeded expectations. Their innovative approach showcased a deep understanding of our brand, resulting in a visually appealing and user-friendly website with cohesive branding.",
     clientName: "Best Western Premier M Four Hotel, Dubai",
@@ -34,8 +28,6 @@ export const testimonials: Testimonial[] = [
   },
   {
     id: 3,
-    videoUrl: demoVideo,
-    isDemoVideo: true,
     quote:
       "Professionalism is something I really liked, right from proposals to execution. They work on a plan, and the best part is the flexibility which I really demand.",
     clientName: "Nathan R. Calloway",
@@ -43,8 +35,6 @@ export const testimonials: Testimonial[] = [
   },
   {
     id: 4,
-    videoUrl: demoVideo,
-    isDemoVideo: true,
     quote:
       "Exceptional branding and social media management! Strategic approach significantly boosted our online presence with a cohesive brand identity.",
     clientName: "Aanand Tuttu",
@@ -52,8 +42,6 @@ export const testimonials: Testimonial[] = [
   },
   {
     id: 5,
-    videoUrl: demoVideo,
-    isDemoVideo: true,
     quote:
       "A very creative solution to all your requirements! All their ideas are out of the box and the team is highly supportive. Must work with them.",
     clientName: "Raina D'souza",

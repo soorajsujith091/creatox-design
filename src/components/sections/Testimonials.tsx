@@ -13,6 +13,8 @@ const labels = ["E-COMMERCE", "BRANDING", "PARTNERSHIP", "DIGITAL GROWTH", "CREA
 
 export function Testimonials() {
   const reduced = useReducedMotion();
+  const reveal = { hidden: { opacity: 0, y: reduced ? 0 : 32 }, visible: { opacity: 1, y: 0 } };
+  const revealTransition = { duration: reduced ? 0 : 1.3, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] };
   const [emblaRef, api] = useEmblaCarousel({ loop: true, align: "center", duration: reduced ? 0 : 35 });
   const [selected, setSelected] = useState(0);
   const [paused, setPaused] = useState(false);
@@ -35,10 +37,10 @@ export function Testimonials() {
   const navigate = (direction: number) => { setPaused(true); if (direction < 0) api?.scrollPrev(); else api?.scrollNext(); };
 
   return <section className="client-stories" aria-labelledby="client-stories-title">
-    <motion.header initial={reduced ? false : { opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: .65 }}>
-      <span className="client-stories-eyebrow">/ CLIENT LOVE</span>
-      <h2 id="client-stories-title">Why do ambitious brands<br/>love working with <span>Creatox?</span></h2>
-      <p>Real feedback. Shared ambition. Lasting relationships.</p>
+    <motion.header initial="hidden" whileInView="visible" viewport={{ once: true, amount: .2 }} variants={{ hidden: {}, visible: { transition: { staggerChildren: reduced ? 0 : .3 } } }}>
+      <motion.span variants={reveal} transition={revealTransition} className="client-stories-eyebrow">/ CLIENT LOVE</motion.span>
+      <motion.h2 variants={reveal} transition={revealTransition} id="client-stories-title">Why do ambitious brands<br/>love working with <span>Creatox?</span></motion.h2>
+      <motion.p variants={reveal} transition={revealTransition}>Real feedback. Shared ambition. Lasting relationships.</motion.p>
     </motion.header>
     <div className="client-stories-carousel" role="region" aria-roledescription="carousel" aria-label="Client testimonials" onMouseEnter={() => setInteracting(true)} onMouseLeave={() => setInteracting(false)} onFocusCapture={() => setInteracting(true)} onBlurCapture={e => { if (!e.currentTarget.contains(e.relatedTarget)) setInteracting(false); }} onKeyDown={e => { if (e.key === "ArrowLeft") { e.preventDefault(); navigate(-1); } if (e.key === "ArrowRight") { e.preventDefault(); navigate(1); } }}>
       <div className="client-stories-viewport" ref={emblaRef}>

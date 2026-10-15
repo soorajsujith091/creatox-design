@@ -3,10 +3,10 @@
 import { useEffect, useRef } from "react";
 import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
 import { ArrowUpRight, Asterisk } from "lucide-react";
-import Image from "next/image";
 import { MagicText } from "@/components/ui/magic-text";
 import dynamic from "next/dynamic";
 const BrandRobot = dynamic(() => import("@/components/ui/brand-robot").then(module => module.BrandRobot), { ssr: false });
+const BrandPerspectiveMarquee = dynamic(() => import("@/components/ui/brand-perspective-marquee").then(module => module.BrandPerspectiveMarquee), { ssr: false });
 import "./agency-intro.css";
 
 const partnerLogos = [
@@ -41,7 +41,7 @@ export function AgencyIntro() {
   const { scrollYProgress } = useScroll({ target: about, offset: ["start start", "end end"] });
   const revealProgress = useTransform(scrollYProgress, [0, .75], [0, 1]);
   const videoBlur = useTransform(scrollYProgress, [0, .15, .65], ["blur(6px)", "blur(3px)", "blur(0px)"]);
-  return <><section ref={about} className={`agency-about-scroll${reduced ? " agency-about-static" : ""}`} aria-labelledby="agency-intro-heading">
+  return <section ref={about} className={`agency-about-scroll${reduced ? " agency-about-static" : ""}`} aria-labelledby="agency-intro-heading">
   <div className="agency-intro agency-intro-about" onPointerMove={event => {
     if (reduced || event.pointerType === "touch") return;
     const bounds = event.currentTarget.getBoundingClientRect();
@@ -58,13 +58,16 @@ export function AgencyIntro() {
       <a href="#about">Meet Creatox <ArrowUpRight size={15}/></a>
     </motion.div>
   </div>
-  </section>
-  <section className="agency-intro agency-intro-brands" aria-label="Brands we've worked with">
+  </section>;
+}
+
+export function BrandsWorkedWith() {
+  return <section className="agency-intro agency-intro-brands" aria-label="Brands we've worked with">
     <div className="agency-intro-partners" aria-label="Brands in our portfolio">
       <span className="agency-intro-label">BRANDS WE’VE WORKED WITH</span>
-      <div className="agency-intro-marquee"><div className="agency-intro-track">{[0, 1].map(copy => <div className="agency-intro-brand-group" key={copy} aria-hidden={copy === 1 ? true : undefined}>{partnerLogos.map(logo => <span className="agency-intro-brand" key={logo.file}><Image src={`/images/${logo.file}`} alt={copy === 0 ? logo.name : ""} width={144} height={64} sizes="144px" /></span>)}</div>)}</div></div>
+      <BrandPerspectiveMarquee items={partnerLogos} />
       <BrandRobot />
     </div>
-  </section></>;
+  </section>;
 }
 

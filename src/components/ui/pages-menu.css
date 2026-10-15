@@ -1,0 +1,11 @@
+.creatox-pages-menu{position:static;color:#fff;font-size:13px;flex-shrink:0;z-index:30}
+.creatox-pages-menu summary{display:flex;align-items:center;gap:7px;list-style:none;cursor:pointer;min-height:44px;padding:8px 4px}
+.creatox-pages-menu summary::-webkit-details-marker{display:none}
+.creatox-pages-menu:not([open])>.creatox-pages-panel{display:none}
+.creatox-pages-menu summary:focus-visible{outline:2px solid #e4002b;outline-offset:4px;border-radius:5px}
+.creatox-pages-menu[open] summary svg{transform:rotate(180deg)}
+.creatox-pages-panel{position:absolute;right:0;top:calc(100% + 12px);width:min(800px,90vw);max-height:75svh;overflow:auto;display:grid;grid-template-columns:1fr 1fr 1.5fr;gap:28px;padding:28px;background:#111;border:1px solid #383838;border-radius:18px;box-shadow:0 24px 70px #0009;color:#fff;text-align:left}
+.creatox-pages-panel p{font:10px var(--font-mono),monospace;text-transform:uppercase;letter-spacing:.08em;color:#ff6b87;margin-bottom:14px}
+.creatox-pages-panel a{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 0;min-height:42px;border-bottom:1px solid #ffffff12;font-size:13px;line-height:1.4}
+.creatox-pages-panel a:hover{color:#ff6b87}
+@media(max-width:767px){.creatox-pages-menu{position:static;font-size:12px}.creatox-pages-panel{left:12px;right:12px;top:76px;width:auto;grid-template-columns:1fr 1fr;padding:20px;gap:24px;max-height:70svh}.creatox-pages-panel>div:last-child{grid-column:1/-1}.creatox-pages-panel>div:last-child a{display:inline-flex;width:100%}}
