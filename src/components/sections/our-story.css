@@ -19,6 +19,7 @@
 .our-story-signature{font-family:var(--font-mono),monospace;font-size:10px;margin-top:22px;color:#ffdde4}
 .our-story-about{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:44px;border-top:1px solid #ffffff40;margin-top:26px;padding-top:14px;font-size:12px}
 .our-story-about:hover{color:#ffe0e7}.our-story-about:focus-visible{outline:2px solid #fff;outline-offset:4px}
+.our-story-wordmark .our-story-logo{display:block;width:150px;max-width:100%;height:auto;object-fit:contain;filter:brightness(0) invert(1)}
 .our-story-team{display:flex;flex-direction:column;padding:5px;background:#191919;border:1px solid #ffffff20}
 .our-story-team-photo{position:relative;flex:1;min-height:290px;border-radius:8px;overflow:hidden}.our-story-team-photo img{object-fit:cover;object-position:50% 50%}
 .our-story-team figcaption{display:flex;align-items:center;gap:8px;padding:14px 10px;font-size:12px;color:#ddd}.our-story-team figcaption>svg:first-child{color:#ff5373}.our-story-team figcaption>svg:last-child{margin-left:auto;color:#ff5373}

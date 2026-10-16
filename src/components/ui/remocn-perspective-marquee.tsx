@@ -31,7 +31,7 @@ export function PerspectiveMarquee({ items, rotateY = -28, rotateX = 8, perspect
   const itemWidth = 240;
   const totalWidth = items.length * itemWidth;
   const offset = totalWidth ? -((frame * pixelsPerFrame * speed) % totalWidth) : 0;
-  return <div style={{ position: "absolute", inset: 0, background: "#000", display: "flex", alignItems: "center", overflow: "hidden", perspective }}>
+  return <div style={{ position: "absolute", inset: 0, background: "transparent", display: "flex", alignItems: "center", overflow: "hidden", perspective, maskImage: "linear-gradient(90deg,transparent,#000 18%,#000 82%,transparent),linear-gradient(180deg,transparent,#000 25%,#000 75%,transparent)", maskComposite: "intersect", WebkitMaskComposite: "source-in" }}>
     <div style={{ width: "100%", transform: `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`, transformStyle: "preserve-3d" }}>
       <div style={{ display: "flex", width: "max-content", transform: `translateX(${offset}px)` }}>
         {[...items, ...items, ...items].map((item, index) => {
@@ -45,8 +45,6 @@ export function PerspectiveMarquee({ items, rotateY = -28, rotateX = 8, perspect
         })}
       </div>
     </div>
-    <div style={{ position: "absolute", inset: 0, pointerEvents: "none", background: "linear-gradient(90deg,#000,transparent 18%,transparent 82%,#000)" }} />
-    <div style={{ position: "absolute", inset: 0, pointerEvents: "none", background: "linear-gradient(180deg,#000,transparent 25%,transparent 75%,#000)" }} />
   </div>;
 }
 

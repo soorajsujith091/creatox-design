@@ -9,6 +9,7 @@ import { BrandLogo } from "@/components/BrandLogo";
 import { innerServices } from "@/data/inner-services";
 import { useScroll } from "./use-scroll";
 import { MenuToggleIcon } from "./menu-toggle-icon";
+import FloatingMenu from "./liquid-morph-floating-menu";
 import "./site-navigation.css";
 
 const about = [
@@ -26,6 +27,15 @@ export function SiteNavigation() {
   const trigger=useRef<HTMLButtonElement>(null);
   const [open,setOpen]=useState(false);
   const scrolled=useScroll(10);
+  const [mobile,setMobile]=useState(false);
+  const sticky=mobile && scrolled;
+  useEffect(()=>{
+    const query=window.matchMedia("(max-width: 1100px)");
+    const update=()=>setMobile(query.matches);
+    update();
+    query.addEventListener("change",update);
+    return ()=>query.removeEventListener("change",update);
+  },[]);
   const active=(href:string)=>pathname.replace(/\/$/,"")===href.replace(/\/$/,"");
   const close=()=>{setOpen(false);root.current?.querySelectorAll("details[open]").forEach(el=>el.removeAttribute("open"));};
   useEffect(()=>{setOpen(false);},[pathname]);
@@ -44,7 +54,7 @@ export function SiteNavigation() {
     return ()=>{document.removeEventListener("pointerdown",dismiss);document.removeEventListener("keydown",escape);window.removeEventListener("resize",resize);};
   },[]);
   const group=(label:string,items:typeof about)=> <details className={`cx-nav-group ${label==="Services"?"cx-nav-services":""}`} onToggle={event=>{if(event.currentTarget.open){const current=event.currentTarget;root.current?.querySelectorAll<HTMLDetailsElement>(".cx-desktop details[open]").forEach(other=>{if(other!==current)other.open=false;});}}}><summary>{label}<ChevronDown size={13} aria-hidden="true"/></summary><div className="cx-nav-dropdown">{items.map(link=><Link key={link.href} href={link.href} aria-current={active(link.href)?"page":undefined} onClick={close}>{link.label}<ArrowUpRight size={14} aria-hidden="true"/></Link>)}</div></details>;
-  const header = <header ref={root} className={`cx-site-header cx-header-2${scrolled ? " is-scrolled" : ""}${open ? " is-open" : ""}`}>
+  const header = <header ref={root} className={`cx-site-header cx-header-2${sticky ? " is-scrolled" : ""}${open ? " is-open" : ""}`}>
     <Link href="/" className="cx-brand" aria-label="Creatox Designs home"><BrandLogo className="cx-brand-image" priority/></Link>
     <nav className="cx-desktop" aria-label="Main navigation"><Link href="/" aria-current={active("/")?"page":undefined}>Home</Link>{group("About",about)}{group("Services",services)}{links.map(link=><Link key={link.href} href={link.href} aria-current={active(link.href)?"page":undefined}>{link.label}</Link>)}</nav>
     <Link href="/contact-us/" className="cx-nav-contact">Let’s talk<ArrowUpRight size={16} aria-hidden="true"/></Link>
@@ -56,5 +66,5 @@ export function SiteNavigation() {
     </dialog>
   </header>;
   // Keep the floating header above the homepage's stacked section contexts.
-  return <div className="cx-header-slot">{scrolled ? createPortal(header, document.body) : header}</div>;
+  return <><div className="cx-header-slot">{sticky ? createPortal(header, document.body) : header}</div><FloatingMenu items={[{label:"Home",href:"/"},{label:"About",children:about},{label:"Services",children:services},...links,{label:"Blog & insights",href:"/blog/"}]} /></>;
 }

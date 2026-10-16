@@ -9,6 +9,7 @@ import { ArrowLeft, ArrowRight, ArrowUpRight } from "lucide-react";
 import { services } from "@/data/services";
 import { SectionLabel } from "../SectionLabel";
 import "./expertise-grid.css";
+import { ServiceCapabilityShapes } from "../ui/service-capability-shapes";
 
 const ExpertiseSculpture = dynamic(() => import("../ui/expertise-sculpture").then(module => module.ExpertiseSculpture), { ssr: false });
 
@@ -39,7 +40,7 @@ export function ServicesAccordion() {
       {services.map((service, index) => {
         const detail = serviceDetails[service.id];
         return <article key={service.id} className={`expertise-service-pair ${index % 4 >= 2 ? "expertise-service-pair-reverse" : ""}`} hidden={page === 0 ? index >= 4 : index < 4}>
-          <div className="expertise-service-info"><h3>{service.title}</h3><ul aria-label={`${service.title} capabilities`}>{detail.tags.map(tag => <li key={tag}>{tag}</li>)}</ul><p>{service.description}</p><Link href={service.link} aria-label={`Explore ${service.title}`} className="expertise-service-link"><ArrowUpRight size={20} aria-hidden="true" /></Link></div>
+          <div className="expertise-service-info"><h3>{service.title}</h3><p>{service.description}</p><ServiceCapabilityShapes tags={detail.tags} label={`${service.title} capabilities`} /><Link href={service.link} aria-label={`Explore ${service.title}`} className="expertise-service-link"><ArrowUpRight size={20} aria-hidden="true" /></Link></div>
           <div className="expertise-service-image">{(page === 0 ? index < 4 : index >= 4) && (service.id === "branding-design" ? <Image src="/images/Creatox%20Horizon_%20A%20Futuristic%20Dreamscape.png" alt="Creatox Horizon, a futuristic dreamscape" fill sizes="(max-width: 600px) 100vw, (max-width: 1000px) 50vw, 25vw" /> : service.id === "web-design" ? <Image src="/images/creatox-creative-studio-hero.png" alt="Designer working in a creative studio illuminated by red light trails" fill sizes="(max-width: 600px) 100vw, (max-width: 1000px) 50vw, 25vw" /> : service.id === "ads-campaigns" ? <Image src="/images/Portal%20Over%20a%20Neon%20Cosmic%20Horizon.png" alt="Neon portal over a cosmic horizon" fill sizes="(max-width: 600px) 100vw, (max-width: 1000px) 50vw, 25vw" /> : service.id === "social-media" ? <Image src="/images/Robotic%20Hands%20and%20Glowing%20Starburst%20Emblem.png" alt="Robotic hands and a glowing starburst emblem" fill sizes="(max-width: 600px) 100vw, (max-width: 1000px) 50vw, 25vw" /> : <ExpertiseSculpture variant={index} label={service.title} />)}</div>
         </article>;
       })}

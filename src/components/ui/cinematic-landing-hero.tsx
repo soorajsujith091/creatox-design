@@ -4,7 +4,7 @@ import React, { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { cn } from "@/lib/utils";
-import { ArrowUpRight, Sparkles, Users } from "lucide-react";
+import { ArrowUpRight, Users } from "lucide-react";
 import "./cinematic-landing-hero.css";
 
 if (typeof window !== "undefined") {
@@ -183,15 +183,13 @@ export interface CinematicHeroProps extends React.HTMLAttributes<HTMLDivElement>
 }
 
 export function CinematicHero({ 
-  brandName = "Creatox",
-  tagline1 = "Ideas with imagination.",
-  tagline2 = "Brands with purpose.",
-  cardHeading = "Designed to connect.",
-  cardDescription = "We bring branding, websites and digital campaigns together to help your business connect with people and grow.",
-  metricValue = 1000,
-  metricLabel = "Projects completed",
-  ctaHeading = "Your next chapter starts here.",
-  ctaDescription = "Let?s build a brand and digital experience that works for your business.",
+  brandName = "PODE CUBE",
+  tagline1 = "Your voice. Your vision.",
+  tagline2 = "A studio for both.",
+  cardHeading = "Meet our production studio.",
+  cardDescription = "PODE CUBE brings podcasts, brand videos, photography and green-screen production together in a creative space in Kannur.",
+  ctaHeading = "Bring your next idea to the studio.",
+  ctaDescription = "Discover PODE CUBE, our content production space for creators, entrepreneurs and brands. Explore the studio or follow us behind the scenes.",
   className, 
   ...props 
 }: CinematicHeroProps) {
@@ -248,7 +246,7 @@ export function CinematicHero({
       gsap.set(".text-track", { autoAlpha: 0, y: 60, scale: 0.85, filter: "blur(20px)", rotationX: -20 });
       gsap.set(".text-days", { autoAlpha: 1, clipPath: "inset(0 100% 0 0)" });
       gsap.set(".main-card", { y: window.innerHeight + 200, autoAlpha: 1 });
-      gsap.set([".card-left-text", ".card-right-text", ".mockup-scroll-wrapper", ".floating-badge", ".phone-widget"], { autoAlpha: 0 });
+      gsap.set([".card-left-text", ".card-right-text", ".mockup-scroll-wrapper", ".floating-badge"], { autoAlpha: 0 });
       gsap.set(".cta-wrapper", { autoAlpha: 0, scale: 0.8, filter: "blur(30px)" });
 
       const introTl = gsap.timeline({ delay: 0.3 });
@@ -277,9 +275,6 @@ export function CinematicHero({
           { y: 300, z: -500, rotationX: 50, rotationY: -30, autoAlpha: 0, scale: 0.6 },
           { y: 0, z: 0, rotationX: 0, rotationY: 0, autoAlpha: 1, scale: 1, ease: "expo.out", duration: 2.5 }, "-=0.8"
         )
-        .fromTo(".phone-widget", { y: 40, autoAlpha: 0, scale: 0.95 }, { y: 0, autoAlpha: 1, scale: 1, stagger: 0.15, ease: "back.out(1.2)", duration: 1.5 }, "-=1.5")
-        .to(".progress-ring", { strokeDashoffset: 60, duration: 2, ease: "power3.inOut" }, "-=1.2")
-        .to(".counter-val", { innerHTML: metricValue, snap: { innerHTML: 1 }, duration: 2, ease: "expo.out" }, "-=2.0")
         .fromTo(".floating-badge", { y: 100, autoAlpha: 0, scale: 0.7, rotationZ: -10 }, { y: 0, autoAlpha: 1, scale: 1, rotationZ: 0, ease: "back.out(1.5)", duration: 1.5, stagger: 0.2 }, "-=2.0")
         .fromTo(".card-left-text", { x: -50, autoAlpha: 0 }, { x: 0, autoAlpha: 1, ease: "power4.out", duration: 1.5 }, "-=1.5")
         .fromTo(".card-right-text", { x: 50, autoAlpha: 0, scale: 0.8 }, { x: 0, autoAlpha: 1, scale: 1, ease: "expo.out", duration: 1.5 }, "<")
@@ -307,7 +302,7 @@ export function CinematicHero({
       ScrollTrigger.refresh();
     });
     return () => { cancelAnimationFrame(refreshFrame); ctx.revert(); };
-  },[metricValue]); 
+  },[]); 
 
   return (
     <div
@@ -338,7 +333,7 @@ export function CinematicHero({
         <p className="text-muted-foreground text-lg md:text-xl mb-12 max-w-xl mx-auto font-light leading-relaxed">
           {ctaDescription}
         </p>
-        <div className="flex flex-col sm:flex-row gap-4"><a href="#contact" className="btn-modern-light flex items-center justify-center gap-3 px-7 py-4 rounded-2xl">Start a project <ArrowUpRight size={20}/></a><a href="#selected-work" className="btn-modern-dark flex items-center justify-center gap-3 px-7 py-4 rounded-2xl">Explore our work <ArrowUpRight size={20}/></a></div>
+        <div className="flex flex-col sm:flex-row gap-4"><a href="https://podcubestudio.com/" className="btn-modern-light flex items-center justify-center gap-3 px-7 py-4 rounded-2xl">Explore the studio <ArrowUpRight size={20}/></a><a href="https://www.instagram.com/podecube/" className="btn-modern-dark flex items-center justify-center gap-3 px-7 py-4 rounded-2xl">Follow on Instagram <ArrowUpRight size={20}/></a></div>
       </div>
 
       {/* FOREGROUND LAYER: The Physical Deep Blue Card */}
@@ -385,41 +380,30 @@ export function CinematicHero({
                       <div className="w-1.5 h-1.5 rounded-full bg-green-500 shadow-[0_0_8px_rgba(34,197,94,0.8)] animate-pulse" />
                     </div>
 
-                    {/* App Interface */}
-                    <div className="relative w-full h-full pt-12 px-5 pb-8 flex flex-col">
-                      <div className="phone-widget flex justify-between items-center mb-8">
-                        <div className="flex flex-col">
-                          <span className="text-[10px] text-neutral-400 uppercase tracking-widest font-bold mb-1">Digital experience concept</span>
-                          <span className="text-xl font-bold tracking-tight text-white drop-shadow-md">Brand studio</span>
-                        </div>
-                        <div className="w-9 h-9 rounded-full bg-[#111111]/5 text-neutral-200 flex items-center justify-center font-bold text-sm border border-white/10 shadow-lg shadow-black/50">C</div>
-                      </div>
+                    {/* Studio reel fills the phone screen. Muting enables autoplay. */}
+                    <video
+                      className="absolute inset-0 h-full w-full object-cover"
+                      src="/videos/WhatsApp%20Video%202026-10-16%20at%204.50.28%20PM%20(1).mp4"
+                      autoPlay
+                      muted
+                      loop
+                      playsInline
+                      controls
+                      preload="metadata"
+                      aria-label="PODE CUBE studio reel"
+                    />
 
-                      <div className="phone-widget relative w-44 h-44 mx-auto flex items-center justify-center mb-8 drop-shadow-[0_15px_25px_rgba(0,0,0,0.8)]">
-                        <svg className="absolute inset-0 w-full h-full" aria-hidden="true">
-                          <circle cx="88" cy="88" r="64" fill="none" stroke="rgba(255,255,255,0.03)" strokeWidth="12" />
-                          <circle className="progress-ring" cx="88" cy="88" r="64" fill="none" stroke="#E4002B" strokeWidth="12" />
-                        </svg>
-                        <div className="text-center z-10 flex flex-col items-center">
-                          <span className="counter-val text-4xl font-extrabold tracking-tighter text-white">{metricValue.toLocaleString("en-IN")}</span>
-                          <span className="text-[8px] text-red-200/50 uppercase tracking-[0.1em] font-bold mt-0.5">{metricLabel}</span>
-                        </div>
-                      </div>
-
-                      <div className="phone-widget widget-depth rounded-2xl overflow-hidden"><img src="/images/project-beverage-concept.png" alt="Generated beverage brand concept" className="w-full h-[95px] object-cover" loading="lazy"/><div className="p-3"><span className="text-sm font-semibold">Branding + Web design</span><p className="text-xs text-neutral-400 mt-1">Strategy. Design. Digital.</p></div></div>
-                      <div className="absolute bottom-2 left-1/2 -translate-x-1/2 w-[120px] h-[4px] bg-[#111111]/20 rounded-full shadow-[0_1px_2px_rgba(0,0,0,0.5)]" />
-                    </div>
                   </div>
                 </div>
 
                 {/* Floating Glass Badges */}
                 <div className="floating-badge absolute flex top-6 lg:top-12 left-[-15px] lg:left-[-80px] floating-ui-badge rounded-xl lg:rounded-2xl p-3 lg:p-4 items-center gap-3 lg:gap-4 z-30">
                   <div className="w-8 h-8 lg:w-10 lg:h-10 rounded-full bg-gradient-to-b from-red-500/20 to-red-900/10 flex items-center justify-center border border-red-400/30 shadow-inner">
-                    <Sparkles size={20} aria-hidden="true"/>
+                    <img src="/images/IMG_3517.PNG" alt="PODE CUBE Studio" className="h-full w-full object-contain p-1" />
                   </div>
                   <div>
-                    <p className="text-white text-xs lg:text-sm font-bold tracking-tight">Since 2019</p>
-                    <p className="text-red-200/50 text-[10px] lg:text-xs font-medium">Crafted in Kannur</p>
+                    <p className="text-white text-xs lg:text-sm font-bold tracking-tight">Made for creators</p>
+                    <p className="text-red-200/50 text-[10px] lg:text-xs font-medium">Based in Kannur</p>
                   </div>
                 </div>
 
@@ -428,8 +412,8 @@ export function CinematicHero({
                     <Users size={20} aria-hidden="true"/>
                   </div>
                   <div>
-                    <p className="text-white text-xs lg:text-sm font-bold tracking-tight">22+ creatives</p>
-                    <p className="text-red-200/50 text-[10px] lg:text-xs font-medium">One shared ambition</p>
+                    <p className="text-white text-xs lg:text-sm font-bold tracking-tight">Flexible setups</p>
+                    <p className="text-red-200/50 text-[10px] lg:text-xs font-medium">Lighting. Audio. Green screen.</p>
                   </div>
                 </div>
 

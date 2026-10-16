@@ -7,7 +7,7 @@
 .creatox-cinematic .btn-modern-light:hover{background:#b8001f}
 .creatox-cinematic .progress-ring{stroke-dashoffset:60}
 .creatox-cinematic .card-left-text p{color:#ddd}
-.creatox-cinematic .premium-depth-card{background:linear-gradient(110deg,rgba(0,0,0,.72),rgba(0,0,0,.35) 55%,rgba(0,0,0,.65)),url('/images/WhatsApp%20Image%202026-10-12%20at%2012.56.42%20PM.jpeg') center/cover no-repeat}
+.creatox-cinematic .premium-depth-card{background:linear-gradient(110deg,rgba(0,0,0,.7),rgba(0,0,0,.35) 55%,rgba(0,0,0,.65)),url('/images/ChatGPT%20Image%20May%2026%2C%202026%2C%2011_43_47%20AM.png') center/cover no-repeat}
 @media(max-width:767px),(prefers-reduced-motion:reduce){
   .creatox-cinematic{height:auto;min-height:0;display:flex;flex-direction:column;gap:35px;padding:55px 20px;overflow:hidden}
   .creatox-cinematic .gsap-reveal{visibility:visible}

@@ -1,0 +1,20 @@
+.cx-liquid-menu{position:fixed;bottom:32px;left:50%;transform:translateX(-50%);z-index:210;font-family:var(--font-body),sans-serif;color:#fff}
+.cx-liquid-shell{position:relative;overflow:hidden;background:#e4002b;box-shadow:0 12px 45px #0006;border:1px solid #ffffff24}
+.cx-liquid-circle{position:absolute;bottom:-30px;left:-155px;width:620px;height:900px;border-radius:50%;background:#242424;transform-origin:50% 100%;pointer-events:none}
+.cx-liquid-trigger{position:relative;display:flex;justify-content:space-between;align-items:center;width:100%;height:52px;padding:0 22px;font-size:17px;color:#fff}
+.cx-liquid-trigger>span:last-child{display:flex}
+.cx-liquid-links{position:relative;display:flex;flex-direction:column;gap:3px;padding:20px 24px 8px;max-height:calc(100dvh - 160px);overflow-y:auto;overscroll-behavior:contain}
+.cx-liquid-links>a,.cx-liquid-links summary{display:flex;justify-content:space-between;align-items:center;min-height:44px;padding:8px 0;font-family:var(--font-heading),sans-serif;font-size:22px;text-transform:uppercase;cursor:pointer;list-style:none}
+.cx-liquid-links summary::-webkit-details-marker{display:none}
+.cx-liquid-links details[open]>summary svg{transform:rotate(180deg)}
+.cx-liquid-submenu{display:flex;flex-direction:column;padding:4px 0 10px 12px;border-left:1px solid #ffffff30}
+.cx-liquid-submenu>a{display:block;padding:10px 8px;min-height:44px;font-size:13px;color:#ddd}
+.cx-liquid-links a:hover,.cx-liquid-links [aria-current=page],.cx-liquid-links summary:hover{color:#ff8ba1}
+.cx-liquid-menu :is(a,button,summary):focus-visible{outline:2px solid #ff8ba1;outline-offset:-2px}
+.cx-liquid-label>span{display:flex}
+.cx-liquid-char{display:inline-block;height:1.15em;overflow:hidden}
+.cx-liquid-char>span{display:flex;flex-direction:column;transition:transform .6s cubic-bezier(.22,1,.36,1)}
+.cx-liquid-char>span>span{display:block;height:1.15em;line-height:1.15em}
+.cx-liquid-links :is(a,summary):is(:hover,:focus-visible) .cx-liquid-char>span{transform:translateY(-50%)}
+@media(max-width:1100px){.cx-liquid-menu{display:none}}
+@media(prefers-reduced-motion:reduce){.cx-liquid-char>span{transition:none;transform:none!important}}

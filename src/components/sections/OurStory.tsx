@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { motion, useReducedMotion } from "framer-motion";
 import Link from "next/link";
-import { ArrowUpRight, MapPin, Sparkles } from "lucide-react";
+import { ArrowUpRight, MapPin } from "lucide-react";
 import { SectionLabel } from "../SectionLabel";
 import { stats } from "@/data/stats";
 import "./our-story.css";
@@ -23,7 +23,7 @@ export function OurStory() {
         <dl className="our-story-stats">{stats.slice(0, 2).map(stat => <div key={stat.label}><dt>{stat.label}</dt><dd>{stat.value}</dd></div>)}</dl>
       </motion.div>
       <motion.article initial="hidden" whileInView="visible" viewport={{ once: true, amount: .15 }} variants={reveal} transition={{ ...transition, delay: reduced ? 0 : .3 }} className="our-story-statement">
-        <div className="our-story-wordmark"><Sparkles size={24} aria-hidden="true" /><span>Creatox<span className="our-story-wordmark-dot">®</span></span></div>
+        <div className="our-story-wordmark"><img src="/images/Logo%20copy-Photoroom.png" alt="Creatox Designs" className="our-story-logo" /></div>
         <p className="our-story-belief">Brands deserve more than visibility.<br />They deserve <span>a voice.</span></p>
         <p className="our-story-signature">Our belief, since 2019</p>
         <Link href="/about-us/" className="our-story-about">Discover our story <ArrowUpRight size={18} aria-hidden="true" /></Link>

@@ -1,3 +1,5 @@
+import { AboutStudioRobot } from "./about-studio-robot";
+import { WorksWheelSection } from "@/components/sections/WorksWheelSection";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
@@ -32,6 +34,7 @@ export function ServicePage({ slug }: { slug: string }) {
 export function AboutPage() {
   return <><PageHero eyebrow="About Creatox" title={companyPages["about-us"].title} description={companyPages["about-us"].description} image={teamImage} imageAlt="The Creatox team at our Kannur studio" />
     <section className="ip-section"><SectionIntro label="Our story" title="More than visibility. A voice."><p>We began as storytellers, strategists and dreamers, turning ideas into impact and strategies into growth. Every campaign brings together insights, creativity and a clear purpose.</p><p>Today, we are a digital agency helping businesses build immersive, engaging experiences and lasting connections.</p></SectionIntro><div className="ip-metrics"><div><strong>1000+</strong><span>Projects delivered</span></div><div><strong>6+</strong><span>Years of experience</span></div><div><strong>22+</strong><span>Professionals</span></div></div><div className="ip-feature-grid"><article className="ip-feature"><h3>Our mission</h3><p>Help businesses build exceptional brands and achieve their marketing goals through a professional, collaborative team.</p></article><article className="ip-feature"><h3>Our vision</h3><p>Support client growth through effective cost management, stronger revenue and customer satisfaction.</p></article></div></section>
+    <AboutStudioRobot />
     <section className="ip-section"><SectionIntro label="Our history" title="Small beginnings. Shared ambition." /><div className="ip-timeline">{agencyHistory.map(item=><article key={item.year}><strong>{item.year}</strong><h3>{item.title}</h3><p>{item.description}</p></article>)}</div></section>
     <section className="ip-section"><SectionIntro label="What drives us" title="Built on a few good principles." /><div className="ip-feature-grid">{agencyValues.map(value=><article key={value.title} className="ip-feature"><h3>{value.title}</h3><p>{value.description}</p></article>)}</div></section>
     <section className="ip-section"><SectionIntro label="Get to know us" title="There’s more to the story." /><div className="ip-feature-grid">{[{title:"Our team",href:"/our-team/",description:"Meet the creative people behind our work."},{title:"Life at Creatox",href:"/lifecreatox/",description:"Learning, building and enjoying the journey together."},{title:"Our clients",href:"/our-clients/",description:"Relationships built around a shared purpose."},{title:"Careers",href:"/career/",description:"Bring your ideas and grow with us."}].map(item=><article className="ip-feature" key={item.title}><h3>{item.title}</h3><p>{item.description}</p><Link href={item.href}>Take a look<ArrowUpRight size={16}/></Link></article>)}</div></section></>;
@@ -59,7 +62,7 @@ export function ContactPage() {
 export function WorkPage({ cases = false }: { cases?: boolean }) {
   const info = companyPages[cases?"case-studies":"projects"];
   const source = sourcePages.find(page=>page.slug==="projects")!;
-  return <><PageHero eyebrow={cases?"Case studies":"Selected work"} title={info.title} description={info.description} compact /><section className="ip-section"><ContentGrid kind="projects" items={projects.map(project=>({...project,href:`/portfolio/${project.slug}/`}))} /></section>{!cases && <section className="ip-section"><SectionIntro label="More from the studio" title="A wider view of our work." /><Gallery images={source.images} label="Creatox portfolio" /></section>}</>;
+  return <><PageHero eyebrow={cases?"Case studies":"Selected work"} title={info.title} description={info.description} compact />{!cases && <WorksWheelSection />}<section className="ip-section"><ContentGrid kind="projects" items={projects.map(project=>({...project,href:`/portfolio/${project.slug}/`}))} /></section>{!cases && <section className="ip-section"><SectionIntro label="More from the studio" title="A wider view of our work." /><Gallery images={source.images} label="Creatox portfolio" /></section>}</>;
 }
 export function ProjectPage({ slug }: { slug: string }) {
   const project=projects.find(project=>project.slug===slug)!;

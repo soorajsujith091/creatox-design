@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { motion, useReducedMotion } from "framer-motion";
+import { ParallaxScrollFeature } from "../ui/parallax-scroll-feature-section";
 import { ArrowUpRight } from "lucide-react";
 import { SectionLabel } from "../SectionLabel";
 import "./grand-malabar-expo.css";
@@ -10,31 +10,29 @@ const campaignImage = "/images/Creatox%20x%20jalolsavam%20copy.jpg.jpeg";
 
 
 export function MalabarJalolsavam() {
-  const reduceMotion = useReducedMotion();
-  const reveal = { hidden: { opacity: 0, y: reduceMotion ? 0 : 32 }, visible: { opacity: 1, y: 0 } };
   return (
     <section className="malabar-feature jalolsavam-feature site-gutter" aria-labelledby="jalolsavam-heading">
-      <motion.div className="malabar-feature-grid" initial="hidden" whileInView="visible" viewport={{ once: true, amount: .15 }} variants={{ hidden: {}, visible: { transition: { staggerChildren: reduceMotion ? 0 : .3 } } }}>
-        <motion.div className="malabar-main-image jalolsavam-main-image malabar-reveal" variants={reveal} transition={{ duration: reduceMotion ? 0 : 1.3, ease: [0.22, 1, 0.36, 1] }}>
+      <ParallaxScrollFeature reverse media={<div className="malabar-main-image jalolsavam-main-image malabar-reveal">
           <Image src={campaignImage} alt="Creatox campaign for Malabar Jalolsavam 2026, featuring snake boats, social media creatives and 5 million plus views" fill sizes="(max-width: 767px) 100vw, 42vw" />
           <span className="malabar-image-caption">MALABAR JALOLSAVAM / 2026</span>
-        </motion.div>
+        </div>}>
+
         <div className="malabar-content">
-          <motion.div className="malabar-reveal" variants={reveal} transition={{ duration: reduceMotion ? 0 : 1.3, ease: [0.22, 1, 0.36, 1] }}>
+          <div className="malabar-reveal">
             <SectionLabel text="MALABAR JALOLSAVAM" />
             <h2 id="jalolsavam-heading">Making waves.<br />Reaching<br /><span>millions.</span></h2>
             <p className="malabar-description">For Malabar Jalolsavam 2026, Creatox brought the excitement of the boat race to social media. Creative content and digital promotion helped Navodaya Mangalassery reach audiences far beyond the venue.</p>
-          </motion.div>
-          <motion.div className="malabar-highlights malabar-reveal" variants={reveal} transition={{ duration: reduceMotion ? 0 : 1.3, ease: [0.22, 1, 0.36, 1] }}>
+          </div>
+          <div className="malabar-highlights malabar-reveal">
             <dl className="malabar-stats">
               <div><dt>Content views</dt><dd>5M+</dd></div>
               <div><dt>Malabar Jalolsavam</dt><dd>2026</dd></div>
             </dl>
             <div className="malabar-detail-image jalolsavam-detail-image"><Image src="/images/Screenshot%202026-10-14%20111858-Photoroom.png" alt="Malabar Jalolsavam 2026 — Navodaya Mangalassery logo" fill sizes="(max-width: 767px) 40vw, 20vw" /></div>
-          </motion.div>
+          </div>
           <a href={campaignImage} target="_blank" rel="noopener noreferrer" className="malabar-link">View the campaign <ArrowUpRight size={18} aria-hidden="true" /><span className="sr-only"> (opens in a new tab)</span></a>
         </div>
-      </motion.div>
+      </ParallaxScrollFeature>
     </section>
   );
 }

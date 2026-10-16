@@ -5,7 +5,6 @@ import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion
 import { ArrowUpRight, Asterisk } from "lucide-react";
 import { MagicText } from "@/components/ui/magic-text";
 import dynamic from "next/dynamic";
-const BrandRobot = dynamic(() => import("@/components/ui/brand-robot").then(module => module.BrandRobot), { ssr: false });
 const BrandPerspectiveMarquee = dynamic(() => import("@/components/ui/brand-perspective-marquee").then(module => module.BrandPerspectiveMarquee), { ssr: false });
 import "./agency-intro.css";
 
@@ -66,7 +65,6 @@ export function BrandsWorkedWith() {
     <div className="agency-intro-partners" aria-label="Brands in our portfolio">
       <span className="agency-intro-label">BRANDS WE’VE WORKED WITH</span>
       <BrandPerspectiveMarquee items={partnerLogos} />
-      <BrandRobot />
     </div>
   </section>;
 }

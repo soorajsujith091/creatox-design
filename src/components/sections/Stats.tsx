@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { motion, useReducedMotion } from "framer-motion";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
@@ -25,7 +24,7 @@ export function Stats() {
       <motion.div variants={reveal} transition={transition} className="achievement-intro"><p>Behind every project is a team that cares. We combine creativity, strategy and technology to turn brand ambitions into meaningful experiences.</p><Link href="/about-us/" className="achievement-about">Meet Creatox <ArrowUpRight size={17} aria-hidden="true" /></Link></motion.div>
     </motion.header>
     <div className="achievement-cards">
-      <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, amount: .15 }} variants={reveal} transition={transition} className="achievement-photo"><Image src="/images/WhatsApp%20Image%202026-10-12%20at%2012.56.42%20PM.jpeg" alt="The Creatox Designs team at its Kannur office" fill sizes="(max-width: 600px) 100vw, (max-width: 1000px) 50vw, 20vw" /></motion.div>
+      <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, amount: .15 }} variants={reveal} transition={transition} className="achievement-photo"><video src="/videos/3d-glass-rotating-transparent-cube-and-circle-2026-01-28-03-20-02-utc.mp4" autoPlay muted loop playsInline preload="metadata" aria-label="Rotating glass cube and circle animation" /></motion.div>
       {stats.slice(0, 3).map((stat, index) => <motion.article initial="hidden" whileInView="visible" viewport={{ once: true, amount: .15 }} variants={reveal} transition={{ ...transition, delay: reduced ? 0 : (index + 1) * .15 }} key={stat.label} className={`achievement-card achievement-stat achievement-stat-${index}`} aria-label={`${stat.value} ${stat.label}`}>
         <span className={`achievement-motif achievement-motif-${index}`} aria-hidden="true" />
         <p className="achievement-value">{stat.value}</p><h3>{stat.label}</h3><p className="achievement-detail">{descriptions[index]}</p>

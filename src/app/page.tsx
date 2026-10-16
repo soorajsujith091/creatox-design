@@ -3,7 +3,6 @@ import { ThreePillars } from "@/components/sections/ThreePillars";
 import { ServicesAccordion } from "@/components/sections/ServicesAccordion";
 import { SelectedCreatoxWork } from "@/components/sections/SelectedCreatoxWork";
 import { OurStory } from "@/components/sections/OurStory";
-import { WorksWheelSection } from "@/components/sections/WorksWheelSection";
 import { Stats } from "@/components/sections/Stats";
 import { GrandMalabarExpo } from "@/components/sections/GrandMalabarExpo";
 import { MalabarJalolsavam } from "@/components/sections/MalabarJalolsavam";
@@ -25,8 +24,7 @@ export default function Home() {
       <BrandsWorkedWith />
       <SelectedCreatoxWork />
       <div id="about"><OurStory /></div>
-      <CinematicHero aria-label="Creatox branding and digital experience showcase" />
-      <WorksWheelSection />
+      <CinematicHero aria-label="PODE CUBE, our content production studio" />
       <Stats />
       <GrandMalabarExpo />
       <MalabarJalolsavam />

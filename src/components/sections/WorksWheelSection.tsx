@@ -28,6 +28,6 @@ export function WorksWheelSection() {
       <div className="creatox-reel-top"><span>CREATIVITY IN EVERY DIRECTION.</span><button type="button" onClick={() => setPaused(!paused)} aria-label={paused ? "Play project reel" : "Pause project reel"} aria-pressed={paused}>{paused ? <Play size={16}/> : <Pause size={16}/>}<span>{paused ? "Play" : "Pause"}</span></button></div>
       <p className="creatox-reel-caption">Brand stories, brought into focus.</p>
     </TiltedGridHero>
-    <footer className="creatox-works-footer"><span>Have something in mind?</span><a href="#contact">Let’s build your next chapter <ArrowUpRight size={20}/></a></footer>
+    <footer className="creatox-works-footer"><span>Have something in mind?</span><a href="/contact-us/">Let’s build your next chapter <ArrowUpRight size={20}/></a></footer>
   </section>;
 }

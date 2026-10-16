@@ -52,17 +52,18 @@ export function SelectedCreatoxWork() {
   }, []);
 
   return <section id="work" className="selected-work-gallery" aria-labelledby="selected-work-heading">
+    <div ref={containerRef} className="selected-work-scroll" style={reduced ? undefined : { height: stage.height + distance }}>
+      <div ref={stickyRef} className="selected-work-sticky">
     <motion.header className="selected-work-intro site-gutter" initial="hidden" whileInView="visible" viewport={{ once: true, amount: .2 }} variants={{ hidden: {}, visible: { transition: { staggerChildren: reduced ? 0 : .3 } } }}>
       <motion.div variants={reveal} transition={revealTransition} className="selected-work-eyebrow"><span>/ SELECTED CREATOX WORK</span><a href="#services">DESIGN & DIGITAL SERVICES <ArrowUpRight size={14} aria-hidden="true" /></a></motion.div>
       <div className="selected-work-heading"><motion.h2 variants={reveal} transition={revealTransition} id="selected-work-heading">Good design.<br /><span>Real connections.</span></motion.h2><motion.p variants={reveal} transition={revealTransition}>We blend creativity, strategy and technology to build brands that look premium and perform with purpose.</motion.p></div>
       <motion.p variants={reveal} transition={revealTransition} className="selected-work-hint"><ArrowDown size={14} aria-hidden="true" /> Scroll to explore our work</motion.p>
     </motion.header>
-    <div ref={containerRef} className="selected-work-scroll" style={reduced ? undefined : { height: stage.height + distance }}>
-      <div ref={stickyRef} className="selected-work-sticky">
+
         <div ref={frameRef} className="selected-work-frame">
           <motion.div ref={trackRef} className="selected-work-track" style={{ x: reduced ? 0 : x }}>
             {projects.map((project, index) => <a className="selected-work-card" key={project.id} href={`https://creatoxdesigns.com${project.link}`} onFocus={event => {
-              if (!event.currentTarget.matches(":focus-visible") || reduced || !containerRef.current || !frameRef.current) return;
+              if (window.innerWidth <= 767 || !event.currentTarget.matches(":focus-visible") || reduced || !containerRef.current || !frameRef.current) return;
               const top = containerRef.current.getBoundingClientRect().top + window.scrollY;
               window.scrollTo({ top: top - stage.top + Math.min(index * (event.currentTarget.offsetWidth + (window.innerWidth <= 600 ? 15 : 30)), distance), behavior: "instant" });
             }}>
