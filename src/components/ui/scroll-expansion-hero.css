@@ -23,3 +23,11 @@
 @media(max-width:767px){.creatox-film-sticky{gap:20px;padding-block:36px 16px}.creatox-film-media{width:82%}.creatox-film-copy{flex-direction:column;align-items:flex-start;gap:24px;padding-block:24px 40px}.creatox-film-copy p{font-size:14px}}
 @media(max-height:650px){.creatox-film-sticky{position:relative;gap:12px;padding-block:20px}.creatox-film-scroll{padding-bottom:0}.creatox-film-header h2{font-size:32px;margin-block:10px}}
 @media(prefers-reduced-motion:reduce){.creatox-film-scroll{height:auto;padding-bottom:0}.creatox-film-sticky{position:relative;min-height:0}.creatox-film-hint{display:none}}
+
+/* Phones show the film in normal flow without the desktop scroll runway. */
+@media(max-width:767px){
+  .home-layout .creatox-film-track{height:auto}
+  .home-layout .creatox-film-pin{position:relative;top:auto;height:auto;min-height:0}
+  .home-layout .creatox-film-media{max-width:100%!important;transform:none!important;border-radius:12px!important}
+  .home-layout .creatox-film-hint{display:none}
+}

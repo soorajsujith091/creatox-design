@@ -32,7 +32,9 @@ export function ParallaxComponent({ children }: { children: ReactNode }) {
           { layer: "3", yPercent: mobile ? 8 : 18 },
           { layer: "4", yPercent: mobile ? 3 : 7 },
         ].forEach(({ layer, yPercent }) => {
-          timeline.to(hero.querySelectorAll(`[data-parallax-layer="${layer}"]`), { yPercent, ease: "none" }, 0);
+          const targets = hero.querySelectorAll(`[data-parallax-layer="${layer}"]`);
+          if (targets.length === 0) return;
+          timeline.to(targets, { yPercent, ease: "none" }, 0);
         });
       }
       root.querySelectorAll<HTMLElement>("[data-parallax-card]").forEach((card, index) => {

@@ -88,7 +88,7 @@ export function Navbar() {
 
       // Stagger links
       const links = mobileLinksRef.current?.querySelectorAll(".mobile-link");
-      if (links) {
+      if (links?.length) {
         gsap.fromTo(
           links,
           { x: 60, opacity: 0 },

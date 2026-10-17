@@ -22,6 +22,15 @@ const serviceDetails: Record<string, { tags: string[] }> = {
   "ecommerce": { tags: ["Online stores", "Product pages", "Checkout experiences"] },
 };
 
+const serviceImages: Record<string, { src: string; alt: string; position?: string }> = {
+  "ecommerce": { src: "/images/creatox,ecommerce.jpeg", alt: "Person wearing a VR headset surrounded by blue and orange light trails", position: "50% 40%" },
+  "productions": { src: "/images/expertise/productions-floating-red.png", alt: "Woman floating above a studio floor against a crimson red backdrop", position: "50% 50%" },
+  "branding-design": { src: "/images/download%20(12).jpeg", alt: "Woman in a cream outfit seated among blurred figures in red and grey", position: "50% 52%" },
+  "web-design": { src: "/images/expertise/web-immersive.jpeg", alt: "Person exploring an immersive digital world through a VR headset", position: "50% 40%" },
+  "social-media": { src: "/images/Creatoxx.jpeg", alt: "Close-up of galloping horses kicking up sand" },
+  "ads-campaigns": { src: "/images/expertise/campaign-momentum.jpeg", alt: "Horse bursting through debris, suggesting momentum and breakthrough", position: "60% 47%" },
+};
+
 export function ServicesAccordion() {
   const [page, setPage] = useState(0);
   const reduceMotion = useReducedMotion();
@@ -39,9 +48,10 @@ export function ServicesAccordion() {
     <div className="expertise-service-grid" id="expertise-service-grid">
       {services.map((service, index) => {
         const detail = serviceDetails[service.id];
+        const image = serviceImages[service.id];
         return <article key={service.id} className={`expertise-service-pair ${index % 4 >= 2 ? "expertise-service-pair-reverse" : ""}`} hidden={page === 0 ? index >= 4 : index < 4}>
           <div className="expertise-service-info"><h3>{service.title}</h3><p>{service.description}</p><ServiceCapabilityShapes tags={detail.tags} label={`${service.title} capabilities`} /><Link href={service.link} aria-label={`Explore ${service.title}`} className="expertise-service-link"><ArrowUpRight size={20} aria-hidden="true" /></Link></div>
-          <div className="expertise-service-image">{(page === 0 ? index < 4 : index >= 4) && (service.id === "branding-design" ? <Image src="/images/Creatox%20Horizon_%20A%20Futuristic%20Dreamscape.png" alt="Creatox Horizon, a futuristic dreamscape" fill sizes="(max-width: 600px) 100vw, (max-width: 1000px) 50vw, 25vw" /> : service.id === "web-design" ? <Image src="/images/creatox-creative-studio-hero.png" alt="Designer working in a creative studio illuminated by red light trails" fill sizes="(max-width: 600px) 100vw, (max-width: 1000px) 50vw, 25vw" /> : service.id === "ads-campaigns" ? <Image src="/images/Portal%20Over%20a%20Neon%20Cosmic%20Horizon.png" alt="Neon portal over a cosmic horizon" fill sizes="(max-width: 600px) 100vw, (max-width: 1000px) 50vw, 25vw" /> : service.id === "social-media" ? <Image src="/images/Robotic%20Hands%20and%20Glowing%20Starburst%20Emblem.png" alt="Robotic hands and a glowing starburst emblem" fill sizes="(max-width: 600px) 100vw, (max-width: 1000px) 50vw, 25vw" /> : <ExpertiseSculpture variant={index} label={service.title} />)}</div>
+          <div className="expertise-service-image">{(page === 0 ? index < 4 : index >= 4) && (image ? <Image src={image.src} alt={image.alt} fill style={{ objectPosition: image.position ?? "50% 50%" }} sizes="(max-width: 600px) 100vw, (max-width: 1000px) 50vw, 25vw" /> : <ExpertiseSculpture variant={index} label={service.title} />)}</div>
         </article>;
       })}
     </div>
