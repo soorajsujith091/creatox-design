@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
-import { ArrowUpRight, Asterisk } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import { MagicText } from "@/components/ui/magic-text";
 import dynamic from "next/dynamic";
 const BrandPerspectiveMarquee = dynamic(() => import("@/components/ui/brand-perspective-marquee").then(module => module.BrandPerspectiveMarquee), { ssr: false });
@@ -53,7 +53,12 @@ export function AgencyIntro() {
     <div className="agency-about-art" aria-hidden="true"><motion.video style={{ filter: reduced ? "none" : videoBlur }} ref={backgroundVideo} src="/videos/about-creatox-metallic.mp4" poster="/images/about-chrome-sphere.jpeg" loop muted playsInline preload="metadata" tabIndex={-1} /></div>
     <motion.div className="agency-intro-copy" initial={reduced ? false : { opacity: 0, y: 22 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: .7 }}>
       <span className="agency-intro-label">/ ABOUT CREATOX</span>
-      <h2 id="agency-intro-heading"><Asterisk className="agency-intro-star" aria-hidden="true"/> <MagicText progress={revealProgress} text="We partner with ambitious brands and businesses to build meaningful identities, create better digital experiences, and turn ideas into growth."/></h2>
+      <h2 id="agency-intro-heading"><MagicText progress={revealProgress} text="We believe creativity is a force for good. So we build meaningful brands through strategy, content and design, and help them grow with better digital experiences." highlightedPhrases={["meaningful brands", "strategy, content and design,", "digital experiences."]}/></h2>
+      <div className="agency-about-principles">
+        <article><h3>Creativity with purpose</h3><p>We bring strategy, content and design together to create a positive impact and grow meaningful businesses.</p></article>
+        <article><h3>One team, connected thinking</h3><p>Brand identities, websites and digital marketing, built around your business goals and made to work together.</p></article>
+        <article><h3>Relationships that last</h3><p>Our clients are part of the Creatox family. We work as one team to help their brands grow, connect and stand out.</p></article>
+      </div>
       <a href="#about">Meet Creatox <ArrowUpRight size={15}/></a>
     </motion.div>
   </div>

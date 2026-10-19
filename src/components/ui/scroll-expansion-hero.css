@@ -1,4 +1,4 @@
-.creatox-film{background:#0a0a0a;color:#fff;border-block:1px solid #ffffff15;margin-block:clamp(40px,5vw,88px)}
+.creatox-film{background:#0a0a0a;color:#fff;border-block:1px solid #ffffff15;margin-block:0}
 .creatox-film-scroll{position:relative;height:auto}
 .creatox-film-sticky{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:24px;padding-block:48px 24px}
 .creatox-film-header{text-align:center;max-width:850px}
@@ -31,3 +31,8 @@
   .home-layout .creatox-film-media{max-width:100%!important;transform:none!important;border-radius:12px!important}
   .home-layout .creatox-film-hint{display:none}
 }
+
+/* Keep the shared grid and red glow fixed within Inside Creatox. */
+.creatox-film{position:relative;isolation:isolate;background:#000}
+.creatox-film-scroll,.creatox-film-copy{position:relative;z-index:1}
+.creatox-film-pin{background:transparent}

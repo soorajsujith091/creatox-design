@@ -1,4 +1,10 @@
 /* One fluid content width for every homepage section. */
+.project-image-marquee { background: #0a0a0a; overflow: hidden; padding-top: 40px; }
+.project-image-marquee-header { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; padding-bottom: 28px; }
+.project-image-marquee-label { color: #ff5373; font-size: 11px; letter-spacing: .12em; margin-bottom: 18px; }
+.project-image-marquee h2 { max-width: 780px; font-family: var(--font-heading), sans-serif; font-size: clamp(32px, 4.5vw, 68px); font-weight: 400; letter-spacing: -.04em; line-height: 1.1; }
+@media (max-width: 600px) { .project-image-marquee-header { align-items: flex-start; flex-direction: column; } }
+
 .home-layout {
   --section-gutter: clamp(20px, 4vw, 80px);
   width: 100%;

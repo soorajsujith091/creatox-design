@@ -29,3 +29,7 @@
 /* Dark environment; retain the card's image background. */
 .creatox-cinematic{--color-foreground:#fff;background:#000;color:#fff}
 .creatox-cinematic .cta-wrapper>p{color:#bbb}
+
+/* Creatox dark grid and brand-red glow for the studio section. */
+.creatox-cinematic{--color-foreground:#fff;background:#000;color:#fff}
+.creatox-cinematic .cta-wrapper>p{color:#bbb}

@@ -1,5 +1,6 @@
 "use client";
 
+import { Component as GradientBlurBackground } from "@/components/ui/gradient-blur-bg";
 import React, { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -268,7 +269,7 @@ export function CinematicHero({
       });
 
       scrollTl
-        .to([".hero-text-wrapper", ".bg-grid-theme"], { scale: 1.15, filter: "blur(20px)", opacity: 0.2, ease: "power2.inOut", duration: 2 }, 0)
+        .to(".hero-text-wrapper", { scale: 1.15, filter: "blur(20px)", opacity: 0.2, ease: "power2.inOut", duration: 2 }, 0)
         .to(".main-card", { y: 0, ease: "power3.inOut", duration: 2 }, 0)
         .to(".main-card", { width: "100%", height: "100%", borderRadius: "0px", ease: "power3.inOut", duration: 1.5 })
         .fromTo(".mockup-scroll-wrapper",
@@ -313,7 +314,7 @@ export function CinematicHero({
     >
       <style dangerouslySetInnerHTML={{ __html: INJECTED_STYLES }} />
       <div className="film-grain" aria-hidden="true" />
-      <div className="bg-grid-theme absolute inset-0 z-0 pointer-events-none opacity-50" aria-hidden="true" />
+      <GradientBlurBackground fixed />
 
       {/* BACKGROUND LAYER: Hero Texts */}
       <div className="hero-text-wrapper absolute z-10 flex flex-col items-center justify-center text-center w-screen px-4 will-change-transform transform-style-3d">

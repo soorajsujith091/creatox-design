@@ -1,0 +1,30 @@
+.home-video-hero{background:#050505;color:#f8f7f4;padding:0 clamp(16px,1.85vw,36px) 32px;position:relative}
+.home-video-navigation{position:relative;z-index:20;padding-block:10px}
+.home-video-stage{position:relative;min-height:760px;height:calc(100svh - 125px);max-height:1100px;isolation:isolate}
+.home-video-mask{position:absolute;pointer-events:none}
+.home-video-media{position:absolute;inset:0;clip-path:url(#home-hero-frame);background:#22030c;z-index:-1}
+.home-video-media video{width:100%;height:100%;object-fit:cover;object-position:65% center;opacity:.85}
+.home-video-media::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(5,5,5,.92) 0%,rgba(5,5,5,.78) 28%,rgba(5,5,5,.42) 52%,rgba(5,5,5,.08) 78%,transparent 100%),linear-gradient(0deg,#14020b99,transparent 70%)}
+
+.home-video-copy{padding:clamp(120px,10vw,165px) 4% 130px;max-width:920px}
+.home-video-eyebrow{display:flex;align-items:center;gap:10px;font-size:10px;letter-spacing:.14em;font-weight:600;margin-bottom:24px}
+.home-video-eyebrow>span{width:8px;height:8px;border-radius:50%;background:#e4002b;box-shadow:0 0 20px #e4002b}
+.home-video-copy h1{font-family:var(--font-heading),sans-serif;font-size:clamp(76px,8.8vw,168px);font-weight:700;line-height:.88;letter-spacing:-.055em;text-transform:uppercase;margin:0 0 36px}
+.home-video-copy h1>span{display:block;white-space:nowrap}
+.home-video-copy h1 em{font-style:normal;color:#ff244d}
+.home-video-description{max-width:460px;font-size:clamp(14px,1.05vw,17px);line-height:1.65;color:#e5dfe2}
+.home-video-showreel{display:inline-flex;align-items:center;justify-content:center;gap:15px;background:#f8f7f4;color:#111;border-radius:3px;min-height:70px;padding:20px 35px;margin-top:36px;font-weight:700;font-size:13px;letter-spacing:.12em;text-transform:uppercase}
+.home-video-discover{position:absolute;right:1.1%;top:44%;writing-mode:vertical-rl;display:flex;align-items:center;gap:12px;text-transform:uppercase;font-size:11px;letter-spacing:.12em;font-weight:600}
+.home-video-signature{position:absolute;bottom:1.5%;left:4%;font-family:var(--font-mono),monospace;font-size:10px;line-height:1.5;color:#919191}
+.home-video-signature strong{color:#eee;font-weight:400}
+.home-video-toggle{position:absolute;bottom:2%;right:3%;display:grid;place-items:center;width:44px;height:44px;border:1px solid #ffffff50;border-radius:50%;background:#111}
+.home-video-hero a:focus-visible,.home-video-hero button:focus-visible{outline:3px solid #ff5373;outline-offset:5px}
+.home-video-showreel:hover{background:#e4002b;color:#fff}
+.home-video-dialog{width:min(1100px,94vw);max-height:90svh;margin:auto;border:1px solid #ffffff40;border-radius:12px;background:#080808;padding:48px 12px 12px;color:#fff}
+.home-video-dialog::backdrop{background:#000d;backdrop-filter:blur(8px)}
+.home-video-dialog video{display:block;width:100%;max-height:75svh}
+.home-video-close{position:absolute;right:8px;top:2px;width:44px;height:44px;display:grid;place-items:center}
+@media(min-width:1500px){.home-video-copy{padding-top:145px}.home-video-stage{min-height:840px}}
+@media(max-width:900px){.home-video-stage{min-height:720px}.home-video-copy{padding-top:150px}.home-video-copy h1{font-size:clamp(64px,10vw,100px)}.home-video-description{max-width:400px}}
+@media(max-width:600px){.home-video-hero{padding:0 12px 20px}.home-video-navigation{left:12px;right:12px;padding-block:6px}.home-video-stage{height:auto;min-height:700px}.home-video-media{clip-path:none;border-radius:28px 28px 70px 28px;bottom:65px}.home-video-media video{object-position:60% center}.home-video-copy{padding:125px 24px 120px;max-width:100%}.home-video-eyebrow{font-size:8px;letter-spacing:.07em;margin-bottom:28px}.home-video-copy h1{font-size:clamp(48px,12vw,72px);margin-bottom:28px}.home-video-description{font-size:14px;max-width:340px}.home-video-showreel{min-height:58px;padding:16px 24px;font-size:11px;margin-top:28px}.home-video-discover{top:auto;bottom:80px;right:28px;writing-mode:horizontal-tb;font-size:9px}.home-video-signature{left:12px;bottom:8px;font-size:9px}.home-video-toggle{bottom:5px;right:12px}}
+@media(prefers-reduced-motion:reduce){.home-video-hero *{scroll-behavior:auto}}
