@@ -1,7 +1,7 @@
 "use client";
 
 import { Component as GradientBlurBackground } from "@/components/ui/gradient-blur-bg";
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useLayoutEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { cn } from "@/lib/utils";
@@ -239,7 +239,7 @@ export function CinematicHero({
   },[]);
 
   // 2. Complex Cinematic Scroll Timeline
-  useEffect(() => {
+  useLayoutEffect(() => {
     const isMobile = window.innerWidth < 768;
     if (window.matchMedia("(prefers-reduced-motion: reduce), (max-width: 767px)").matches) return;
 
@@ -306,6 +306,7 @@ export function CinematicHero({
   },[]); 
 
   return (
+    <div className="cinematic-pin-host">
     <div
       ref={containerRef}
       className={cn("creatox-cinematic relative w-full h-screen overflow-hidden flex items-center justify-center font-body antialiased", className)}
@@ -314,7 +315,7 @@ export function CinematicHero({
     >
       <style dangerouslySetInnerHTML={{ __html: INJECTED_STYLES }} />
       <div className="film-grain" aria-hidden="true" />
-      <GradientBlurBackground fixed />
+      <GradientBlurBackground fixed className="cinematic-background" />
 
       {/* BACKGROUND LAYER: Hero Texts */}
       <div className="hero-text-wrapper absolute z-10 flex flex-col items-center justify-center text-center w-screen px-4 will-change-transform transform-style-3d">
@@ -435,6 +436,7 @@ export function CinematicHero({
           </div>
         </div>
       </div>
+    </div>
     </div>
   );
 }

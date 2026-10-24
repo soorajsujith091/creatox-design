@@ -12,6 +12,16 @@
 @media(prefers-reduced-motion:reduce){.client-story-preview{transition:none}.client-story-card:hover .client-story-preview,.client-story-card:focus-visible .client-story-preview{transform:none}}
 .client-story-slide{position:relative}.client-story-sound{position:absolute;top:28px;right:18px;z-index:1;display:grid;place-items:center;width:44px;height:44px;border:1px solid #ffffff66;border-radius:50%;background:#000b;color:#fff}.client-story-sound:hover{background:#e4002b}.client-story-top{right:76px}
 /* A small desktop collection is a centered row; larger collections keep the carousel. */
+@media(max-width:640px){
+  .client-story-slide{flex-basis:64%}
+  .client-story-card{height:clamp(300px,52svh,380px);border-radius:16px}
+  .client-story-top{top:16px;left:14px;right:64px}
+  .client-story-category{font-size:8px;padding:5px 7px}
+  .client-story-sound{top:22px;right:12px}
+  .client-story-bottom{bottom:18px;left:16px;right:16px}
+  .client-story-quote{font-size:20px;margin-bottom:8px}
+  .client-story-action{gap:7px;font-size:10px;padding:10px 12px;margin-top:10px}
+}
 @media(min-width:1001px){
   .client-stories-static-desktop .client-stories-carousel{max-width:1100px;padding-inline:24px}
   .client-stories-static-desktop .client-stories-viewport{mask-image:none}

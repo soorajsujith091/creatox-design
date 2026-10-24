@@ -11,6 +11,13 @@
   min-width: 0;
 }
 
+/* Hold the services' final screen while the brands panel scrolls over it. */
+.services-brands-stack{position:relative;isolation:isolate}
+.services-brands-stack>.expertise-showcase{position:sticky;top:min(0px,calc(100svh - var(--services-height,100svh)));z-index:0}
+.services-brands-stack>.agency-intro-brands{position:relative;z-index:1}
+.services-brands-stack>.selected-work-gallery{position:relative;z-index:1}
+@media(prefers-reduced-motion:reduce){.services-brands-stack>.expertise-showcase{position:relative;top:auto}}
+
 .home-layout .site-content {
   width: 100%;
   max-width: none;

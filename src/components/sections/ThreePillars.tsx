@@ -48,7 +48,7 @@ const disciplines = [
 export function ThreePillars() {
   const reduced = useReducedMotion();
   return <section className="expertise-columns" aria-label="What We Do">
-    <GradientBlurBackground fixed />
+    <GradientBlurBackground fixed className="expertise-columns-background" />
     <header className="expertise-columns-label"><SectionLabel text="WHAT WE DO"/></header>
     <div className="expertise-columns-grid">{disciplines.map((discipline, index) => <motion.article key={discipline.title} className={`expertise-column expertise-column-${index}`} initial={reduced ? false : { opacity: 0, y: 25 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: .1 }} transition={{ duration: reduced ? 0 : .6 }}>
       <div className="expertise-column-heading">

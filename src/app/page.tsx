@@ -6,8 +6,7 @@ import { SelectedCreatoxWork } from "@/components/sections/SelectedCreatoxWork";
 import { ProjectImageMarquee } from "@/components/sections/ProjectImageMarquee";
 import { OurStory } from "@/components/sections/OurStory";
 import { Stats } from "@/components/sections/Stats";
-import { GrandMalabarExpo } from "@/components/sections/GrandMalabarExpo";
-import { MalabarJalolsavam } from "@/components/sections/MalabarJalolsavam";
+import TimelineBlock01 from "@/components/ui/timeline-01";
 import { Testimonials } from "@/components/sections/Testimonials";
 import { BlogGrid } from "@/components/sections/BlogGrid";
 import { ContactMini } from "@/components/sections/ContactMini";
@@ -23,15 +22,16 @@ export default function Home() {
       <HomeVideoHero />
       <div id="home-about"><ReferenceHome showHero={false} showNavigation={false}><ThreePillars /></ReferenceHome></div>
       <AgencyFilm />
-      <div id="services"><ServicesAccordion /></div>
-      <BrandsWorkedWith />
-      <SelectedCreatoxWork />
+      <div id="services" className="services-brands-stack">
+        <ServicesAccordion />
+        <BrandsWorkedWith />
+        <SelectedCreatoxWork />
+      </div>
       <ProjectImageMarquee />
       <div id="about"><OurStory /></div>
       <CinematicHero aria-label="PODE CUBE, our content production studio" />
       <Stats />
-      <GrandMalabarExpo />
-      <MalabarJalolsavam />
+      <TimelineBlock01 />
       <div id="testimonials"><Testimonials /></div>
       <BlogGrid />
       <div id="contact"><ContactMini /></div>

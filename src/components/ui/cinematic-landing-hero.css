@@ -33,3 +33,16 @@
 /* Creatox dark grid and brand-red glow for the studio section. */
 .creatox-cinematic{--color-foreground:#fff;background:#000;color:#fff}
 .creatox-cinematic .cta-wrapper>p{color:#bbb}
+
+@media(max-width:767px){
+  .creatox-cinematic{
+    padding:72px 24px;
+    background:#000;
+  }
+  .creatox-cinematic .cinematic-background>div{
+    position:absolute!important;
+    inset:0;
+    height:100%!important;
+  }
+  .creatox-cinematic .hero-text-wrapper{padding-block:16px}
+}

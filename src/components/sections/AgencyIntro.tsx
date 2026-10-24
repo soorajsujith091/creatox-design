@@ -38,7 +38,9 @@ export function AgencyIntro() {
     return () => { observer.disconnect(); document.removeEventListener("visibilitychange", update); video.pause(); };
   }, [reduced]);
   const { scrollYProgress } = useScroll({ target: about, offset: ["start start", "end end"] });
-  const revealProgress = useTransform(scrollYProgress, [0, .75], [0, 1]);
+  // Begin revealing while the section enters the viewport, before it sticks.
+  const { scrollYProgress: textScrollProgress } = useScroll({ target: about, offset: ["start 0.9", "end end"] });
+  const revealProgress = useTransform(textScrollProgress, [0, .75], [0, 1]);
   const videoBlur = useTransform(scrollYProgress, [0, .15, .65], ["blur(6px)", "blur(3px)", "blur(0px)"]);
   return <section ref={about} className={`agency-about-scroll${reduced ? " agency-about-static" : ""}`} aria-labelledby="agency-intro-heading">
   <div className="agency-intro agency-intro-about" onPointerMove={event => {

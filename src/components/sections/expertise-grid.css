@@ -19,14 +19,6 @@
 .expertise-service-info{position:relative;padding:24px 22px 72px;min-width:0}.expertise-service-info h3{font-family:var(--font-heading),sans-serif;font-size:clamp(16px,1.35vw,24px);font-weight:600;line-height:1.15;text-transform:uppercase;margin-bottom:14px}
 .expertise-service-info ul{display:flex;flex-wrap:wrap;gap:5px;list-style:none}.expertise-service-info li{border:1px solid #666;border-radius:20px;padding:4px 9px;color:#ddd;font-size:10px;line-height:1.4}
 .expertise-service-info p{color:#aaa;font-size:12px;line-height:1.6;margin-top:16px}
-.service-capability-shapes{position:relative;height:112px;flex:1 0 112px;min-width:0;overflow:hidden;margin-top:auto}
-.service-capability-layer{position:absolute;inset:8px 54px 6px 0;touch-action:pan-y}
-.service-capability-pill{position:absolute;top:0;left:0;display:flex;align-items:center;justify-content:center;white-space:nowrap;border:1px solid #666;border-radius:999px;padding:5px 10px;color:#ddd;background:#1b1b1b;font-size:10px;line-height:1.4;cursor:grab;user-select:none;will-change:transform}
-.service-capability-pill:nth-child(2n){background:#e4002b;border-color:#e4002b;color:#fff}
-.service-capability-layer[data-dragging] .service-capability-pill{cursor:grabbing}
-.service-capability-shapes[data-static]{height:auto;min-height:54px;flex:1 0 auto;padding:16px 54px 0 0;display:flex;align-items:flex-end}
-.service-capability-shapes[data-static] .service-capability-layer{position:relative;display:flex;flex-wrap:wrap;gap:5px}
-.service-capability-shapes[data-static] .service-capability-pill{position:relative;visibility:visible!important;transform:none!important;cursor:default;will-change:auto}
 .expertise-service-link{position:absolute;right:20px;bottom:18px;width:44px;height:44px;border-radius:50%;background:#e4002b;display:grid;place-items:center;transition:background .2s,transform .2s}.expertise-service-link:hover{background:#b8001f;transform:rotate(8deg)}
 .expertise-service-image{position:relative;min-width:0;min-height:240px;overflow:hidden;background:#191919}.expertise-service-image img{object-fit:cover;transition:transform .5s}.expertise-service-pair:hover .expertise-service-image img{transform:scale(1.04)}
 .expertise-service-pair-reverse .expertise-service-image{grid-column:1;grid-row:1}.expertise-service-pair-reverse .expertise-service-info{grid-column:2;grid-row:1}
@@ -36,7 +28,11 @@
 @media(max-width:600px){.expertise-showcase-header{align-items:flex-start;gap:16px;flex-wrap:wrap}.expertise-showcase-header p{font-size:14px}.expertise-showcase-controls{margin-left:auto}.expertise-service-pair{display:flex;flex-direction:column}.expertise-service-info{padding:24px 24px 76px}.expertise-service-info h3{font-size:22px}.expertise-service-info li{font-size:11px}.expertise-service-info p{font-size:14px}.expertise-service-image{min-height:220px;aspect-ratio:1.5}.expertise-showcase-footer{flex-direction:column;align-items:flex-start;gap:6px}}
 @media(prefers-reduced-motion:reduce){.expertise-service-image img,.expertise-service-link{transition:none}.expertise-service-pair:hover .expertise-service-image img,.expertise-service-link:hover{transform:none}}
 
-/* Keep the capability pile on the card floor, beside its project link. */
+/* Keep service capabilities readable above the project link. */
 .expertise-service-info{display:flex;flex-direction:column;padding-bottom:18px}
 .expertise-service-info p{margin-top:0;margin-bottom:12px}
 
+
+.expertise-service-tags{margin-top:0;padding:0 54px 0 0}
+.expertise-service-tags li{background:#fff;border-color:#fff;color:#111}
+.expertise-service-tags li:nth-child(even){background:#e4002b;border-color:#e4002b;color:#fff}

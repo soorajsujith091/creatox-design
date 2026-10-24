@@ -3,7 +3,7 @@
 import { useEffect, useId, useRef, useState, type ReactNode } from "react";
 import { motion, useInView, useReducedMotion, useScroll, useTransform } from "framer-motion";
 import { ArrowDown, Pause, Play } from "lucide-react";
-import { Component as GradientBlurBackground } from "@/components/ui/gradient-blur-bg";
+import { Component as BrandGlowBackground } from "@/components/ui/background-components";
 import "./scroll-expansion-hero.css";
 
 interface ScrollExpandMediaProps {
@@ -54,7 +54,7 @@ export default function ScrollExpandMedia({ mediaSrc, posterSrc, title, eyebrow,
   }, [inView, playbackEnabled]);
 
   return <div className="creatox-film">
-    <GradientBlurBackground fixed />
+    <BrandGlowBackground className="pointer-events-none absolute inset-0 min-h-0" />
     <section ref={sectionRef} className="creatox-film-scroll" aria-labelledby={titleId}>
       <div className="creatox-film-sticky site-gutter">
         <motion.header className="creatox-film-header" initial="hidden" whileInView="visible" viewport={{ once: true, amount: .2 }} variants={{ hidden: {}, visible: { transition: { staggerChildren: reduced ? 0 : .3 } } }}>

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import dynamic from "next/dynamic";
 import Link from "next/link";
@@ -9,7 +9,6 @@ import { ArrowLeft, ArrowRight, ArrowUpRight } from "lucide-react";
 import { services } from "@/data/services";
 import { SectionLabel } from "../SectionLabel";
 import "./expertise-grid.css";
-import { ServiceCapabilityShapes } from "../ui/service-capability-shapes";
 
 const ExpertiseSculpture = dynamic(() => import("../ui/expertise-sculpture").then(module => module.ExpertiseSculpture), { ssr: false });
 
@@ -32,11 +31,21 @@ const serviceImages: Record<string, { src: string; alt: string; position?: strin
 };
 
 export function ServicesAccordion() {
+  const sectionRef = useRef<HTMLElement>(null);
+  useEffect(() => {
+    const section = sectionRef.current;
+    if (!section) return;
+    const measure = () => section.style.setProperty("--services-height", `${section.offsetHeight}px`);
+    const observer = new ResizeObserver(measure);
+    observer.observe(section);
+    measure();
+    return () => observer.disconnect();
+  }, []);
   const [page, setPage] = useState(0);
   const reduceMotion = useReducedMotion();
   const reveal = { hidden: { opacity: 0, y: reduceMotion ? 0 : 32 }, visible: { opacity: 1, y: 0 } };
   const revealTransition = { duration: reduceMotion ? 0 : 1.3, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] };
-  return <section className="expertise-showcase site-gutter" aria-labelledby="expertise-heading">
+  return <section ref={sectionRef} className="expertise-showcase site-gutter" aria-labelledby="expertise-heading">
     <header className="expertise-showcase-header">
       <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, amount: .2 }} variants={{ hidden: {}, visible: { transition: { staggerChildren: reduceMotion ? 0 : .3 } } }}>
         <motion.div variants={reveal} transition={revealTransition}><SectionLabel text="OUR EXPERTISE" /></motion.div>
@@ -50,7 +59,7 @@ export function ServicesAccordion() {
         const detail = serviceDetails[service.id];
         const image = serviceImages[service.id];
         return <article key={service.id} className={`expertise-service-pair ${index % 4 >= 2 ? "expertise-service-pair-reverse" : ""}`} hidden={page === 0 ? index >= 4 : index < 4}>
-          <div className="expertise-service-info"><h3>{service.title}</h3><p>{service.description}</p><ServiceCapabilityShapes tags={detail.tags} label={`${service.title} capabilities`} /><Link href={service.link} aria-label={`Explore ${service.title}`} className="expertise-service-link"><ArrowUpRight size={20} aria-hidden="true" /></Link></div>
+          <div className="expertise-service-info"><h3>{service.title}</h3><p>{service.description}</p><ul className="expertise-service-tags" aria-label={`${service.title} capabilities`}>{detail.tags.map(tag => <li key={tag}>{tag}</li>)}</ul><Link href={service.link} aria-label={`Explore ${service.title}`} className="expertise-service-link"><ArrowUpRight size={20} aria-hidden="true" /></Link></div>
           <div className="expertise-service-image">{(page === 0 ? index < 4 : index >= 4) && (image ? <Image src={image.src} alt={image.alt} fill style={{ objectPosition: image.position ?? "50% 50%" }} sizes="(max-width: 600px) 100vw, (max-width: 1000px) 50vw, 25vw" /> : <ExpertiseSculpture variant={index} label={service.title} />)}</div>
         </article>;
       })}
