@@ -17,11 +17,21 @@ export function InnerShell({ children }: { children: ReactNode }) {
   </div>;
 }
 
-export function PageHero({ eyebrow, title, description, image, imageAlt = "", compact = false }: { eyebrow: string; title: string; description: string; image?: string; imageAlt?: string; compact?: boolean }) {
+const heroBackgrounds: Record<string, string> = {
+  "Our expertise": "/images/creatox-immersive-brand-studio-hero.png",
+  "Our clients": "/images/creatox-creative-studio-hero.png",
+  "Life at Creatox": "/images/WhatsApp%20Image%202026-10-12%20at%2012.56.42%20PM.jpeg",
+  "Get in touch": "/images/creatox-our-story.png",
+  "Selected work": "/images/Robotic%20Hands%20and%20Glowing%20Starburst%20Emblem.png",
+  "Case studies": "/images/creatox-immersive-brand-studio-hero.png",
+};
+
+export function PageHero({ eyebrow, title, description, image, compact = false }: { eyebrow: string; title: string; description: string; image?: string; imageAlt?: string; compact?: boolean }) {
+  const background = image || heroBackgrounds[eyebrow] || "/images/creatox-creative-studio-hero.png";
   return <section className={`ip-hero ${compact ? "ip-hero-compact" : ""}`}>
+    <div className="ip-hero-background" aria-hidden="true"><Image src={background} alt="" fill priority sizes="100vw" unoptimized={background.endsWith(".svg") || background.startsWith("https://")} /></div>
     <nav className="ip-breadcrumb" aria-label="Breadcrumb"><Link href="/">Home</Link><ArrowRight size={12} aria-hidden="true" /><span aria-current="page">{eyebrow}</span></nav>
     <Reveal><span className="ip-eyebrow">[ {eyebrow} ]</span><h1>{title}</h1><p className="ip-lead">{description}</p></Reveal>
-    {image && <Reveal className="ip-hero-image"><Image src={image} alt={imageAlt} fill priority sizes="(max-width: 767px) 100vw, 90vw" unoptimized={image.endsWith(".svg")} /></Reveal>}
   </section>;
 }
 

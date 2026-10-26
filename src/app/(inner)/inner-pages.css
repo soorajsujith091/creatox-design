@@ -10,7 +10,13 @@ body:has(.inner-site) .creatox-custom-cursor,body:has(.inner-site) .cursor-dot,b
 .ip-nav nav>a{display:flex;align-items:center;gap:8px;min-height:44px}
 .ip-nav-cta{background:#e4002b;border-radius:30px;padding:8px 20px}
 .ip-section,.ip-hero{padding:clamp(56px,7vw,112px) clamp(20px,4vw,80px)}
-.ip-hero{padding-top:32px;background:radial-gradient(ellipse at 90% 0,#e4002b12,transparent 55%)}
+.ip-hero{position:relative;isolation:isolate;overflow:hidden;min-height:560px;padding-top:32px;background:#0a0a0a;display:flex;flex-direction:column;justify-content:center}
+.ip-hero-background{position:absolute;inset:0;z-index:-2;pointer-events:none}
+.ip-hero-background img{object-fit:cover;object-position:center}
+.ip-hero::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background:linear-gradient(90deg,rgba(10,10,10,.92),rgba(10,10,10,.78) 55%,rgba(10,10,10,.48)),linear-gradient(0deg,#0a0a0a,transparent 45%)}
+.ip-hero .ip-breadcrumb{color:#ddd}
+.ip-hero .ip-eyebrow{color:#ff9aaf}
+.ip-hero .ip-lead{color:#eee}
 .ip-breadcrumb{display:flex;align-items:center;gap:10px;color:#888;font-size:11px;margin-bottom:60px}
 .ip-breadcrumb a:hover{color:#fff}
 .ip-eyebrow{display:block;color:#ff6685;letter-spacing:.12em;font:10px var(--font-mono),monospace;text-transform:uppercase;margin-bottom:24px}
@@ -18,7 +24,8 @@ body:has(.inner-site) .creatox-custom-cursor,body:has(.inner-site) .cursor-dot,b
 .ip-lead{color:#b6b6b6;max-width:710px;font-size:clamp(16px,1.5vw,21px);line-height:1.7;margin-top:30px}
 .ip-hero-image{height:clamp(280px,44vw,640px);position:relative;border-radius:24px;overflow:hidden;margin-top:56px;background:#161616}
 .ip-hero-image img{object-fit:cover}
-.ip-hero-compact{padding-bottom:48px}
+.ip-hero-compact{padding-bottom:64px;min-height:500px}
+@media(max-width:767px){.ip-hero,.ip-hero-compact{min-height:460px}.ip-hero::before{background:linear-gradient(90deg,#0a0a0ae8,#0a0a0abf),linear-gradient(0deg,#0a0a0a,transparent 55%)}}
 .ip-section{border-top:1px solid #ffffff15}
 .ip-section-intro{display:flex;align-items:flex-end;justify-content:space-between;gap:64px;margin-bottom:48px}
 .ip-section h2,.ip-section-intro h2{font:500 clamp(32px,4vw,64px)/1.08 var(--font-heading),sans-serif;letter-spacing:-.04em;max-width:800px;white-space:pre-line}

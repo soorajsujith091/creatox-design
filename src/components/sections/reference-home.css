@@ -78,3 +78,6 @@ html.lenis,html.lenis body{height:auto}
 .ref-notched-card .bg-secondary{background:#1a1a1a;color:#ddd}.ref-notched-card .text-secondary-foreground{color:#ddd}
 .ref-trust-footer{border-color:#303030}.ref-trust-footer a{color:#fff}
 .ref-dialog{background:#111;color:#fff;border-color:#333}.ref-dialog p{color:#bbb}
+
+/* Keep the About hero copy readable over its photographic background. */
+.inner-site .ref-hero:has(.ref-creative-background)::after{background:linear-gradient(90deg,#050408d9,#05040899),linear-gradient(180deg,transparent 35%,#0a0a0a 100%)}

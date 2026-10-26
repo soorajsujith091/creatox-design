@@ -1,7 +1,6 @@
 "use client";
 
 import { useRef } from "react";
-import Image from "next/image";
 import { ArrowDown, Play, X } from "lucide-react";
 import { Header } from "@/components/ui/header-2";
 import "./home-video-hero.css";
@@ -17,7 +16,14 @@ export function HomeVideoHero() {
       <div className="home-video-stage">
         <svg className="home-video-mask" width="0" height="0" aria-hidden="true"><defs><clipPath id="home-hero-frame" clipPathUnits="objectBoundingBox"><path d="M .025,0 H .975 Q 1,0 1,.05 V .29 C 1,.32 .96,.34 .96,.38 V .69 C .96,.73 1,.75 1,.79 V .86 Q 1,.91 .975,.91 H .85 C .83,.91 .825,1 .805,1 H .22 C .20,1 .195,.91 .175,.91 H .025 Q 0,.91 0,.86 V .05 Q 0,0 .025,0 Z" /></clipPath></defs></svg>
         <div className="home-video-media" aria-hidden="true">
-          <Image src="/images/Galloping%20Through%20Desert%20Dust.png" alt="" fill priority sizes="100vw" quality={85} style={{ objectFit: "cover", objectPosition: "62% center" }} />
+          <video
+            src="/videos/magnific_video-prompt-169use-the-provided-reference-image-a_kling_720p_16-9_24fps_88569.mp4"
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="auto"
+          />
         </div>
         <div className="home-video-copy">
           <p className="home-video-eyebrow"><span /> CREATOX DESIGNS · KANNUR, KERALA</p>
