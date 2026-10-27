@@ -1,5 +1,7 @@
 import { ReferenceHome } from "@/components/sections/ReferenceHome";
 import { AboutStudioRobot } from "./about-studio-robot";
+import Team01 from "@/components/ui/team-01";
+import AgencyHistory from "@/components/ui/agency-history";
 import { WorksWheelSection } from "@/components/sections/WorksWheelSection";
 import Image from "next/image";
 import Link from "next/link";
@@ -7,7 +9,7 @@ import { ArrowUpRight } from "lucide-react";
 import { PageHero, SectionIntro } from "./shell";
 import { ContentGrid, EnquiryForm, MagneticLink, Reveal } from "./interactions";
 import { articles, companyPages, innerServices, JsonLd, projects, siteUrl, sourcePages } from "@/lib/inner-content";
-import { agencyHistory, agencyValues } from "@/data/inner-services";
+import { agencyValues } from "@/data/inner-services";
 import { companyInfo } from "@/data/stats";
 
 const teamImage = "/images/WhatsApp%20Image%202026-10-12%20at%2012.56.42%20PM.jpeg";
@@ -36,7 +38,7 @@ export function AboutPage() {
   return <><ReferenceHome heroOnly showNavigation={false} />
     <section id="about-story" className="ip-section"><SectionIntro label="Our story" title="More than visibility. A voice."><p>We began as storytellers, strategists and dreamers, turning ideas into impact and strategies into growth. Every campaign brings together insights, creativity and a clear purpose.</p><p>Today, we are a digital agency helping businesses build immersive, engaging experiences and lasting connections.</p></SectionIntro><div className="ip-metrics"><div><strong>1000+</strong><span>Projects delivered</span></div><div><strong>6+</strong><span>Years of experience</span></div><div><strong>22+</strong><span>Professionals</span></div></div><div className="ip-feature-grid"><article className="ip-feature"><h3>Our mission</h3><p>Help businesses build exceptional brands and achieve their marketing goals through a professional, collaborative team.</p></article><article className="ip-feature"><h3>Our vision</h3><p>Support client growth through effective cost management, stronger revenue and customer satisfaction.</p></article></div></section>
     <AboutStudioRobot />
-    <section className="ip-section"><SectionIntro label="Our history" title="Small beginnings. Shared ambition." /><div className="ip-timeline">{agencyHistory.map(item=><article key={item.year}><strong>{item.year}</strong><h3>{item.title}</h3><p>{item.description}</p></article>)}</div></section>
+    <AgencyHistory />
     <section className="ip-section"><SectionIntro label="What drives us" title="Built on a few good principles." /><div className="ip-feature-grid">{agencyValues.map(value=><article key={value.title} className="ip-feature"><h3>{value.title}</h3><p>{value.description}</p></article>)}</div></section>
     <section className="ip-section"><SectionIntro label="Get to know us" title="There’s more to the story." /><div className="ip-feature-grid">{[{title:"Our team",href:"/our-team/",description:"Meet the creative people behind our work."},{title:"Life at Creatox",href:"/lifecreatox/",description:"Learning, building and enjoying the journey together."},{title:"Our clients",href:"/our-clients/",description:"Relationships built around a shared purpose."},{title:"Careers",href:"/career/",description:"Bring your ideas and grow with us."}].map(item=><article className="ip-feature" key={item.title}><h3>{item.title}</h3><p>{item.description}</p><Link href={item.href}>Take a look<ArrowUpRight size={16}/></Link></article>)}</div></section></>;
 }
@@ -47,7 +49,8 @@ export function ClientsPage() {
 export function TeamPage() {
   const source = sourcePages.find(page=>page.slug==="our-team")!;
   const names = source.blocks.filter(block=>block.type==="heading").slice(1,12).map(block=>block.text);
-  return <><PageHero eyebrow="Our team" title={companyPages["our-team"].title} description={companyPages["our-team"].description} image={teamImage} imageAlt="Creatox team together in Kannur" /><section className="ip-section"><SectionIntro label="Our people" title="The minds behind the making." /><div className="ip-card-grid">{names.map((name,index)=><Reveal key={name}><article className="ip-feature"><div style={{position:"relative",aspectRatio:"1",background:"#181818",borderRadius:14,overflow:"hidden"}}>{source.images[index] && <Image src={source.images[index]} alt={name} fill sizes="(max-width: 767px) 100vw, 33vw" unoptimized style={{objectFit:"contain"}} />}</div><h3>{name}</h3>{index===0 && <p>Founder & CEO</p>}</article></Reveal>)}</div></section></>;
+  const members = names.map((name, index) => ({ name, image: source.images[index], role: index === 0 ? "Founder & CEO" : undefined }));
+  return <><PageHero eyebrow="Our team" title={companyPages["our-team"].title} description={companyPages["our-team"].description} image={teamImage} imageAlt="Creatox team together in Kannur" /><Team01 members={members} /></>;
 }
 export function LifePage() {
   const source = sourcePages.find(page=>page.slug==="lifecreatox")!;

@@ -86,20 +86,15 @@ export const companyInfo = {
 };
 
 export const footerServices = [
-  { name: "Branding & Design", link: "/service/branding-and-design/" },
-  { name: "Creative Web Design", link: "/service/creative-branding/" },
-  {
-    name: "Social Media Management",
-    link: "/service/social-media-management/",
-  },
+  { name: "Social Media Management", link: "/service/social-media-management/" },
   { name: "Ads & Campaigns", link: "/service/ads-and-campaigns/" },
   { name: "SEO", link: "/service/seo/" },
-  {
-    name: "E-commerce Development",
-    link: "/service/e-commerce-development/",
-  },
+  { name: "Branding & Design", link: "/service/branding-and-design/" },
+  { name: "Creative Web Design", link: "/service/creative-branding/" },
   { name: "Productions", link: "/service/productions/" },
+  { name: "E-commerce Development", link: "/service/e-commerce-development/" },
   { name: "Web & Mobile Apps", link: "/service/web-and-mobile-apps/" },
+  { name: "Custom Software Development", link: "/service/custom-software-development/" },
 ];
 
 export const footerCompany = [

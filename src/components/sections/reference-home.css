@@ -81,3 +81,16 @@ html.lenis,html.lenis body{height:auto}
 
 /* Keep the About hero copy readable over its photographic background. */
 .inner-site .ref-hero:has(.ref-creative-background)::after{background:linear-gradient(90deg,#050408d9,#05040899),linear-gradient(180deg,transparent 35%,#0a0a0a 100%)}
+
+/* Compact spacing for the About Us hero. */
+.inner-site .ref-hero{aspect-ratio:auto;min-height:0;padding-block:32px}
+.inner-site .ref-hero .ref-title{margin-top:24px}
+.inner-site .ref-hero .ref-rating{position:static;margin-top:20px}
+.inner-site .ref-hero .ref-hero-middle{margin-top:28px}
+.inner-site .ref-hero .ref-hero-bottom{padding-top:28px}
+@media(max-width:640px){
+  .inner-site .ref-hero{padding-block:24px}
+  .inner-site .ref-hero .ref-title{margin-top:16px}
+  .inner-site .ref-hero .ref-hero-middle{margin-top:20px}
+  .inner-site .ref-hero .ref-hero-bottom{padding-top:24px}
+}

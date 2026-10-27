@@ -1,0 +1,41 @@
+.agency-history{position:relative;background:#0a0a0a;color:#f5f5f5;border-top:1px solid #ffffff15}
+.agency-history-sticky{padding:clamp(40px,5vw,72px) 0}
+.agency-history-header{display:flex;align-items:center;justify-content:space-between;gap:20px;padding-inline:clamp(20px,4vw,80px);margin-bottom:40px}
+.agency-history-header p{font-family:var(--font-mono),monospace;color:#999;font-size:11px}.agency-history-header p span{color:#e4002b;margin-inline:12px}
+.agency-history-viewport{overflow-x:auto;overflow-y:hidden;scrollbar-color:#e4002b #191919;scrollbar-width:thin}
+.agency-history-viewport:focus-visible{outline:2px solid #ff6b87;outline-offset:-4px}
+.agency-history-track{display:flex;align-items:center;gap:64px;width:max-content;padding:8px clamp(20px,4vw,80px) 24px;will-change:transform}
+.agency-history-intro{width:340px;flex-shrink:0}
+.agency-history-image{position:relative;height:260px;border-radius:16px;overflow:hidden;background:#171717}.agency-history-image img{object-fit:cover}
+.agency-history-intro h2{font-family:var(--font-heading),sans-serif;font-size:38px;font-weight:500;line-height:1.08;letter-spacing:-.04em;margin-top:24px}.agency-history-intro h2 span{color:#999}
+.agency-history-milestones{position:relative;display:flex;height:440px;list-style:none;padding:0;margin:0}
+.agency-history-rail{position:absolute;top:50%;height:1px;left:0;right:0;background:#ffffff25}
+.agency-history-progress{height:100%;width:100%;background:#e4002b;transform-origin:left}
+.agency-history-item{position:relative;width:300px;flex-shrink:0;padding-inline:24px}
+.agency-history-copy{position:absolute;left:24px;right:32px}
+.agency-history-item.is-top .agency-history-copy{top:0}
+.agency-history-item.is-bottom .agency-history-copy{top:calc(50% + 48px)}
+.agency-history-year{font-family:var(--font-heading),sans-serif;color:#ff5373;font-size:40px;line-height:1;letter-spacing:-.04em}
+.agency-history-copy h3{font-family:var(--font-heading),sans-serif;font-size:22px;font-weight:500;line-height:1.15;margin:12px 0}
+.agency-history-copy p{font-size:14px;line-height:1.65;color:#aaa}
+.agency-history-stem{position:absolute;left:0;width:1px;height:calc(50% - 16px);background:#e4002b80}
+.is-top .agency-history-stem{top:16px}.is-bottom .agency-history-stem{top:50%}
+.agency-history-dot{position:absolute;left:-5px;top:calc(50% - 5px);width:11px;height:11px;background:#e4002b;border-radius:50%;box-shadow:0 0 0 5px #e4002b15}
+.agency-history-animated .agency-history-sticky{position:sticky;top:0;height:100svh;display:flex;flex-direction:column;justify-content:center}
+.agency-history-animated .agency-history-viewport{overflow:hidden}
+@media(max-width:767px){
+  .agency-history-header{align-items:flex-start;flex-direction:column;margin-bottom:28px}
+  .agency-history-track{display:block;width:auto;padding-bottom:0;will-change:auto}
+  .agency-history-intro{width:100%;max-width:520px;margin-bottom:40px}
+  .agency-history-image{height:auto;aspect-ratio:1.35}
+  .agency-history-intro h2{font-size:32px}
+  .agency-history-milestones{height:auto;display:block;margin-left:6px}
+  .agency-history-rail{left:0;top:0;bottom:0;width:1px;height:auto;right:auto}
+  .agency-history-item{width:auto;padding:0 0 36px 28px}
+  .agency-history-item:last-child{padding-bottom:0}
+  .agency-history-item .agency-history-copy{position:static}
+  .agency-history-stem{display:none}
+  .agency-history-dot{top:12px}
+  .agency-history-year{font-size:34px}
+}
+@media(prefers-reduced-motion:reduce){.agency-history-track{will-change:auto}}

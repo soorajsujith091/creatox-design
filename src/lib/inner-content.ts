@@ -9,7 +9,7 @@ export { sourcePages, articles, projects, innerServices };
 export const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || "https://creatoxdesigns.com").replace(/\/$/, "");
 export const companyPages: Record<string, { title: string; description: string }> = {
   "about-us": { title: "Creative at heart. Connected by purpose.", description: "Meet Creatox, the Kannur team bringing branding, design, web development and digital marketing together since 2019." },
-  services: { title: "Good ideas. Thoughtfully built.", description: "Explore Creatox’s branding, web design, digital marketing, production and development services in Kannur, Kerala." },
+  services: { title: "Digital marketing. Built for growth.", description: "Grow your brand with social media management, digital campaigns and SEO, supported by branding, web design and software development in Kannur, Kerala." },
   "our-clients": { title: "Great work starts with great relationships.", description: "Meet the businesses and brands that work with Creatox for creative, strategic and technology-driven solutions." },
   "our-team": { title: "Different talents. One creative purpose.", description: "Meet the people behind Creatox’s design, development and digital marketing work." },
   lifecreatox: { title: "The people. The process. The good moments.", description: "Life at Creatox means learning continuously, creating boldly and growing together in a supportive environment." },

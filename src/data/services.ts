@@ -8,52 +8,80 @@ export interface Service {
 
 export const services: Service[] = [
   {
-    id: "branding-design",
-    number: "01",
-    title: "Branding & Design",
-    description:
-      "We target your audience's needs and emotions to transform your business into a recognisable brand.",
-    link: "/service/branding-and-design/",
-  },
-  {
     id: "social-media",
-    number: "02",
+    number: "01",
     title: "Social Media Management",
     description:
       "Result-oriented services that amplify your reach with years of proven social media experience.",
     link: "/service/social-media-management/",
   },
   {
-    id: "web-design",
-    number: "03",
-    title: "Creative Web Design",
-    description:
-      "Functional, user-friendly and beautiful websites. Every page is crafted with purpose.",
-    link: "/service/creative-branding/",
-  },
-  {
     id: "ads-campaigns",
-    number: "04",
+    number: "02",
     title: "Ads & Campaigns",
     description:
       "Facebook, Instagram, and Google ads that improve your online presence and actually convert.",
     link: "/service/ads-and-campaigns/",
   },
   {
-    id: "productions",
+    id: "seo",
+    number: "03",
+    title: "Search Engine Optimisation",
+    description: "Help customers discover your business through search-friendly content, technical improvements and a clear SEO strategy.",
+    link: "/service/seo/",
+  },
+  {
+    id: "influencer-marketing",
+    number: "04",
+    title: "Influencer Marketing & PR",
+    description: "Connect your brand with relevant creators and tell your story through thoughtful partnerships and public relations.",
+    link: "/service/influencer-marketing-pr-pays/",
+  },
+  {
+    id: "branding-design",
     number: "05",
+    title: "Branding & Design",
+    description:
+      "We target your audience's needs and emotions to transform your business into a recognisable brand.",
+    link: "/service/branding-and-design/",
+  },
+  {
+    id: "web-design",
+    number: "06",
+    title: "Creative Web Design",
+    description:
+      "Functional, user-friendly and beautiful websites. Every page is crafted with purpose.",
+    link: "/service/creative-branding/",
+  },
+  {
+    id: "productions",
+    number: "07",
     title: "Productions",
     description:
-      "Bold visual identities that speak your story — visually and verbally across all media.",
+      "Brand films, photography and video content that bring your story to life across digital channels.",
     link: "/service/productions/",
   },
   {
     id: "ecommerce",
-    number: "06",
+    number: "08",
     title: "E-commerce Development",
     description:
       "Custom online stores designed to convert visitors into loyal, returning customers.",
     link: "/service/e-commerce-development/",
+  },
+  {
+    id: "custom-software",
+    number: "09",
+    title: "Custom Software Development",
+    description: "Bring workflows, teams and information together with tailored business applications, dashboards and customer portals.",
+    link: "/service/custom-software-development/",
+  },
+  {
+    id: "web-mobile-apps",
+    number: "10",
+    title: "Web & Mobile Apps",
+    description: "Turn business needs into useful web and mobile applications, with clear interfaces and practical features for your users.",
+    link: "/service/web-and-mobile-apps/",
   },
 ];
 

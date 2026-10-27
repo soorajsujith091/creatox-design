@@ -28,7 +28,7 @@ export function HomeVideoHero() {
         <div className="home-video-copy">
           <p className="home-video-eyebrow"><span /> CREATOX DESIGNS · KANNUR, KERALA</p>
           <h1 id="home-hero-heading"><span>Your next</span><span>big <em>move.</em></span></h1>
-          <p className="home-video-description">A creative digital agency building brands that move forward. Strategy, design, websites and digital marketing — made to connect. Built to grow.</p>
+          <p className="home-video-description">A digital marketing agency helping brands move forward. Social media, targeted campaigns and SEO — backed by creative design, websites and software. Built to grow.</p>
           <button className="home-video-showreel" type="button" onClick={() => { dialog.current?.showModal(); void film.current?.play().catch(() => {}); }}><Play size={18} fill="currentColor" aria-hidden="true" /> Watch showreel</button>
         </div>
         <a className="home-video-discover" href="#home-about">Scroll to discover <ArrowDown size={16} aria-hidden="true" /></a>

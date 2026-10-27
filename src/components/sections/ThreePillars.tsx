@@ -10,6 +10,17 @@ import "./three-pillars.css";
 
 const disciplines = [
   {
+    title: "Market & Grow", heading: ["Market", "& Grow"],
+    description: "Reach the right people with the right message. We connect strategy, content and digital campaigns to help your brand build its presence and grow.",
+    link: "/service/social-media-management/", button: "Explore digital marketing",
+    details: [
+      { title: "Social media management", text: "Build a consistent presence through content planning, creative posts and social campaigns that reflect your brand and encourage your audience to engage." },
+      { title: "Ads & campaigns", text: "Reach relevant audiences through Facebook, Instagram and Google advertising. We connect campaign strategy with creative messages and clear business objectives." },
+      { title: "Search engine optimisation", text: "Help people discover your business with relevant content, clear page structure and SEO work focused on the services and information your audience searches for." },
+      { title: "Content-led growth", text: "From campaign visuals to video and written content, we bring creative production and marketing together to give your brand a stronger, more consistent voice." },
+    ],
+  },
+  {
     title: "Design & Experience", heading: ["Design", "& Experience"],
     description: "Build a brand people recognise, remember and connect with. We turn your story into a visual identity that works across every touchpoint.",
     link: "/service/branding-and-design/", button: "Explore branding & design",
@@ -32,17 +43,6 @@ const disciplines = [
       { title: "Search-friendly foundations", text: "Structured pages, descriptive headings and considered site architecture give your content a clear foundation for search visibility and future growth." },
     ],
   },
-  {
-    title: "Market & Grow", heading: ["Market", "& Grow"],
-    description: "Reach the right people with the right message. We connect strategy, content and digital campaigns to help your brand build its presence and grow.",
-    link: "/service/social-media-management/", button: "Explore digital marketing",
-    details: [
-      { title: "Social media management", text: "Build a consistent presence through content planning, creative posts and social campaigns that reflect your brand and encourage your audience to engage." },
-      { title: "Ads & campaigns", text: "Reach relevant audiences through Facebook, Instagram and Google advertising. We connect campaign strategy with creative messages and clear business objectives." },
-      { title: "Search engine optimisation", text: "Help people discover your business with relevant content, clear page structure and SEO work focused on the services and information your audience searches for." },
-      { title: "Content-led growth", text: "From campaign visuals to video and written content, we bring creative production and marketing together to give your brand a stronger, more consistent voice." },
-    ],
-  },
 ];
 
 export function ThreePillars() {
@@ -55,7 +55,7 @@ export function ThreePillars() {
         <span className="expertise-column-number">0{index + 1} / CREATOX EXPERTISE</span>
         <h3>{discipline.heading[0]}<br /><span>{discipline.heading[1]}</span></h3>
         <div className="expertise-column-butterfly" aria-hidden="true">
-          {index === 1 ? <div className="expertise-column-orb"><Image src="/images/build-transform-orb.jpeg" alt="" fill sizes="160px" /></div> : <Image src={index === 2 ? (reduced ? "/images/market-grow-ring-still.png" : "/images/market-grow-ring.gif") : (reduced ? "/images/expertise-papillon-still.png" : "/images/expertise-papillon.gif")} alt="" fill unoptimized sizes="160px" />}
+          {discipline.title === "Build & Transform" ? <div className="expertise-column-orb"><Image src="/images/build-transform-orb.jpeg" alt="" fill sizes="160px" /></div> : <Image src={discipline.title === "Market & Grow" ? (reduced ? "/images/market-grow-ring-still.png" : "/images/market-grow-ring.gif") : (reduced ? "/images/expertise-papillon-still.png" : "/images/expertise-papillon.gif")} alt="" fill unoptimized sizes="160px" />}
         </div>
       </div>
       <div className="expertise-column-content">

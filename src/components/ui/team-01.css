@@ -1,0 +1,20 @@
+.creatox-team{background:#0a0a0a;color:#f5f5f5}
+.creatox-team-heading{max-width:760px;margin:0 auto clamp(36px,5vw,64px);text-align:center;display:flex;flex-direction:column;align-items:center;gap:20px}
+.creatox-team .creatox-team-badge{color:#ff5373;border-color:#e4002b66;background:#e4002b0d;padding:7px 16px;font-family:var(--font-mono),monospace;font-size:11px;font-weight:400;letter-spacing:.08em;text-transform:uppercase}
+.creatox-team-heading h2{font-family:var(--font-heading),sans-serif;font-size:clamp(32px,4vw,56px);font-weight:500;line-height:1.1;letter-spacing:-.04em}
+.creatox-team-heading h2 span{color:#ff5373}
+.creatox-team-heading>p{max-width:450px;color:#aaa;font-size:15px;line-height:1.7}
+.creatox-team-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:48px 24px}
+.creatox-team-member{min-width:0;text-align:center}
+.creatox-team-portrait{position:relative;aspect-ratio:1;background:radial-gradient(ellipse at 50% 100%,#e4002b24,transparent 75%),#151515;border:1px solid #ffffff14;border-radius:14px;overflow:hidden;transition:border-color .3s}
+.creatox-team-portrait img{object-fit:contain;object-position:center bottom;transition:filter .3s,transform .5s}
+.creatox-team-details{display:flex;flex-direction:column;align-items:center;gap:10px;padding-top:24px}
+.creatox-team-details h3{font-family:var(--font-heading),sans-serif;font-size:clamp(20px,1.8vw,26px);font-weight:500;line-height:1.2;letter-spacing:-.02em;overflow-wrap:anywhere}
+.creatox-team-details>p{color:#aaa;font-size:13px}
+.creatox-team-socials{display:flex;gap:8px}
+.creatox-team-socials a{display:flex;align-items:center;justify-content:center;width:44px;height:44px;border:1px solid #ffffff20;border-radius:50%;transition:background .2s,border-color .2s}
+.creatox-team-socials a:hover{background:#e4002b;border-color:#e4002b}
+@media(hover:hover){.creatox-team-member:hover .creatox-team-portrait{border-color:#e4002b80}.creatox-team-member:hover img{filter:grayscale(1);transform:scale(1.035)}}
+@media(max-width:1023px){.creatox-team-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:639px){.creatox-team-grid{grid-template-columns:minmax(0,1fr);gap:36px}.creatox-team-member{width:100%;max-width:400px;margin-inline:auto}}
+@media(prefers-reduced-motion:reduce){.creatox-team-portrait,.creatox-team-portrait img,.creatox-team-socials a{transition:none}.creatox-team-member:hover img{transform:none}}

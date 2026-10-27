@@ -1,5 +1,6 @@
 ﻿.creatox-beam-footer .bwf-inner{max-width:none;padding-inline:var(--section-gutter,clamp(20px,4vw,80px));grid-template-columns:minmax(0,1.3fr) minmax(0,1fr) minmax(0,.8fr) minmax(0,1.2fr)}
 .creatox-beam-footer .bwf-word-box{max-width:none;padding-inline:var(--section-gutter,clamp(20px,4vw,80px));font-family:var(--font-heading),sans-serif}
+.creatox-beam-footer .bwf-sky{opacity:.4}
 .creatox-beam-footer .bwf-socials{flex-wrap:wrap;gap:10px}
 .creatox-beam-footer .bwf-soc{width:44px;height:44px}
 .creatox-beam-footer .bwf-link{min-height:44px;overflow-wrap:anywhere}
