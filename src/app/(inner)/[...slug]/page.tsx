@@ -1,3 +1,4 @@
+import { CmsArticles } from "@/components/CmsArticles";
 import { notFound, permanentRedirect } from "next/navigation";
 import { AboutPage, ArticlePage, BlogPage, CareerPage, ClientsPage, ContactPage, ExpoPage, FaqPage, LifePage, ProjectPage, ServicePage, ServicesPage, TeamPage, WorkPage } from "@/components/inner/page-content";
 import { aliases, allPaths, companyPages, JsonLd, pageMetadata, siteUrl } from "@/lib/inner-content";
@@ -21,7 +22,7 @@ export default function InnerPage({ params }: { params: { slug: string[] } }) {
     case "contact-us":content=<ContactPage/>;break;
     case "projects":content=<WorkPage/>;break;
     case "case-studies":content=<WorkPage cases/>;break;
-    case "blog":content=<BlogPage/>;break;
+    case "blog":content=<><CmsArticles/><BlogPage/></>;break;
     case "grand-malabar-expo":content=<ExpoPage/>;break;
     case "faq":content=<FaqPage/>;break;
     default:content=<ArticlePage slug={path}/>;

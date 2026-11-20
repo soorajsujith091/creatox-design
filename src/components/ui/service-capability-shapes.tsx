@@ -1,6 +1,8 @@
 "use client";
 
 // Capsule physics adapted from Shape Hero by @dorianbaffier / Kokonut UI (MIT).
+/* cms-page-fields */
+import { PageText } from "@/components/cms/PageContent";
 import { useEffect, useRef } from "react";
 
 const STEP = 1 / 120;
@@ -588,7 +590,7 @@ export function ServiceCapabilityShapes({ tags, label }: { tags: string[]; label
   }, [tags.join("|"), fill]);
 
   return <div ref={rootRef} className="service-capability-shapes">
-    <ul className="sr-only" aria-label={label}>{tags.map(tag => <li key={tag}>{tag}</li>)}</ul>
+    <ul className="sr-only" aria-label={label}>{tags.map(tag => <li key={tag}><PageText field="32b83f624_1" section="service capability shapes" label="Text">{tag}</PageText></li>)}</ul>
     <div ref={layerRef} className="service-capability-layer" aria-hidden="true">
       {tags.map(tag => <div key={tag} data-shape="" className="service-capability-pill" style={{ visibility: "hidden" }}>{tag}</div>)}
     </div>

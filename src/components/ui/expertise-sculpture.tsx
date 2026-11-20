@@ -1,6 +1,8 @@
 "use client";
 
-import Image from "next/image";
+/* cms-page-fields */
+import { PageImage } from "@/components/cms/PageContent";
+
 import { useRef, type PointerEvent } from "react";
 
 export function ExpertiseSculpture({ label }: { variant: number; label: string }) {
@@ -16,8 +18,8 @@ export function ExpertiseSculpture({ label }: { variant: number; label: string }
   return (
     <div className="expertise-sculpture expertise-papillon" onPointerMove={move} onPointerLeave={reset} onPointerCancel={reset}>
       <div ref={artwork} className="expertise-papillon-artwork">
-        <Image className="expertise-papillon-animation" src="/images/expertise-papillon.gif" alt={`Animated iridescent metallic butterfly sculpture for ${label}`} fill unoptimized sizes="(max-width: 600px) 100vw, 25vw" />
-        <Image className="expertise-papillon-still" src="/images/expertise-papillon-still.png" alt={`Iridescent metallic butterfly sculpture for ${label}`} fill sizes="(max-width: 600px) 100vw, 25vw" />
+        <PageImage field="3dec15449_1" section="expertise sculpture" className="expertise-papillon-animation" src="/images/expertise-papillon.gif" alt={`Animated iridescent metallic butterfly sculpture for ${label}`} fill unoptimized sizes="(max-width: 600px) 100vw, 25vw" />
+        <PageImage field="3dec15449_2" section="expertise sculpture" className="expertise-papillon-still" src="/images/expertise-papillon-still.png" alt={`Iridescent metallic butterfly sculpture for ${label}`} fill sizes="(max-width: 600px) 100vw, 25vw" />
       </div>
     </div>
   );

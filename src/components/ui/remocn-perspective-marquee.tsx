@@ -1,5 +1,7 @@
 "use client";
 
+/* cms-page-fields */
+import { PageNativeImage } from "@/components/cms/PageContent";
 import { useEffect, useRef, useState } from "react";
 
 export interface PerspectiveMarqueeProps {
@@ -39,7 +41,7 @@ export function PerspectiveMarquee({ items, rotateY = -28, rotateX = 8, perspect
           const distance = Math.min(1, Math.abs((center - 600) / 600));
           return <div key={`${index}-${item.name}`} style={{ width: itemWidth, flexShrink: 0, padding: "0 18px", filter: `blur(${distance * 3}px)`, opacity: 1 - distance * .3 }}>
             <div style={{ height: 112, background: "#fff", borderRadius: 12, display: "flex", alignItems: "center", justifyContent: "center", padding: 18 }}>
-              <img src={`/images/${item.file}`} alt={item.name} width={168} height={76} style={{ width: "100%", height: "100%", objectFit: "contain" }} />
+              <PageNativeImage field="87a7c7ac9_1" section="remocn perspective marquee" src={`/images/${item.file}`} alt={item.name} width={168} height={76} style={{ width: "100%", height: "100%", objectFit: "contain" }} />
             </div>
           </div>;
         })}

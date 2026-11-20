@@ -1,7 +1,11 @@
 "use client";
 
+/* cms-native-links */
+import { PageAnchor } from "@/components/cms/PageContent";
+/* cms-page-fields */
+import { PageText, PageImage } from "@/components/cms/PageContent";
 import { useEffect, useRef, useState } from "react";
-import Image from "next/image";
+
 import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
 import { ArrowDown, ArrowUpRight } from "lucide-react";
 import { gsap } from "gsap";
@@ -55,27 +59,27 @@ export function SelectedCreatoxWork() {
     <div ref={containerRef} className="selected-work-scroll" style={reduced ? undefined : { height: stage.height + distance }}>
       <div ref={stickyRef} className="selected-work-sticky">
     <motion.header className="selected-work-intro site-gutter" initial="hidden" whileInView="visible" viewport={{ once: true, amount: .2 }} variants={{ hidden: {}, visible: { transition: { staggerChildren: reduced ? 0 : .3 } } }}>
-      <motion.div variants={reveal} transition={revealTransition} className="selected-work-eyebrow"><span>/ SELECTED CREATOX WORK</span><a href="#services">DESIGN & DIGITAL SERVICES <ArrowUpRight size={14} aria-hidden="true" /></a></motion.div>
-      <div className="selected-work-heading"><motion.h2 variants={reveal} transition={revealTransition} id="selected-work-heading">Good design.<br /><span>Real connections.</span></motion.h2><motion.p variants={reveal} transition={revealTransition}>We blend creativity, strategy and technology to build brands that look premium and perform with purpose.</motion.p></div>
+      <motion.div variants={reveal} transition={revealTransition} className="selected-work-eyebrow"><span><PageText field="ddc9870e9_1" section="Selected Creatox Work" label="Text">{"/ SELECTED CREATOX WORK"}</PageText></span><PageAnchor field="anchor_373817ea2_1" section="SelectedCreatoxWork" href="#services"><PageText field="ddc9870e9_2" section="Selected Creatox Work" label="Text">{"DESIGN & DIGITAL SERVICES "}</PageText><ArrowUpRight size={14} aria-hidden="true" /></PageAnchor></motion.div>
+      <div className="selected-work-heading"><motion.h2 variants={reveal} transition={revealTransition} id="selected-work-heading">Good design.<br /><span><PageText field="ddc9870e9_3" section="Selected Creatox Work" label="Text">{"Real connections."}</PageText></span></motion.h2><motion.p variants={reveal} transition={revealTransition}>We blend creativity, strategy and technology to build brands that look premium and perform with purpose.</motion.p></div>
       <motion.p variants={reveal} transition={revealTransition} className="selected-work-hint"><ArrowDown size={14} aria-hidden="true" /> Scroll to explore our work</motion.p>
     </motion.header>
 
         <div ref={frameRef} className="selected-work-frame">
           <motion.div ref={trackRef} className="selected-work-track" style={{ x: reduced ? 0 : x }}>
-            {projects.map((project, index) => <a className="selected-work-card" key={project.id} href={`https://creatoxdesigns.com${project.link}`} onFocus={event => {
+            {projects.map((project, index) => <PageAnchor field="anchor_373817ea2_2" section="SelectedCreatoxWork" className="selected-work-card" key={project.id} href={`https://creatoxdesigns.com${project.link}`} onFocus={event => {
               if (window.innerWidth <= 767 || !event.currentTarget.matches(":focus-visible") || reduced || !containerRef.current || !frameRef.current) return;
               const top = containerRef.current.getBoundingClientRect().top + window.scrollY;
               window.scrollTo({ top: top - stage.top + Math.min(index * (event.currentTarget.offsetWidth + (window.innerWidth <= 600 ? 15 : 30)), distance), behavior: "instant" });
             }}>
-              <Image src={projectCoverImages[project.id] ?? project.image} alt={`${project.title} project cover`} fill sizes="(max-width: 600px) 280px, 400px" unoptimized={!projectCoverImages[project.id]} />
+              <PageImage field="ddc9870e9_4" section="Selected Creatox Work" src={projectCoverImages[project.id] ?? project.image} alt={`${project.title} project cover`} fill sizes="(max-width: 600px) 280px, 400px" unoptimized={!projectCoverImages[project.id]} />
               <div className="selected-work-card-shade" aria-hidden="true" />
               <span className="selected-work-card-arrow"><ArrowUpRight size={22} aria-hidden="true" /></span>
-              <div className="selected-work-card-copy"><span className="selected-work-number">0{index + 1} / {project.tags.join(" + ")}</span><h3>{project.title}</h3><p>{project.description}</p></div>
-            </a>)}
+              <div className="selected-work-card-copy"><span className="selected-work-number"><PageText field="ddc9870e9_5" section="Selected Creatox Work" label="Text">{"0"}</PageText><PageText field="ddc9870e9_6" section="Selected Creatox Work" label="Text">{index + 1}</PageText> <PageText field="ddc9870e9_7" section="Selected Creatox Work" label="Text">{"/ "}</PageText><PageText field="ddc9870e9_8" section="Selected Creatox Work" label="Text">{project.tags.join(" + ")}</PageText></span><h3><PageText field="ddc9870e9_9" section="Selected Creatox Work" label="Heading">{project.title}</PageText></h3><p><PageText field="ddc9870e9_10" section="Selected Creatox Work" label="Text">{project.description}</PageText></p></div>
+            </PageAnchor>)}
           </motion.div>
         </div>
       </div>
     </div>
-    <footer className="selected-work-outro site-gutter"><span>YOUR NEXT CHAPTER STARTS HERE.</span><a href="#contact">Let&apos;s create something together <ArrowUpRight size={18} aria-hidden="true" /></a></footer>
+    <footer className="selected-work-outro site-gutter"><span><PageText field="ddc9870e9_11" section="Selected Creatox Work" label="Text">{"YOUR NEXT CHAPTER STARTS HERE."}</PageText></span><PageAnchor field="anchor_373817ea2_3" section="SelectedCreatoxWork" href="#contact"><PageText field="ddc9870e9_12" section="Selected Creatox Work" label="Text">{"Let's create something together "}</PageText><ArrowUpRight size={18} aria-hidden="true" /></PageAnchor></footer>
   </section>;
 }

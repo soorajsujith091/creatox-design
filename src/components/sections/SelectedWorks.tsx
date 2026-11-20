@@ -1,8 +1,10 @@
 "use client";
 
+/* cms-page-fields */
+import { PageText, PageImage, PageLink } from "@/components/cms/PageContent";
 import { useEffect, useRef } from "react";
-import Image from "next/image";
-import Link from "next/link";
+
+
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { projects } from "@/data/projects";
@@ -52,12 +54,11 @@ export function SelectedWorks() {
 
         <div className="mb-16">
           <h2 className="font-heading text-fluid-3xl font-semibold leading-[1.1] mb-4">
-            <span className="block text-white">Work That</span>
-            <span className="block text-stroke">Speaks.</span>
+            <span className="block text-white"><PageText field="71bbab9fa_1" section="Selected Works" label="Text">{"Work That"}</PageText></span>
+            <span className="block text-stroke"><PageText field="71bbab9fa_2" section="Selected Works" label="Text">{"Speaks."}</PageText></span>
           </h2>
           <p className="font-body text-gray text-[16px]">
-            From Kannur to the world — brands we&apos;ve built.
-          </p>
+            <PageText field="71bbab9fa_3" section="Selected Works" label="Text">{"From Kannur to the world — brands we've built."}</PageText></p>
         </div>
 
         <div ref={containerRef} className="flex flex-col gap-10 lg:gap-16">
@@ -91,7 +92,7 @@ export function SelectedWorks() {
                       : "w-full lg:w-[60%] h-[300px] lg:h-[500px]"
                   } ${isImageRight ? "lg:order-2" : "lg:order-1"}`}
                 >
-                  <Image
+                  <PageImage field="71bbab9fa_4" section="Selected Works"
                     src={project.image}
                     alt={project.title}
                     fill
@@ -116,28 +117,26 @@ export function SelectedWorks() {
                         key={tag}
                         className="bg-red text-white font-mono text-[11px] px-3 py-1 rounded-[2px] uppercase"
                       >
-                        {tag}
+                        <PageText field="71bbab9fa_5" section="Selected Works" label="Text">{tag}</PageText>
                       </span>
                     ))}
                   </div>
 
                   <h3 className={`font-heading text-[22px] lg:text-[32px] font-semibold mb-4 ${isFullWidth ? "text-white" : "text-white"}`}>
-                    {project.title}
+                    <PageText field="71bbab9fa_6" section="Selected Works" label="Heading">{project.title}</PageText>
                   </h3>
 
                   <p className={`font-body text-[15px] leading-relaxed mb-10 ${isFullWidth ? "text-gray-200 max-w-lg" : "text-[#BBBBBB]"}`}>
-                    {project.description}
+                    <PageText field="71bbab9fa_7" section="Selected Works" label="Text">{project.description}</PageText>
                   </p>
 
-                  <Link
+                  <PageLink field="71bbab9fa_8" section="Selected Works"
                     href={project.link}
                     className={`inline-flex items-center gap-2 font-mono text-[12px] transition-colors w-fit mt-auto group/link ${isFullWidth ? "text-white" : "text-white hover:text-red"}`}
                   >
-                    View Project
-                    <span className="transition-transform duration-300 group-hover/link:translate-x-1">
-                      →
-                    </span>
-                  </Link>
+                    <PageText field="71bbab9fa_9" section="Selected Works" label="Text">{"View Project"}</PageText><span className="transition-transform duration-300 group-hover/link:translate-x-1">
+                      <PageText field="71bbab9fa_10" section="Selected Works" label="Text">{"→"}</PageText></span>
+                  </PageLink>
                 </div>
               </div>
             );
@@ -145,12 +144,11 @@ export function SelectedWorks() {
         </div>
 
         <div className="flex justify-center mt-16">
-          <Link
+          <PageLink field="71bbab9fa_11" section="Selected Works"
             href="/projects/"
             className="border border-[#BBBBBB] text-white px-8 py-4 text-[14px] font-body hover:bg-red hover:text-white hover:border-red transition-all duration-300"
           >
-            More Works ↗
-          </Link>
+            <PageText field="71bbab9fa_12" section="Selected Works" label="Text">{"More Works ↗"}</PageText></PageLink>
         </div>
       </div>
     </section>

@@ -1,7 +1,13 @@
 "use client";
 
+/* cms-native-links */
+import { PageAnchor } from "@/components/cms/PageContent";
+import { PageBackground } from "@/components/cms/PageContent";
+/* cms-page-fields */
+import { PageText, PageImage, PageNativeImage } from "@/components/cms/PageContent";
 import { Component as GradientBlurBackground } from "@/components/ui/gradient-blur-bg";
 import React, { useEffect, useLayoutEffect, useRef } from "react";
+
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { cn } from "@/lib/utils";
@@ -320,27 +326,27 @@ export function CinematicHero({
       {/* BACKGROUND LAYER: Hero Texts */}
       <div className="hero-text-wrapper absolute z-10 flex flex-col items-center justify-center text-center w-screen px-4 will-change-transform transform-style-3d">
         <h2 className="text-track gsap-reveal text-3d-matte text-5xl md:text-7xl lg:text-[6rem] font-bold tracking-tight mb-2">
-          {tagline1}
+          <PageText field="85a143f79_1" section="cinematic landing hero" label="Heading">{tagline1}</PageText>
         </h2>
         <h2 className="text-days gsap-reveal text-silver-matte text-5xl md:text-7xl lg:text-[6rem] font-extrabold tracking-tighter">
-          {tagline2}
+          <PageText field="85a143f79_2" section="cinematic landing hero" label="Heading">{tagline2}</PageText>
         </h2>
       </div>
 
       {/* BACKGROUND LAYER 2: Tactile CTA Buttons */}
       <div className="cta-wrapper absolute z-10 flex flex-col items-center justify-center text-center w-screen px-4 gsap-reveal pointer-events-auto will-change-transform">
         <h2 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 tracking-tight text-silver-matte">
-          {ctaHeading}
+          <PageText field="85a143f79_3" section="cinematic landing hero" label="Heading">{ctaHeading}</PageText>
         </h2>
         <p className="text-muted-foreground text-lg md:text-xl mb-12 max-w-xl mx-auto font-light leading-relaxed">
-          {ctaDescription}
+          <PageText field="85a143f79_4" section="cinematic landing hero" label="Text">{ctaDescription}</PageText>
         </p>
-        <div className="flex flex-col sm:flex-row gap-4"><a href="https://podcubestudio.com/" className="btn-modern-light flex items-center justify-center gap-3 px-7 py-4 rounded-2xl">Explore the studio <ArrowUpRight size={20}/></a><a href="https://www.instagram.com/podecube/" className="btn-modern-dark flex items-center justify-center gap-3 px-7 py-4 rounded-2xl">Follow on Instagram <ArrowUpRight size={20}/></a></div>
+        <div className="flex flex-col sm:flex-row gap-4"><PageAnchor field="anchor_ddd192d4f_1" section="cinematic-landing-hero" href="https://podcubestudio.com/" className="btn-modern-light flex items-center justify-center gap-3 px-7 py-4 rounded-2xl"><PageText field="85a143f79_5" section="cinematic landing hero" label="Text">{"Explore the studio "}</PageText><ArrowUpRight size={20}/></PageAnchor><PageAnchor field="anchor_ddd192d4f_2" section="cinematic-landing-hero" href="https://www.instagram.com/podecube/" className="btn-modern-dark flex items-center justify-center gap-3 px-7 py-4 rounded-2xl"><PageText field="85a143f79_6" section="cinematic landing hero" label="Text">{"Follow on Instagram "}</PageText><ArrowUpRight size={20}/></PageAnchor></div>
       </div>
 
       {/* FOREGROUND LAYER: The Physical Deep Blue Card */}
       <div className="cinematic-card-stage absolute inset-0 z-20 flex items-center justify-center pointer-events-none" style={{ perspective: "1500px" }}>
-        <div
+        <PageBackground field="studio_background" section="PODE CUBE studio" image="/images/2B5A1178.JPG.jpeg"
           ref={mainCardRef}
           className="main-card premium-depth-card relative overflow-hidden gsap-reveal flex items-center justify-center pointer-events-auto w-[92vw] md:w-[85vw] h-[92vh] md:h-[85vh] rounded-[32px] md:rounded-[40px]"
         >
@@ -351,8 +357,8 @@ export function CinematicHero({
             
             {/* 1. TOP (Mobile) / RIGHT (Desktop): BRAND NAME */}
             <div className="card-right-text gsap-reveal order-1 lg:order-3 flex justify-center lg:justify-end z-20 w-full">
-              <h2 className="text-4xl md:text-5xl lg:text-6xl font-black uppercase tracking-tighter text-card-silver-matte lg:mt-0">
-                {brandName}
+              <h2 className="w-full max-w-[340px] lg:mt-0">
+                <PageImage field="85a143f79_7" section="cinematic landing hero" src="/images/IMG_3517.PNG" alt={brandName} width={3147} height={1254} sizes="(max-width: 767px) 70vw, 340px" className="block h-auto w-full object-contain" />
               </h2>
             </div>
 
@@ -401,11 +407,11 @@ export function CinematicHero({
                 {/* Floating Glass Badges */}
                 <div className="floating-badge absolute flex top-6 lg:top-12 left-[-15px] lg:left-[-80px] floating-ui-badge rounded-xl lg:rounded-2xl p-3 lg:p-4 items-center gap-3 lg:gap-4 z-30">
                   <div className="w-8 h-8 lg:w-10 lg:h-10 rounded-full bg-gradient-to-b from-red-500/20 to-red-900/10 flex items-center justify-center border border-red-400/30 shadow-inner">
-                    <img src="/images/IMG_3517.PNG" alt="PODE CUBE Studio" className="h-full w-full object-contain p-1" />
+                    <PageNativeImage field="85a143f79_8" section="cinematic landing hero" src="/images/IMG_3517.PNG" alt="PODE CUBE Studio" className="h-full w-full object-contain p-1" />
                   </div>
                   <div>
-                    <p className="text-white text-xs lg:text-sm font-bold tracking-tight">Made for creators</p>
-                    <p className="text-red-200/50 text-[10px] lg:text-xs font-medium">Based in Kannur</p>
+                    <p className="text-white text-xs lg:text-sm font-bold tracking-tight"><PageText field="85a143f79_9" section="cinematic landing hero" label="Text">{"Made for creators"}</PageText></p>
+                    <p className="text-red-200/50 text-[10px] lg:text-xs font-medium"><PageText field="85a143f79_10" section="cinematic landing hero" label="Text">{"Based in Kannur"}</PageText></p>
                   </div>
                 </div>
 
@@ -414,8 +420,8 @@ export function CinematicHero({
                     <Users size={20} aria-hidden="true"/>
                   </div>
                   <div>
-                    <p className="text-white text-xs lg:text-sm font-bold tracking-tight">Flexible setups</p>
-                    <p className="text-red-200/50 text-[10px] lg:text-xs font-medium">Lighting. Audio. Green screen.</p>
+                    <p className="text-white text-xs lg:text-sm font-bold tracking-tight"><PageText field="85a143f79_11" section="cinematic landing hero" label="Text">{"Flexible setups"}</PageText></p>
+                    <p className="text-red-200/50 text-[10px] lg:text-xs font-medium"><PageText field="85a143f79_12" section="cinematic landing hero" label="Text">{"Lighting. Audio. Green screen."}</PageText></p>
                   </div>
                 </div>
 
@@ -425,16 +431,16 @@ export function CinematicHero({
             {/* 3. BOTTOM (Mobile) / LEFT (Desktop): ACCOUNTABILITY TEXT */}
             <div className="card-left-text gsap-reveal order-3 lg:order-1 flex flex-col justify-center text-center lg:text-left z-20 w-full lg:max-w-none px-4 lg:px-0">
               <h3 className="text-white text-2xl md:text-3xl lg:text-4xl font-bold mb-0 lg:mb-5 tracking-tight">
-                {cardHeading}
+                <PageText field="85a143f79_13" section="cinematic landing hero" label="Heading">{cardHeading}</PageText>
               </h3>
               {/* HIDDEN ON MOBILE (added hidden md:block) */}
               <p className="hidden md:block text-red-100/70 text-sm md:text-base lg:text-lg font-normal leading-relaxed mx-auto lg:mx-0 max-w-sm lg:max-w-none">
-                {cardDescription}
+                <PageText field="85a143f79_14" section="cinematic landing hero" label="Text">{cardDescription}</PageText>
               </p>
             </div>
 
           </div>
-        </div>
+        </PageBackground>
       </div>
     </div>
     </div>

@@ -1,5 +1,5 @@
 .cx-liquid-menu{position:fixed;bottom:32px;left:50%;transform:translateX(-50%);z-index:210;font-family:var(--font-body),sans-serif;color:#fff}
-.cx-liquid-shell{position:relative;overflow:hidden;background:#e4002b;box-shadow:0 12px 45px #0006;border:1px solid #ffffff24}
+.cx-liquid-shell{position:relative;overflow:hidden;background:#DC0208;box-shadow:0 12px 45px #0006;border:1px solid #ffffff24}
 .cx-liquid-circle{position:absolute;bottom:-30px;left:-155px;width:620px;height:900px;border-radius:50%;background:#242424;transform-origin:50% 100%;pointer-events:none}
 .cx-liquid-trigger{position:relative;display:flex;justify-content:space-between;align-items:center;width:100%;height:52px;padding:0 22px;font-size:17px;color:#fff}
 .cx-liquid-trigger>span:last-child{display:flex}

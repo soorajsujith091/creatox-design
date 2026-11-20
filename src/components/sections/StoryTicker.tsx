@@ -1,5 +1,7 @@
 "use client";
 
+/* cms-page-fields */
+import { PageText } from "@/components/cms/PageContent";
 import { useRef, useEffect } from "react";
 
 export function StoryTicker() {
@@ -54,7 +56,7 @@ export function StoryTicker() {
 
                 return (
                   <span key={`${i}-${j}`} className={className}>
-                    {item.text}
+                    <PageText field="373e23c02_1" section="Story Ticker" label="Text">{item.text}</PageText>
                   </span>
                 );
               })}

@@ -1,6 +1,10 @@
 "use client";
 
-import Link from "next/link";
+/* cms-native-links */
+import { PageAnchor } from "@/components/cms/PageContent";
+/* cms-page-fields */
+import { PageText, PageLink } from "@/components/cms/PageContent";
+
 import { Phone } from "lucide-react";
 
 export function MobileStickyBar() {
@@ -10,20 +14,18 @@ export function MobileStickyBar() {
       role="complementary"
       aria-label="Quick actions"
     >
-      <a
+      <PageAnchor field="anchor_a9d340218_1" section="MobileStickyBar"
         href="tel:+918086082888"
         className="flex-1 flex items-center justify-center gap-2 py-4 text-white font-mono text-[13px] border-r border-[#303030] hover:bg-black transition-colors"
         aria-label="Call now"
       >
         <Phone size={16} />
-        Call Now
-      </a>
-      <Link
+        <PageText field="cf9c5e9e7_1" section="Mobile Sticky Bar" label="Text">{"Call Now"}</PageText></PageAnchor>
+      <PageLink field="cf9c5e9e7_2" section="Mobile Sticky Bar"
         href="/#contact"
         className="flex-1 flex items-center justify-center py-4 bg-red text-white font-mono text-[13px] hover:bg-redDark transition-colors"
       >
-        Start a Project →
-      </Link>
+        <PageText field="cf9c5e9e7_3" section="Mobile Sticky Bar" label="Text">{"Start a Project →"}</PageText></PageLink>
     </div>
   );
 }

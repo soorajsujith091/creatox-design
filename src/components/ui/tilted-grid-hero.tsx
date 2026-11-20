@@ -1,5 +1,7 @@
 "use client";
 
+/* cms-page-fields */
+import { PageNativeImage } from "@/components/cms/PageContent";
 import * as React from "react";
 import { cn } from "@/lib/utils";
 
@@ -291,7 +293,7 @@ export function TiltedGridHero({
                   }}
                 >
                   {img ? (
-                    <img
+                    <PageNativeImage field="8bcc8ccd0_1" section="tilted grid hero"
                       src={img.src}
                       alt={k === 0 ? (img.alt ?? "") : ""}
                       draggable={false}

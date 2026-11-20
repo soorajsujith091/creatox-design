@@ -36,3 +36,7 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+/.tools/
+/backend/storage/mysql/
+/backend/storage/app/public/uploads/
+/docs/LOCAL-CMS-ACCESS.txt

@@ -1,5 +1,9 @@
 ﻿"use client";
 
+/* cms-native-links */
+import { PageAnchor } from "@/components/cms/PageContent";
+/* cms-page-fields */
+import { PageText } from "@/components/cms/PageContent";
 import { useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import { ArrowUpRight, Pause, Play } from "lucide-react";
@@ -21,13 +25,13 @@ export function WorksWheelSection() {
   const transition = { duration: reduced ? 0 : 1.3, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] };
   return <section id="selected-work" className="creatox-works" aria-labelledby="creatox-works-heading">
     <motion.header className="creatox-works-heading" initial="hidden" whileInView="visible" viewport={{ once: true, amount: .2 }} variants={{ hidden: {}, visible: { transition: { staggerChildren: reduced ? 0 : .3 } } }}>
-      <div><motion.span variants={reveal} transition={transition} className="creatox-works-eyebrow">/ SELECTED WORK</motion.span><motion.h2 variants={reveal} transition={transition} id="creatox-works-heading">Work that <span>speaks.</span></motion.h2></div>
+      <div><motion.span variants={reveal} transition={transition} className="creatox-works-eyebrow">/ SELECTED WORK</motion.span><motion.h2 variants={reveal} transition={transition} id="creatox-works-heading">Work that <span><PageText field="4e1dc14ea_1" section="Works Wheel Section" label="Text">{"speaks."}</PageText></span></motion.h2></div>
       <motion.p variants={reveal} transition={transition}>From Kannur to the world — brands we’ve built.<br/>Branding, websites and digital campaigns with purpose.</motion.p>
     </motion.header>
     <TiltedGridHero images={images} speed={6} tileHeight={46} aspectRatio={4 / 3} curve={65} axis={53} fade={10} className={`creatox-tilted-reel ${paused ? "is-paused" : ""}`}>
-      <div className="creatox-reel-top"><span>CREATIVITY IN EVERY DIRECTION.</span><button type="button" onClick={() => setPaused(!paused)} aria-label={paused ? "Play project reel" : "Pause project reel"} aria-pressed={paused}>{paused ? <Play size={16}/> : <Pause size={16}/>}<span>{paused ? "Play" : "Pause"}</span></button></div>
-      <p className="creatox-reel-caption">Brand stories, brought into focus.</p>
+      <div className="creatox-reel-top"><span><PageText field="4e1dc14ea_2" section="Works Wheel Section" label="Text">{"CREATIVITY IN EVERY DIRECTION."}</PageText></span><button type="button" onClick={() => setPaused(!paused)} aria-label={paused ? "Play project reel" : "Pause project reel"} aria-pressed={paused}>{paused ? <Play size={16}/> : <Pause size={16}/>}<span><PageText field="4e1dc14ea_3" section="Works Wheel Section" label="Text">{paused ? "Play" : "Pause"}</PageText></span></button></div>
+      <p className="creatox-reel-caption"><PageText field="4e1dc14ea_4" section="Works Wheel Section" label="Text">{"Brand stories, brought into focus."}</PageText></p>
     </TiltedGridHero>
-    <footer className="creatox-works-footer"><span>Have something in mind?</span><a href="/contact-us/">Let’s build your next chapter <ArrowUpRight size={20}/></a></footer>
+    <footer className="creatox-works-footer"><span><PageText field="4e1dc14ea_5" section="Works Wheel Section" label="Text">{"Have something in mind?"}</PageText></span><PageAnchor field="anchor_0d2659702_1" section="WorksWheelSection" href="/contact-us/"><PageText field="4e1dc14ea_6" section="Works Wheel Section" label="Text">{"Let’s build your next chapter "}</PageText><ArrowUpRight size={20}/></PageAnchor></footer>
   </section>;
 }

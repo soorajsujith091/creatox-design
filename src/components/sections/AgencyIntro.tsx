@@ -1,5 +1,9 @@
 "use client";
 
+/* cms-native-links */
+import { PageAnchor } from "@/components/cms/PageContent";
+/* cms-page-fields */
+import { PageText } from "@/components/cms/PageContent";
 import { useEffect, useRef } from "react";
 import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
@@ -54,14 +58,14 @@ export function AgencyIntro() {
   }}>
     <div className="agency-about-art" aria-hidden="true"><motion.video style={{ filter: reduced ? "none" : videoBlur }} ref={backgroundVideo} src="/videos/about-creatox-metallic.mp4" poster="/images/about-chrome-sphere.jpeg" loop muted playsInline preload="metadata" tabIndex={-1} /></div>
     <motion.div className="agency-intro-copy" initial={reduced ? false : { opacity: 0, y: 22 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: .7 }}>
-      <span className="agency-intro-label">/ ABOUT CREATOX</span>
+      <span className="agency-intro-label"><PageText field="a6a1a56bc_1" section="Agency Intro" label="Text">{"/ ABOUT CREATOX"}</PageText></span>
       <h2 id="agency-intro-heading"><MagicText progress={revealProgress} text="We believe creativity is a force for good. So we build meaningful brands through strategy, content and design, and help them grow with better digital experiences." highlightedPhrases={["meaningful brands", "strategy, content and design,", "digital experiences."]}/></h2>
       <div className="agency-about-principles">
-        <article><h3>Creativity with purpose</h3><p>We bring strategy, content and design together to create a positive impact and grow meaningful businesses.</p></article>
-        <article><h3>One team, connected thinking</h3><p>Brand identities, websites and digital marketing, built around your business goals and made to work together.</p></article>
-        <article><h3>Relationships that last</h3><p>Our clients are part of the Creatox family. We work as one team to help their brands grow, connect and stand out.</p></article>
+        <article><h3><PageText field="a6a1a56bc_2" section="Agency Intro" label="Heading">{"Creativity with purpose"}</PageText></h3><p><PageText field="a6a1a56bc_3" section="Agency Intro" label="Text">{"We bring strategy, content and design together to create a positive impact and grow meaningful businesses."}</PageText></p></article>
+        <article><h3><PageText field="a6a1a56bc_4" section="Agency Intro" label="Heading">{"One team, connected thinking"}</PageText></h3><p><PageText field="a6a1a56bc_5" section="Agency Intro" label="Text">{"Brand identities, websites and digital marketing, built around your business goals and made to work together."}</PageText></p></article>
+        <article><h3><PageText field="a6a1a56bc_6" section="Agency Intro" label="Heading">{"Relationships that last"}</PageText></h3><p><PageText field="a6a1a56bc_7" section="Agency Intro" label="Text">{"Our clients are part of the Creatox family. We work as one team to help their brands grow, connect and stand out."}</PageText></p></article>
       </div>
-      <a href="#about">Meet Creatox <ArrowUpRight size={15}/></a>
+      <PageAnchor field="anchor_5f82566bf_1" section="AgencyIntro" href="#about"><PageText field="a6a1a56bc_8" section="Agency Intro" label="Text">{"Meet Creatox "}</PageText><ArrowUpRight size={15}/></PageAnchor>
     </motion.div>
   </div>
   </section>;
@@ -70,7 +74,7 @@ export function AgencyIntro() {
 export function BrandsWorkedWith() {
   return <section className="agency-intro agency-intro-brands" aria-label="Brands we've worked with">
     <div className="agency-intro-partners" aria-label="Brands in our portfolio">
-      <span className="agency-intro-label">BRANDS WE’VE WORKED WITH</span>
+      <span className="agency-intro-label"><PageText field="a6a1a56bc_9" section="Agency Intro" label="Text">{"BRANDS WE’VE WORKED WITH"}</PageText></span>
       <BrandPerspectiveMarquee items={partnerLogos} />
     </div>
   </section>;

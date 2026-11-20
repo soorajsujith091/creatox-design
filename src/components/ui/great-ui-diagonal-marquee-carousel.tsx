@@ -1,5 +1,7 @@
 "use client";
 
+/* cms-page-fields */
+import { PageNativeImage } from "@/components/cms/PageContent";
 import React, { useRef } from "react";
 import { motion, useScroll, useTransform, useReducedMotion, type MotionValue } from "framer-motion";
 import "./diagonal-marquee-carousel.css";
@@ -62,7 +64,7 @@ const Card = ({ card, className }: { card: CardItem; className?: string }) => {
         className,
       )}
     >
-      <img
+      <PageNativeImage field="0645b945e_1" section="great ui diagonal marquee carousel"
         src={card.url}
         loading="lazy"
         decoding="async"

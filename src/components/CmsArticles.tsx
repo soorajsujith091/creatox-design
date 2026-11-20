@@ -1,0 +1,5 @@
+"use client";
+import { useEffect, useState } from "react";
+import Link from "next/link";
+import type { Post } from "@/lib/cms/types";
+export function CmsArticles(){const [posts,setPosts]=useState<Post[]>([]);useEffect(()=>{fetch("/api/articles").then(r=>r.ok?r.json():[]).then(setPosts).catch(()=>{});},[]);if(!posts.length)return null;return <section className="site-gutter" style={{paddingBlock:56,background:"#0a0a0a"}} aria-label="Latest studio articles"><p style={{color:"#dc0208",fontSize:11,letterSpacing:2,marginBottom:24}}>LATEST FROM THE STUDIO</p><div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(260px,1fr))",gap:28}}>{posts.map(p=><article key={p.id}><Link href={`/blog/${p.slug}`}>{p.image&&<img src={p.image} alt={p.title} style={{width:"100%",height:240,objectFit:"cover",borderRadius:12}}/>}<p style={{color:"#aaa",fontSize:12,marginTop:18}}>{p.category}</p><h2 style={{fontSize:24,lineHeight:1.25,margin:"12px 0"}}>{p.title}</h2><p style={{color:"#aaa",lineHeight:1.7}}>{p.excerpt}</p><p style={{marginTop:18,color:"#dc0208"}}>Read article ↗</p></Link></article>)}</div></section>;}

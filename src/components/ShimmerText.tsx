@@ -22,7 +22,7 @@ export default function ShimmerText({
       style={{
         backgroundImage:
           tone === "red"
-            ? "linear-gradient(to right, #E4002B, #FF8A9F, #E4002B)"
+            ? "linear-gradient(to right, #DC0208, #FF8A9F, #DC0208)"
             : "linear-gradient(to right, #0A0A0A, #A3A3A3, #0A0A0A)",
         backgroundSize: "200% 100%",
         backgroundPosition: "200% center",

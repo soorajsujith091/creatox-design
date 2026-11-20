@@ -86,7 +86,7 @@ export function CustomCursor() {
         width: isHovering ? "56px" : "16px",
         height: isHovering ? "56px" : "16px",
         borderRadius: "50%",
-        backgroundColor: "#E4002B",
+        backgroundColor: "#DC0208",
         willChange: "transform",
       }}
       aria-hidden="true"

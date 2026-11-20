@@ -1,5 +1,9 @@
 "use client"
 
+/* cms-native-links */
+import { PageAnchor } from "@/components/cms/PageContent";
+/* cms-page-fields */
+import { PageText } from "@/components/cms/PageContent";
 import * as React from "react"
 import "./beam-wordmark-footer.css"
 
@@ -464,13 +468,13 @@ export default function BeamWordmarkFooter({
       <div className="bwf-inner">
         <div className="bwf-col">
           <p className="bwf-label" style={delay()}>
-            © {year} {label}
+            <PageText field="e686e3641_1" section="beam wordmark footer" label="Text">{"© "}</PageText><PageText field="e686e3641_2" section="beam wordmark footer" label="Text">{year}</PageText> <PageText field="e686e3641_3" section="beam wordmark footer" label="Text">{label}</PageText>
           </p>
           {socials.length > 0 && (
             <ul className="bwf-socials">
               {socials.map((s, i) => (
                 <li key={s.label + i} className="bwf-fade" style={delay()}>
-                  <a
+                  <PageAnchor field="anchor_fdb8aaa49_1" section="beam-wordmark-footer"
                     className="bwf-soc"
                     href={s.href || "#"}
                     aria-label={s.label}
@@ -481,9 +485,9 @@ export default function BeamWordmarkFooter({
                       {isIconName(s.icon) ? ICONS[s.icon] : s.icon}
                     </svg>
                     <span className="bwf-tip" aria-hidden="true">
-                      {s.label}
+                      <PageText field="e686e3641_4" section="beam wordmark footer" label="Text">{s.label}</PageText>
                     </span>
-                  </a>
+                  </PageAnchor>
                 </li>
               ))}
             </ul>
@@ -492,19 +496,19 @@ export default function BeamWordmarkFooter({
             <div className="bwf-credits">
               {credit.map((c, i) => (
                 <p key={i} className="bwf-fade" style={delay()}>
-                  {c.lead}
+                  <PageText field="e686e3641_5" section="beam wordmark footer" label="Text">{c.lead}</PageText>
                   {c.href ? (
-                    <a
+                    <PageAnchor field="anchor_fdb8aaa49_2" section="beam-wordmark-footer"
                       href={c.href}
                       onClick={(e) => follow(e, c.label, c.href)}
                       {...(/^https?:/.test(c.href) ? { target: "_blank", rel: "noreferrer" } : {})}
                     >
-                      {c.label}
-                    </a>
+                      <PageText field="e686e3641_7" section="beam wordmark footer" label="Text">{c.label}</PageText>
+                    </PageAnchor>
                   ) : (
                     <b>{c.label}</b>
                   )}
-                  {c.tail}
+                  <PageText field="e686e3641_6" section="beam wordmark footer" label="Text">{c.tail}</PageText>
                 </p>
               ))}
             </div>
@@ -514,15 +518,15 @@ export default function BeamWordmarkFooter({
         {columns.map((col, ci) => (
           <nav key={col.title + ci} className="bwf-col" aria-label={col.title}>
             <p className="bwf-label" style={delay()}>
-              {col.title}
+              <PageText field="e686e3641_8" section="beam wordmark footer" label="Text">{col.title}</PageText>
             </p>
             <ul className="bwf-links">
               {col.links.map((l, li) => (
                 <li key={l.label + li} className="bwf-fade" style={delay()}>
-                  <a className="bwf-link" href={l.href || "#"} onClick={(e) => follow(e, l.label, l.href)}>
-                    <span className="bwf-link-t">{l.label}</span>
+                  <PageAnchor field="anchor_fdb8aaa49_3" section="beam-wordmark-footer" className="bwf-link" href={l.href || "#"} onClick={(e) => follow(e, l.label, l.href)}>
+                    <span className="bwf-link-t"><PageText field="e686e3641_9" section="beam wordmark footer" label="Text">{l.label}</PageText></span>
                     <Arrow />
-                  </a>
+                  </PageAnchor>
                 </li>
               ))}
             </ul>
@@ -535,13 +539,13 @@ export default function BeamWordmarkFooter({
         className="bwf-word"
         style={{ height: size ? wordHeight(size, base, cut) : "calc(" + (0.8 + cut) * 26 + "cqw)" }}
       >
-        <p className="sr-only">{word}</p>
+        <p className="sr-only"><PageText field="e686e3641_10" section="beam wordmark footer" label="Text">{word}</PageText></p>
         <div className="bwf-word-box">
         <div ref={innerRef} className="bwf-word-in" aria-hidden="true">
           {letters.map((ch, i) => (
             <span key={i} className="bwf-lw" style={{ "--bwf-d": 260 + i * 75 + "ms" } as React.CSSProperties}>
               <span className="bwf-l" onClick={hop} onAnimationEnd={(e) => e.currentTarget.classList.remove("is-hop")}>
-                {ch === " " ? " " : ch}
+                <PageText field="e686e3641_11" section="beam wordmark footer" label="Text">{ch === " " ? " " : ch}</PageText>
               </span>
             </span>
           ))}

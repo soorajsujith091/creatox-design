@@ -1,8 +1,10 @@
 "use client";
 
+/* cms-page-fields */
+import { PageImage, PageText, PageLink } from "@/components/cms/PageContent";
 import { useState } from "react";
-import Image from "next/image";
-import Link from "next/link";
+
+
 import { ParallaxScrollFeature } from "../ui/parallax-scroll-feature-section";
 import { ArrowUpRight } from "lucide-react";
 import { SectionLabel } from "../SectionLabel";
@@ -16,21 +18,21 @@ export function GrandMalabarExpo() {
   const imageAlt = imageFailed ? "Illustrative event campaign concept" : "Grand Malabar Expo 2025 event";
   return <section className="malabar-feature expo-feature site-gutter" aria-labelledby="malabar-heading">
     <ParallaxScrollFeature media={<div className="malabar-main-image malabar-reveal">
-        <Image src={image} alt={imageAlt} fill unoptimized={!imageFailed} sizes="(max-width: 767px) 100vw, 42vw" onError={() => setImageFailed(true)} />
-        <span className="malabar-image-caption">GRAND MALABAR EXPO / 2025</span>
+        <PageImage field="a95b3ed6f_1" section="Grand Malabar Expo" src={image} alt={imageAlt} fill unoptimized={!imageFailed} sizes="(max-width: 767px) 100vw, 42vw" onError={() => setImageFailed(true)} />
+        <span className="malabar-image-caption"><PageText field="a95b3ed6f_2" section="Grand Malabar Expo" label="Text">{"GRAND MALABAR EXPO / 2025"}</PageText></span>
       </div>}>
 
       <div className="malabar-content">
         <div className="malabar-reveal">
           <SectionLabel text="GRAND MALABAR EXPO" />
-          <h2 id="malabar-heading">Bringing people<br />and brands<br /><span>together.</span></h2>
-          <p className="malabar-description">As the official social media partner for Grand Malabar Expo 2025, Creatox helped the event connect with audiences through creative content, digital campaigns and continuous visitor engagement.</p>
+          <h2 id="malabar-heading"><PageText field="a95b3ed6f_3" section="Grand Malabar Expo" label="Heading">{"Bringing people"}</PageText><br /><PageText field="a95b3ed6f_4" section="Grand Malabar Expo" label="Heading">{"and brands"}</PageText><br /><span><PageText field="a95b3ed6f_5" section="Grand Malabar Expo" label="Text">{"together."}</PageText></span></h2>
+          <p className="malabar-description"><PageText field="a95b3ed6f_6" section="Grand Malabar Expo" label="Text">{"As the official social media partner for Grand Malabar Expo 2025, Creatox helped the event connect with audiences through creative content, digital campaigns and continuous visitor engagement."}</PageText></p>
         </div>
         <div className="malabar-highlights malabar-reveal">
-          <dl className="malabar-stats"><div><dt>Happy visitors</dt><dd>1L+</dd></div><div><dt>Views</dt><dd>21M+</dd></div></dl>
-          <div className="malabar-detail-image"><Image src="/images/Screenshot%202026-10-15%20105038.png" alt="" fill sizes="(max-width: 767px) 40vw, 20vw" /></div>
+          <dl className="malabar-stats"><div><dt><PageText field="a95b3ed6f_7" section="Grand Malabar Expo" label="Text">{"Happy visitors"}</PageText></dt><dd><PageText field="a95b3ed6f_8" section="Grand Malabar Expo" label="Text">{"1L+"}</PageText></dd></div><div><dt><PageText field="a95b3ed6f_9" section="Grand Malabar Expo" label="Text">{"Views"}</PageText></dt><dd><PageText field="a95b3ed6f_10" section="Grand Malabar Expo" label="Text">{"21M+"}</PageText></dd></div></dl>
+          <div className="malabar-detail-image"><PageImage field="a95b3ed6f_11" section="Grand Malabar Expo" src="/images/Screenshot%202026-10-15%20105038.png" alt="" fill sizes="(max-width: 767px) 40vw, 20vw" /></div>
         </div>
-        <Link href="/grand-malabar-expo/" className="malabar-link">Explore the partnership <ArrowUpRight size={18} aria-hidden="true" /></Link>
+        <PageLink field="a95b3ed6f_12" section="Grand Malabar Expo" href="/grand-malabar-expo/" className="malabar-link"><PageText field="a95b3ed6f_13" section="Grand Malabar Expo" label="Text">{"Explore the partnership "}</PageText><ArrowUpRight size={18} aria-hidden="true" /></PageLink>
       </div>
     </ParallaxScrollFeature>
   </section>;

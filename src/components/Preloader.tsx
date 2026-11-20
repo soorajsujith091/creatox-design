@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
-import { BrandLogo } from "@/components/BrandLogo";
+import { GlassIconReveal } from "@/components/ui/liquid-glass-logo-reveal";
 
 export function Preloader() {
   const [isComplete, setIsComplete] = useState(false);
@@ -20,8 +20,7 @@ export function Preloader() {
       setIsComplete(true);
       document.body.style.overflow = previousOverflow;
     } });
-    timeline.fromTo(logoRef.current, { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: .45, ease: "power2.out" });
-    timeline.to(containerRef.current, { yPercent: -100, duration: .6, ease: "power3.inOut" }, "+=0.15");
+    timeline.to(containerRef.current, { yPercent: -100, duration: .45, ease: "power3.inOut" }, 2.7);
     return () => {
       timeline.kill();
       document.body.style.overflow = previousOverflow;
@@ -29,7 +28,9 @@ export function Preloader() {
   }, []);
 
   if (isComplete) return null;
-  return <div ref={containerRef} className="fixed inset-0 z-[10000] bg-black flex items-center justify-center" aria-hidden="true">
-    <div ref={logoRef}><BrandLogo className="w-[240px] md:w-[320px] p-5" priority /></div>
+  return <div ref={containerRef} data-site-preloader className="fixed inset-0 z-[10000] bg-black/60 backdrop-blur-sm flex items-center justify-center isolate" aria-hidden="true">
+    <div ref={logoRef} className="h-[360px] w-full max-w-[640px] md:h-[480px]">
+      <GlassIconReveal logo="/images/Creatox%20Logo-%20new.png" look="dark" background="transparent" logoColor="#DC0208" plateColor="#100001" originalColors loop={false} iconPlate={false} glassAspect={2.4} tileSize={320} logoScale={.76} finalScale={1} speed={1.6} tuning={{ dispersion: 0, colorBleed: 0, present: 2.4, glide: 2, startZoom: 1, startSize: .8, bulge: 0, cornerPull: 0, edgeSmear: 0, tilt: 0, bevelWidth: .06, focus: 0 }} label="Creatox Designs" className="h-full w-full" />
+    </div>
   </div>;
 }

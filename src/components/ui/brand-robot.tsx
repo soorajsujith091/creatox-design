@@ -1,5 +1,7 @@
 "use client";
 
+/* cms-page-fields */
+import { PageText } from "@/components/cms/PageContent";
 import { useEffect, useRef, useState } from "react";
 import * as THREE from "three";
 
@@ -96,6 +98,6 @@ export function BrandRobot() {
   }, []);
   return <div className="agency-robot-wrap">
     <div ref={host} className="agency-robot" role="img" aria-label="Interactive 3D Creatox greeting robot with red accents"/>
-    {failed && <p className="agency-robot-note">Hello from Creatox.</p>}
+    {failed && <p className="agency-robot-note"><PageText field="4e5babbcf_1" section="brand robot" label="Text">{"Hello from Creatox."}</PageText></p>}
   </div>;
 }

@@ -1,11 +1,27 @@
-﻿.creatox-beam-footer .bwf-inner{max-width:none;padding-inline:var(--section-gutter,clamp(20px,4vw,80px));grid-template-columns:minmax(0,1.3fr) minmax(0,1fr) minmax(0,.8fr) minmax(0,1.2fr)}
-.creatox-beam-footer .bwf-word-box{max-width:none;padding-inline:var(--section-gutter,clamp(20px,4vw,80px));font-family:var(--font-heading),sans-serif}
-.creatox-beam-footer .bwf-sky{opacity:.4}
-.creatox-beam-footer .bwf-socials{flex-wrap:wrap;gap:10px}
-.creatox-beam-footer .bwf-soc{width:44px;height:44px}
-.creatox-beam-footer .bwf-link{min-height:44px;overflow-wrap:anywhere}
-.creatox-beam-footer .bwf-label{font-family:var(--font-mono),monospace;line-height:1.6;font-size:11px}
-.creatox-beam-footer .bwf-credits{max-width:300px;line-height:1.7}
-.creatox-beam-footer .bwf-credits p+p{margin-top:16px}
-@container (max-width:1100px){.creatox-beam-footer .bwf-inner{grid-template-columns:repeat(2,minmax(0,1fr))}.creatox-beam-footer .bwf-col:nth-child(1){grid-column:auto;max-width:none}}
-@container (max-width:540px){.creatox-beam-footer .bwf-inner{grid-template-columns:minmax(0,1fr);row-gap:32px}.creatox-beam-footer .bwf-link{font-size:14px}}
+.creatox-editorial-footer{background:#100001;color:#fff}
+.creatox-footer-banner{position:relative;isolation:isolate;min-height:460px;overflow:hidden;padding:32px var(--section-gutter,4vw) 56px}
+.creatox-footer-banner>img{object-fit:cover;object-position:center}
+.creatox-footer-banner-shade{position:absolute;inset:0;background:linear-gradient(90deg,#100001e8,#10000170 60%,#0002);z-index:1}
+.creatox-footer-banner-top,.creatox-footer-banner-copy{position:relative;z-index:2}
+.creatox-footer-banner-top{display:flex;justify-content:space-between;align-items:center;gap:24px}
+.creatox-footer-banner-top>span{font-family:var(--font-mono),monospace;font-size:10px;letter-spacing:.08em}
+.creatox-footer-banner-copy{margin-top:70px}
+.creatox-footer-banner-copy>p{font-family:var(--font-mono),monospace;font-size:10px;letter-spacing:.12em;margin-bottom:18px}
+.creatox-footer-banner-copy h2{font-family:var(--font-heading),sans-serif;font-size:clamp(38px,4.5vw,72px);font-weight:500;line-height:1.04;letter-spacing:-.045em}
+.creatox-footer-banner-copy>a{display:inline-flex;align-items:center;gap:26px;margin-top:28px;background:#fff;color:#100001;padding:14px 20px;border-radius:4px;font-size:13px;min-height:48px}
+.creatox-footer-panel{position:relative;isolation:isolate;display:grid;grid-template-columns:1.5fr 1fr .8fr 1.2fr;gap:40px;background:#000;color:#fff;padding:48px var(--section-gutter,4vw) 24px}
+.creatox-footer-statement h2{font-family:var(--font-heading),sans-serif;font-size:clamp(36px,4vw,64px);font-weight:500;line-height:1.02;letter-spacing:-.045em}
+.creatox-footer-statement h2 span{color:#DC0208}
+.creatox-footer-statement>p{font-size:12px;line-height:1.6;margin-top:24px}
+.creatox-footer-mark{width:48px;height:48px;margin-top:36px;color:#DC0208;stroke-width:3}
+.creatox-footer-column{display:flex;flex-direction:column;align-items:flex-start;gap:12px;min-width:0}
+.creatox-footer-column h3{font-family:var(--font-mono),monospace;text-transform:uppercase;letter-spacing:.08em;font-size:10px;margin-bottom:8px;color:#aaa}
+.creatox-footer-column>a{font-size:13px;line-height:1.5;overflow-wrap:anywhere}
+.creatox-footer-address{font-size:12px;line-height:1.65;margin-top:12px;max-width:260px}
+.creatox-footer-socials{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.creatox-footer-socials>a{display:grid;place-items:center;width:36px;height:36px;border:1px solid #ffffff60;border-radius:50%}
+.creatox-footer-bottom{grid-column:1/-1;border-top:1px solid #ffffff30;padding-top:24px;margin-top:12px;display:flex;justify-content:space-between;gap:20px;font-size:11px}
+.creatox-editorial-footer a:focus-visible{outline:2px solid currentColor;outline-offset:5px}
+.creatox-footer-column>a:hover,.creatox-footer-bottom>a:hover{text-decoration:underline;text-underline-offset:4px}
+@media(max-width:1000px){.creatox-footer-panel{grid-template-columns:1fr 1fr;gap:36px}}
+@media(max-width:600px){.creatox-footer-banner{min-height:420px;padding-top:24px}.creatox-footer-banner-top>span{display:none}.creatox-footer-banner-copy{margin-top:60px}.creatox-footer-panel{gap:32px 20px;padding-top:36px}.creatox-footer-statement{grid-column:1/-1}.creatox-footer-statement h2 br{display:none}.creatox-footer-statement h2{max-width:330px}.creatox-footer-mark{margin-top:20px}.creatox-footer-column:last-of-type{grid-column:1/-1}.creatox-footer-bottom{flex-direction:column;gap:12px}}

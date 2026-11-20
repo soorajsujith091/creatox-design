@@ -1,6 +1,10 @@
 "use client";
 
-import Image from "next/image";
+/* cms-native-links */
+import { PageAnchor } from "@/components/cms/PageContent";
+/* cms-page-fields */
+import { PageText, PageImage } from "@/components/cms/PageContent";
+
 import { motion, useReducedMotion } from "framer-motion";
 import { Globe } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
@@ -24,20 +28,20 @@ export default function Team01({ members }: { members: TeamMember[] }) {
   return <section className="ip-section creatox-team" aria-labelledby="creatox-team-heading">
     <motion.header className="creatox-team-heading" initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }} variants={reveal} transition={{ duration: reducedMotion ? 0 : 0.8 }}>
       <Badge variant="outline" className="creatox-team-badge">Our team</Badge>
-      <h2 id="creatox-team-heading">Meet the creative minds<br />behind <span>our success.</span></h2>
-      <p>Different talents. A shared passion for creating brands that connect.</p>
+      <h2 id="creatox-team-heading"><PageText field="50f725774_1" section="team 01" label="Heading">{"Meet the creative minds"}</PageText><br /><PageText field="50f725774_2" section="team 01" label="Heading">{"behind "}</PageText><span><PageText field="50f725774_3" section="team 01" label="Text">{"our success."}</PageText></span></h2>
+      <p><PageText field="50f725774_4" section="team 01" label="Text">{"Different talents. A shared passion for creating brands that connect."}</PageText></p>
     </motion.header>
     <div className="creatox-team-grid">
       {members.map((member, index) => <motion.article key={member.name} className="creatox-team-member" initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.15 }} variants={reveal} transition={{ duration: reducedMotion ? 0 : 0.8, delay: reducedMotion ? 0 : (index % 4) * 0.1, ease: [0.21, 0.47, 0.32, 0.98] }}>
         <div className="creatox-team-portrait">
-          {member.image && <Image src={member.image} alt={member.name} fill sizes="(max-width: 639px) 100vw, (max-width: 1023px) 50vw, 25vw" unoptimized />}
+          {member.image && <PageImage field="50f725774_5" section="team 01" src={member.image} alt={member.name} fill sizes="(max-width: 639px) 100vw, (max-width: 1023px) 50vw, 25vw" unoptimized />}
         </div>
         <div className="creatox-team-details">
-          <h3>{member.name}</h3>
-          {member.role && <p>{member.role}</p>}
+          <h3><PageText field="50f725774_6" section="team 01" label="Heading">{member.name}</PageText></h3>
+          {member.role && <p><PageText field="50f725774_7" section="team 01" label="Text">{member.role}</PageText></p>}
           {member.socials && <div className="creatox-team-socials">
-            {member.socials.website && <a href={member.socials.website} target="_blank" rel="noopener noreferrer" aria-label={`${member.name}'s website`}><Globe size={16} aria-hidden="true" /></a>}
-            {member.socials.linkedin && <a href={member.socials.linkedin} target="_blank" rel="noopener noreferrer" aria-label={`${member.name} on LinkedIn`}><LinkedinIcon /></a>}
+            {member.socials.website && <PageAnchor field="anchor_c74b6a04a_1" section="team-01" href={member.socials.website} target="_blank" rel="noopener noreferrer" aria-label={`${member.name}'s website`}><Globe size={16} aria-hidden="true" /></PageAnchor>}
+            {member.socials.linkedin && <PageAnchor field="anchor_c74b6a04a_2" section="team-01" href={member.socials.linkedin} target="_blank" rel="noopener noreferrer" aria-label={`${member.name} on LinkedIn`}><LinkedinIcon /></PageAnchor>}
           </div>}
         </div>
       </motion.article>)}

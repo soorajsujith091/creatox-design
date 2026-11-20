@@ -1,5 +1,7 @@
 "use client";
 
+/* cms-page-fields */
+import { PageText } from "@/components/cms/PageContent";
 import { useEffect, useId, useRef, useState, type ReactNode } from "react";
 import { motion, useInView, useReducedMotion, useScroll, useTransform } from "framer-motion";
 import { ArrowDown, Pause, Play } from "lucide-react";
@@ -84,13 +86,13 @@ export default function ScrollExpandMedia({ mediaSrc, posterSrc, title, eyebrow,
             else { setPaused(false); if (videoRef.current) { videoRef.current.muted = true; void videoRef.current.play().catch(() => {}); } }
           }} aria-label={isPlaying ? "Pause agency film" : "Play agency film"}>
             {isPlaying ? <Pause size={16} aria-hidden="true" /> : <Play size={16} aria-hidden="true" />}
-            <span>{isPlaying ? "Pause film" : "Play film"}</span>
+            <span><PageText field="5cf4ac1c7_1" section="scroll expansion hero" label="Text">{isPlaying ? "Pause film" : "Play film"}</PageText></span>
           </button>}
-          {failed && <p className="creatox-film-error">The film is currently unavailable. Explore our services below.</p>}
+          {failed && <p className="creatox-film-error"><PageText field="5cf4ac1c7_2" section="scroll expansion hero" label="Text">{"The film is currently unavailable. Explore our services below."}</PageText></p>}
         </motion.div>
         </div>
         </div>
-        <p className="creatox-film-hint"><ArrowDown size={14} aria-hidden="true" /> Scroll to explore</p>
+        <p className="creatox-film-hint"><ArrowDown size={14} aria-hidden="true" /> <PageText field="5cf4ac1c7_3" section="scroll expansion hero" label="Text">{"Scroll to explore"}</PageText></p>
       </div>
     </section>
     <div className="creatox-film-copy site-gutter">{children}</div>

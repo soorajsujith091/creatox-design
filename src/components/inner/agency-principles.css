@@ -1,0 +1,24 @@
+.agency-principles{background:#000;color:#fff}
+.agency-principles-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(16px,2vw,32px);padding-bottom:76px;align-items:start}
+.agency-principle-wrap-1{margin-top:48px}.agency-principle-wrap-3{margin-top:76px}
+.agency-principle-card{position:relative;isolation:isolate;display:flex;flex-direction:column;justify-content:space-between;min-height:350px;border-radius:20px;overflow:hidden;padding:24px;background:#fff;color:#171717}
+.agency-principle-card>img{object-fit:cover;z-index:-2;transition:transform .8s cubic-bezier(.22,1,.36,1)}
+.agency-principle-label{align-self:flex-start;display:inline-block;max-width:100%;padding:6px 9px;border:1px solid currentColor;border-radius:20px;font-size:9px;line-height:1.4;letter-spacing:.01em;opacity:.85}
+.agency-principle-card-0 .agency-principle-label{color:#a50106;border-color:#dc020844}
+.agency-principle-copy{margin-top:64px}
+.agency-principle-number{display:block;font-family:var(--font-mono),monospace;font-size:10px;margin-bottom:12px;opacity:.65}
+.agency-principle-copy h3{font-family:var(--font-heading),sans-serif;font-size:clamp(27px,2.5vw,40px);line-height:1.08;font-weight:500;letter-spacing:-.04em;margin:0 0 16px}
+.agency-principle-card-0 h3>span{color:#dc0208}
+.agency-principle-copy p{font-size:13px;line-height:1.7;margin:0;opacity:.85}
+.agency-principle-card-1{color:#fff;background:#100001;min-height:350px}
+.agency-principle-card-1::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,#10000150,#100001e8)}
+.agency-principle-card-2{background:#dc0208;color:#fff}
+.agency-principle-card-3{background:#100001;color:#fff;min-height:350px;border:1px solid #ffffff20}
+.agency-principle-card-3>img{opacity:.4;object-position:center}
+.agency-principle-card-3::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(#000c,#0003 65%,#0009)}
+.agency-principle-card-3 .agency-principle-copy{margin-top:32px}
+.agency-principle-signature{display:flex;align-items:center;justify-content:space-between;font-family:var(--font-heading),sans-serif;letter-spacing:-.04em;font-size:24px;margin-top:32px}
+@media(hover:hover){.agency-principle-card:hover>img{transform:scale(1.045)}}
+@media(max-width:1000px){.agency-principles-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;padding-bottom:32px}.agency-principle-wrap-1,.agency-principle-wrap-3{margin-top:32px}.agency-principle-card{min-height:330px}}
+@media(max-width:600px){.agency-principles-grid{grid-template-columns:1fr;gap:20px;padding-bottom:0}.agency-principle-wrap-1,.agency-principle-wrap-3{margin-top:0}.agency-principle-card{min-height:300px;padding:26px}.agency-principle-copy{margin-top:48px}.agency-principle-copy h3{font-size:34px}.agency-principle-copy p{font-size:14px}}
+@media(prefers-reduced-motion:reduce){.agency-principle-card>img{transition:none}.agency-principle-card:hover>img{transform:none}}

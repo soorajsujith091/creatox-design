@@ -2,29 +2,29 @@
 .event-timeline-frame{width:100%;max-width:none;margin:0;border-inline:1px solid #292929}
 .event-timeline-header{padding:56px 24px;border-block:1px solid #292929}
 .event-timeline-track{position:relative;--timeline-rail:110px}
-.event-timeline-progress{position:absolute;left:calc(var(--timeline-rail) - 1px);top:0;bottom:0;width:2px;background:#e4002b;transform-origin:top;z-index:1;pointer-events:none;box-shadow:0 0 12px #e4002b66}
-.event-timeline-marker{position:absolute;left:var(--timeline-rail);width:12px;height:12px;border:2px solid #ff9aad;border-radius:50%;background:#e4002b;box-shadow:0 0 18px #e4002b;transform:translate(-50%,-50%);z-index:2;pointer-events:none}
+.event-timeline-progress{position:absolute;left:calc(var(--timeline-rail) - 1px);top:0;bottom:0;width:2px;background:#DC0208;transform-origin:top;z-index:1;pointer-events:none;box-shadow:0 0 12px #DC020866}
+.event-timeline-marker{position:absolute;left:var(--timeline-rail);width:12px;height:12px;border:2px solid #ff9aad;border-radius:50%;background:#DC0208;box-shadow:0 0 18px #DC0208;transform:translate(-50%,-50%);z-index:2;pointer-events:none}
 .event-timeline-year{position:sticky;top:32px}
 @media(max-width:1000px){.event-timeline-track{--timeline-rail:80px}}
 @media(max-width:767px){.event-timeline-track{--timeline-rail:44px}}
-.event-timeline-header>.inline-flex{color:#ff5373}
+.event-timeline-header>.inline-flex{color:#DC0208}
 .event-timeline-header h2{font-family:var(--font-heading),sans-serif;font-size:clamp(34px,4.5vw,64px);font-weight:500;letter-spacing:-.04em;line-height:1.08;margin:24px 0 20px}
-.event-timeline-header h2 span{color:#e4002b}
+.event-timeline-header h2 span{color:#DC0208}
 .event-timeline-header>p{max-width:600px;color:#aaa;font-size:16px;line-height:1.7}
 .event-timeline-list{list-style:none;margin:0;padding:0}
 .event-timeline-entry{display:grid;grid-template-columns:110px 1fr;border-bottom:1px solid #292929}
-.event-timeline-date{position:relative;padding:48px 24px;color:#ff5373;font-family:var(--font-mono),monospace;font-size:14px;border-right:1px solid #292929}
-.event-timeline-dot{position:absolute;right:-5px;top:52px;width:9px;height:9px;border-radius:50%;background:#e4002b;box-shadow:0 0 0 6px #000}
+.event-timeline-date{position:relative;padding:48px 24px;color:#DC0208;font-family:var(--font-mono),monospace;font-size:14px;border-right:1px solid #292929}
+.event-timeline-dot{position:absolute;right:-5px;top:52px;width:9px;height:9px;border-radius:50%;background:#DC0208;box-shadow:0 0 0 6px #000}
 .event-timeline-content{min-width:0;display:grid;grid-template-columns:1fr 1fr;gap:40px;padding:48px 40px}
-.event-timeline-label{font-family:var(--font-mono),monospace;font-size:10px;letter-spacing:.09em;color:#ff5373;margin-bottom:20px}
+.event-timeline-label{font-family:var(--font-mono),monospace;font-size:10px;letter-spacing:.09em;color:#DC0208;margin-bottom:20px}
 .event-timeline-copy h3{font-family:var(--font-heading),sans-serif;font-size:clamp(27px,2.7vw,40px);letter-spacing:-.035em;line-height:1.12;margin-bottom:20px}
 .event-timeline-description{font-size:14px;line-height:1.8;color:#aaa}
 .event-timeline-stats{display:flex;flex-wrap:wrap;gap:24px;margin-block:28px}
 .event-timeline-stats>div{display:flex;flex-direction:column-reverse;gap:8px}
 .event-timeline-stats dt{font-size:11px;color:#aaa}
 .event-timeline-stats dd{font-family:var(--font-heading),sans-serif;font-size:36px;line-height:1;color:#fff}
-.event-timeline-link{display:inline-flex;align-items:center;gap:12px;min-height:44px;color:#ff5373;font-size:13px}
-.event-timeline-link:hover{color:#fff}.event-timeline-link:focus-visible{outline:2px solid #e4002b;outline-offset:4px}
+.event-timeline-link{display:inline-flex;align-items:center;gap:12px;min-height:44px;color:#DC0208;font-size:13px}
+.event-timeline-link:hover{color:#fff}.event-timeline-link:focus-visible{outline:2px solid #DC0208;outline-offset:4px}
 .event-timeline-image{position:relative;min-width:0;min-height:340px;border-radius:12px;overflow:hidden;background:#000;align-self:stretch}
 .event-timeline-image img{object-fit:contain}
 .event-timeline-end{height:80px;border-bottom:1px solid #292929}

@@ -1,7 +1,9 @@
 "use client";
 
+/* cms-page-fields */
+import { PageText, PageImage } from "@/components/cms/PageContent";
 import { useLayoutEffect, useRef } from "react";
-import Image from "next/image";
+
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { agencyHistory } from "@/data/inner-services";
@@ -39,17 +41,17 @@ export default function AgencyHistory() {
 
   return <section ref={sectionRef} className="agency-history" aria-labelledby="agency-history-heading">
     <div className="agency-history-sticky">
-      <header className="agency-history-header"><span className="ip-eyebrow">[ Our history ]</span><p>2019 — 2026 <span aria-hidden="true">/</span> Made to keep moving.</p></header>
+      <header className="agency-history-header"><span className="ip-eyebrow"><PageText field="bc7148ea8_1" section="agency history" label="Text">{"[ Our history ]"}</PageText></span><p><PageText field="bc7148ea8_2" section="agency history" label="Text">{"2019 — 2026 "}</PageText><span aria-hidden="true"><PageText field="bc7148ea8_4" section="agency history" label="Text">{"/"}</PageText></span> <PageText field="bc7148ea8_3" section="agency history" label="Text">{"Made to keep moving."}</PageText></p></header>
       <div className="agency-history-viewport" role="region" aria-label="Creatox history timeline" tabIndex={0}>
         <div ref={trackRef} className="agency-history-track">
           <div className="agency-history-intro">
-            <div className="agency-history-image"><Image src="/images/WhatsApp%20Image%202026-10-12%20at%2012.56.42%20PM.jpeg" alt="The Creatox team together at the Kannur office" fill sizes="(max-width: 767px) 85vw, 360px" /></div>
-            <h2 id="agency-history-heading">Small beginnings.<br /><span>Shared ambition.</span></h2>
+            <div className="agency-history-image"><PageImage field="bc7148ea8_5" section="agency history" src="/images/WhatsApp%20Image%202026-10-12%20at%2012.56.42%20PM.jpeg" alt="The Creatox team together at the Kannur office" fill sizes="(max-width: 767px) 85vw, 360px" /></div>
+            <h2 id="agency-history-heading"><PageText field="bc7148ea8_6" section="agency history" label="Heading">{"Small beginnings."}</PageText><br /><span><PageText field="bc7148ea8_7" section="agency history" label="Text">{"Shared ambition."}</PageText></span></h2>
           </div>
           <ol className="agency-history-milestones">
             <li className="agency-history-rail" aria-hidden="true" role="presentation"><div className="agency-history-progress" /></li>
             {agencyHistory.map((item, index) => <li key={item.year} className={`agency-history-item ${index % 2 ? "is-bottom" : "is-top"}`}>
-              <div className="agency-history-copy"><span className="agency-history-year">{item.year}</span><h3>{item.title}</h3><p>{item.description}</p></div>
+              <div className="agency-history-copy"><span className="agency-history-year"><PageText field="bc7148ea8_8" section="agency history" label="Text">{item.year}</PageText></span><h3><PageText field="bc7148ea8_9" section="agency history" label="Heading">{item.title}</PageText></h3><p><PageText field="bc7148ea8_10" section="agency history" label="Text">{item.description}</PageText></p></div>
               <span className="agency-history-stem" aria-hidden="true" /><span className="agency-history-dot" aria-hidden="true" />
             </li>)}
           </ol>

@@ -1,5 +1,9 @@
 ﻿"use client";
 
+/* cms-native-links */
+import { PageAnchor } from "@/components/cms/PageContent";
+/* cms-page-fields */
+import { PageText } from "@/components/cms/PageContent";
 import { useCallback, useEffect, useRef, useState } from "react";
 import useEmblaCarousel from "embla-carousel-react";
 import { motion, useReducedMotion } from "framer-motion";
@@ -54,7 +58,7 @@ export function Testimonials() {
   return <section className={`client-stories${staticOnDesktop ? " client-stories-static-desktop" : ""}`} aria-labelledby="client-stories-title">
     <motion.header initial="hidden" whileInView="visible" viewport={{ once: true, amount: .2 }} variants={{ hidden: {}, visible: { transition: { staggerChildren: reduced ? 0 : .3 } } }}>
       <motion.span variants={reveal} transition={revealTransition} className="client-stories-eyebrow">/ CLIENT LOVE</motion.span>
-      <motion.h2 variants={reveal} transition={revealTransition} id="client-stories-title">Why do ambitious brands<br/>love working with <span>Creatox?</span></motion.h2>
+      <motion.h2 variants={reveal} transition={revealTransition} id="client-stories-title">Why do ambitious brands<br/>love working with <span><PageText field="cbea6cc4e_1" section="Testimonials" label="Text">{"Creatox?"}</PageText></span></motion.h2>
       <motion.p variants={reveal} transition={revealTransition}>Real feedback. Shared ambition. Lasting relationships.</motion.p>
     </motion.header>
     <div className="client-stories-carousel" role="region" aria-roledescription="carousel" aria-label="Client testimonials" onMouseEnter={() => setInteracting(true)} onMouseLeave={() => setInteracting(false)} onFocusCapture={() => setInteracting(true)} onBlurCapture={e => { if (!e.currentTarget.contains(e.relatedTarget)) setInteracting(false); }} onKeyDown={e => { if (e.key === "ArrowLeft") { e.preventDefault(); navigate(-1); } if (e.key === "ArrowRight") { e.preventDefault(); navigate(1); } }}>
@@ -63,8 +67,8 @@ export function Testimonials() {
           <button className="client-story-card" onClick={() => { setPaused(true); setAudible(null); previews.current.forEach(video => { if (video) video.muted = true; }); setStory(index); }} aria-label={`Watch ${item.title}`}>
             <video ref={element => { previews.current[index] = element; }} src={item.videoUrl} autoPlay muted={audible !== index} loop playsInline preload="metadata" aria-hidden="true" tabIndex={-1} className="client-story-preview"/>
             <span className="client-story-shade" aria-hidden="true"/>
-            <span className="client-story-top"><span className="client-story-category">CLIENT TESTIMONIAL</span></span>
-            <span className="client-story-bottom"><span className="client-story-quote">{item.title}</span><span className="client-story-action"><Play size={14} fill="currentColor"/> Watch testimonial</span></span>
+            <span className="client-story-top"><span className="client-story-category"><PageText field="cbea6cc4e_2" section="Testimonials" label="Text">{"CLIENT TESTIMONIAL"}</PageText></span></span>
+            <span className="client-story-bottom"><span className="client-story-quote"><PageText field="cbea6cc4e_3" section="Testimonials" label="Text">{item.title}</PageText></span><span className="client-story-action"><Play size={14} fill="currentColor"/> <PageText field="cbea6cc4e_4" section="Testimonials" label="Text">{"Watch testimonial"}</PageText></span></span>
           </button>
           <button type="button" className="client-story-sound" onClick={() => toggleSound(index)} aria-label={`${audible === index ? "Mute" : "Unmute"} ${item.title}`} aria-pressed={audible === index}>{audible === index ? <Volume2 size={18} aria-hidden="true"/> : <VolumeX size={18} aria-hidden="true"/>}</button>
         </article>)}</div>
@@ -72,7 +76,7 @@ export function Testimonials() {
       <button className="client-story-arrow is-prev" onClick={() => navigate(-1)} aria-label="Previous testimonial"><ArrowLeft size={20}/></button>
       <button className="client-story-arrow is-next" onClick={() => navigate(1)} aria-label="Next testimonial"><ArrowRight size={20}/></button>
     </div>
-    <div className="client-stories-controls"><div className="client-story-dots">{testimonials.map((item, i) => <button key={item.id} aria-label={`Show testimonial ${i + 1}`} aria-current={i === selected ? "true" : undefined} onClick={() => { setPaused(true); api?.scrollTo(i); }}><span className={i === selected ? "is-active" : ""}/></button>)}</div>{!reduced && <button className="client-story-pause" onClick={() => setPaused(!paused)} aria-label={paused ? "Play testimonials" : "Pause testimonials"}>{paused ? <Play size={15}/> : <Pause size={15}/>} {paused ? "Play" : "Pause"}</button>}</div>
-    <dialog ref={dialog} className="client-story-dialog" onCancel={() => setStory(null)} onClose={() => { dialog.current?.querySelector("video")?.pause(); setStory(null); }} onClick={e => { if (e.target === e.currentTarget) setStory(null); }} data-lenis-prevent>{story !== null && <><button className="client-story-close" onClick={() => setStory(null)} aria-label="Close testimonial"><X size={22}/></button><span className="client-stories-eyebrow">/ CLIENT STORY</span><h3>{testimonials[story].title}</h3><video key={testimonials[story].videoUrl} src={testimonials[story].videoUrl} autoPlay controls playsInline preload="metadata" className="client-story-video" aria-label={testimonials[story].title}/><a href="#contact" onClick={() => setStory(null)}>Start your project <ArrowUpRight size={18}/></a></>}</dialog>
+    <div className="client-stories-controls"><div className="client-story-dots">{testimonials.map((item, i) => <button key={item.id} aria-label={`Show testimonial ${i + 1}`} aria-current={i === selected ? "true" : undefined} onClick={() => { setPaused(true); api?.scrollTo(i); }}><span className={i === selected ? "is-active" : ""}/></button>)}</div>{!reduced && <button className="client-story-pause" onClick={() => setPaused(!paused)} aria-label={paused ? "Play testimonials" : "Pause testimonials"}>{paused ? <Play size={15}/> : <Pause size={15}/>} <PageText field="cbea6cc4e_5" section="Testimonials" label="Text">{paused ? "Play" : "Pause"}</PageText></button>}</div>
+    <dialog ref={dialog} className="client-story-dialog" onCancel={() => setStory(null)} onClose={() => { dialog.current?.querySelector("video")?.pause(); setStory(null); }} onClick={e => { if (e.target === e.currentTarget) setStory(null); }} data-lenis-prevent>{story !== null && <><button className="client-story-close" onClick={() => setStory(null)} aria-label="Close testimonial"><X size={22}/></button><span className="client-stories-eyebrow"><PageText field="cbea6cc4e_6" section="Testimonials" label="Text">{"/ CLIENT STORY"}</PageText></span><h3><PageText field="cbea6cc4e_7" section="Testimonials" label="Heading">{testimonials[story].title}</PageText></h3><video key={testimonials[story].videoUrl} src={testimonials[story].videoUrl} autoPlay controls playsInline preload="metadata" className="client-story-video" aria-label={testimonials[story].title}/><PageAnchor field="anchor_6875b4ef9_1" section="Testimonials" href="#contact" onClick={() => setStory(null)}><PageText field="cbea6cc4e_8" section="Testimonials" label="Text">{"Start your project "}</PageText><ArrowUpRight size={18}/></PageAnchor></>}</dialog>
   </section>;
 }

@@ -1,17 +1,18 @@
 "use client";
 
+/* cms-page-fields */
+import { PageText, PageLink } from "@/components/cms/PageContent";
 import { useEffect, useRef, useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
-import dynamic from "next/dynamic";
-import Link from "next/link";
-import Image from "next/image";
+
+
+import { CmsImage } from "@/components/CmsImage";
 import { ArrowLeft, ArrowRight, ArrowUpRight } from "lucide-react";
 import { services } from "@/data/services";
 import { innerServices } from "@/data/inner-services";
 import { SectionLabel } from "../SectionLabel";
 import "./expertise-grid.css";
 
-const ExpertiseSculpture = dynamic(() => import("../ui/expertise-sculpture").then(module => module.ExpertiseSculpture), { ssr: false });
 
 const firstViewOrder = ["branding-design", "social-media", "web-design", "ads-campaigns"];
 const expertiseServices = [
@@ -39,42 +40,48 @@ const serviceImages: Record<string, { src: string; alt: string; position?: strin
 
 export function ServicesAccordion() {
   const sectionRef = useRef<HTMLElement>(null);
+  const trackRef = useRef<HTMLDivElement>(null);
+  const [position, setPosition] = useState({ start: true, end: false });
+  const reduced = useReducedMotion();
   useEffect(() => {
     const section = sectionRef.current;
-    if (!section) return;
-    const measure = () => section.style.setProperty("--services-height", `${section.offsetHeight}px`);
+    const track = trackRef.current;
+    if (!section || !track) return;
+    const measure = () => {
+      section.style.setProperty("--services-height", `${section.offsetHeight}px`);
+      setPosition({ start: track.scrollLeft < 4, end: track.scrollLeft + track.clientWidth >= track.scrollWidth - 4 });
+    };
     const observer = new ResizeObserver(measure);
-    observer.observe(section);
+    observer.observe(section); observer.observe(track);
+    track.addEventListener("scroll", measure, { passive: true });
     measure();
-    return () => observer.disconnect();
+    return () => { observer.disconnect(); track.removeEventListener("scroll", measure); };
   }, []);
-  const [page, setPage] = useState(0);
-  const pageSize = 4;
-  const pageCount = Math.ceil(expertiseServices.length / pageSize);
-  const reduceMotion = useReducedMotion();
-  const reveal = { hidden: { opacity: 0, y: reduceMotion ? 0 : 32 }, visible: { opacity: 1, y: 0 } };
-  const revealTransition = { duration: reduceMotion ? 0 : 1.3, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] };
+  const move = (direction: number) => {
+    const track = trackRef.current;
+    const card = track?.querySelector<HTMLElement>(".expertise-visual-card");
+    if (track && card) track.scrollBy({ left: direction * (card.offsetWidth + 20), behavior: reduced ? "instant" : "smooth" });
+  };
   return <section ref={sectionRef} className="expertise-showcase site-gutter" aria-labelledby="expertise-heading">
-    <header className="expertise-showcase-header">
-      <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, amount: .2 }} variants={{ hidden: {}, visible: { transition: { staggerChildren: reduceMotion ? 0 : .3 } } }}>
-        <motion.div variants={reveal} transition={revealTransition}><SectionLabel text="OUR EXPERTISE" /></motion.div>
-        <motion.h2 variants={reveal} transition={revealTransition} id="expertise-heading">Popular <span>services.</span></motion.h2>
-        <motion.p variants={reveal} transition={revealTransition}>Grow your presence with social media, targeted campaigns, SEO and creator partnerships. Bring it all together with branding, websites, creative production and custom software.</motion.p>
-      </motion.div>
-      <div className="expertise-showcase-controls"><button type="button" onClick={() => setPage(value => Math.max(0, value - 1))} disabled={page === 0} aria-label="Previous services" aria-controls="expertise-service-grid"><ArrowLeft size={20} aria-hidden="true" /></button><button type="button" onClick={() => setPage(value => Math.min(pageCount - 1, value + 1))} disabled={page === pageCount - 1} aria-label="Next services" aria-controls="expertise-service-grid"><ArrowRight size={20} aria-hidden="true" /></button></div>
-    </header>
-    <div className="expertise-service-grid" id="expertise-service-grid">
-      {expertiseServices.map((service, index) => {
-        const fullService = innerServices.find(item => service.link === `/service/${item.slug}/`);
-        const detail = serviceDetails[service.id] ?? { tags: fullService?.offerings.slice(0, 3).map(item => item.title) ?? [] };
-        const image = serviceImages[service.id] ?? (fullService ? { src: fullService.image, alt: service.title, position: "50% 50%" } : undefined);
-        const visible = Math.floor(index / pageSize) === page;
-        return <article key={service.id} className={`expertise-service-pair ${index % 4 >= 2 ? "expertise-service-pair-reverse" : ""}`} hidden={!visible}>
-          <div className="expertise-service-info"><h3>{service.title}</h3><p>{service.description}</p><ul className="expertise-service-tags" aria-label={`${service.title} capabilities`}>{detail.tags.map(tag => <li key={tag}>{tag}</li>)}</ul><Link href={service.link} aria-label={`Explore ${service.title}`} className="expertise-service-link"><ArrowUpRight size={20} aria-hidden="true" /></Link></div>
-          <div className="expertise-service-image">{visible && (image ? <Image src={image.src} alt={image.alt} fill style={{ objectPosition: image.position ?? "50% 50%" }} sizes="(max-width: 600px) 100vw, (max-width: 1000px) 50vw, 25vw" /> : <ExpertiseSculpture variant={index} label={service.title} />)}</div>
-        </article>;
-      })}
+    <motion.header className="expertise-editorial-header" initial={reduced ? false : { opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: .7 }}>
+      <div><SectionLabel text="OUR EXPERTISE" /><h2 id="expertise-heading"><PageText field="9e2bafc67_1" section="Services Accordion" label="Heading">{"Big ideas."}</PageText><br /><span><PageText field="9e2bafc67_2" section="Services Accordion" label="Text">{"Made to move you."}</PageText></span></h2></div>
+      <div className="expertise-header-note"><span><PageText field="9e2bafc67_3" section="Services Accordion" label="Text">{"FROM STRATEGY TO IMPACT"}</PageText></span><p><PageText field="9e2bafc67_4" section="Services Accordion" label="Text">{"Branding, digital experiences and campaigns. Everything your brand needs to connect, create and grow."}</PageText></p><PageLink field="9e2bafc67_5" section="Services Accordion" href="/services/"><PageText field="9e2bafc67_6" section="Services Accordion" label="Text">{"Explore our services "}</PageText><ArrowUpRight size={16} aria-hidden="true" /></PageLink></div>
+    </motion.header>
+    <div className="expertise-editorial-body">
+      <div className="expertise-editorial-intro"><p className="expertise-values"><PageText field="9e2bafc67_7" section="Services Accordion" label="Text">{"Strategy "}</PageText><span><PageText field="9e2bafc67_10" section="Services Accordion" label="Text">{"·"}</PageText></span> <PageText field="9e2bafc67_8" section="Services Accordion" label="Text">{"Creativity "}</PageText><span><PageText field="9e2bafc67_11" section="Services Accordion" label="Text">{"·"}</PageText></span> <PageText field="9e2bafc67_9" section="Services Accordion" label="Text">{"Connection"}</PageText></p><div className="expertise-intro-bottom"><div className="expertise-intro-pills"><span><PageText field="9e2bafc67_12" section="Services Accordion" label="Text">{"Brand identities"}</PageText></span><span><PageText field="9e2bafc67_13" section="Services Accordion" label="Text">{"Digital experiences"}</PageText></span><span><PageText field="9e2bafc67_14" section="Services Accordion" label="Text">{"Creative campaigns"}</PageText></span></div><h3><PageText field="9e2bafc67_15" section="Services Accordion" label="Heading">{"Your next"}</PageText><br /><span><PageText field="9e2bafc67_17" section="Services Accordion" label="Text">{"big chapter"}</PageText></span><br /><PageText field="9e2bafc67_16" section="Services Accordion" label="Heading">{"starts here."}</PageText></h3><p><PageText field="9e2bafc67_18" section="Services Accordion" label="Text">{"We bring the creative and technical skills to turn your ambitions into meaningful results."}</PageText></p><div className="expertise-showcase-controls"><button onClick={() => move(-1)} disabled={position.start} aria-label="Previous services" aria-controls="expertise-service-grid"><ArrowLeft size={19} /></button><button onClick={() => move(1)} disabled={position.end} aria-label="Next services" aria-controls="expertise-service-grid"><ArrowRight size={19} /></button></div></div></div>
+      <div ref={trackRef} className="expertise-card-track" id="expertise-service-grid" tabIndex={0} role="region" aria-label="Explore services; swipe or use the arrow buttons">
+        {expertiseServices.map((service, index) => {
+          const full = innerServices.find(item => service.link === `/service/${item.slug}/`);
+          const image = serviceImages[service.id] ?? { src: full?.image || "/images/creatox-our-story.png", alt: service.title, position: "50% 50%" };
+          const tags = serviceDetails[service.id]?.tags ?? full?.offerings.slice(0, 2).map(item => item.title) ?? [];
+          return <PageLink field="9e2bafc67_19" section="Services Accordion" href={service.link} key={service.id} className="expertise-visual-card">
+            <CmsImage slot={`service_${service.id}`} src={image.src} alt={image.alt} fill style={{ objectPosition: image.position }} sizes="(max-width: 600px) 78vw, 320px" />
+            <span className="expertise-card-index"><PageText field="9e2bafc67_20" section="Services Accordion" label="Text">{String(index + 1).padStart(2, "0")}</PageText> <PageText field="9e2bafc67_21" section="Services Accordion" label="Text">{"/ CREATOX"}</PageText></span>
+            <div className="expertise-card-caption"><p><PageText field="9e2bafc67_22" section="Services Accordion" label="Text">{tags.slice(0, 2).join(" · ")}</PageText></p><div><h3><PageText field="9e2bafc67_23" section="Services Accordion" label="Heading">{service.title}</PageText></h3><span className="expertise-card-arrow"><ArrowUpRight size={20} aria-hidden="true" /></span></div><span className="expertise-card-description"><PageText field="9e2bafc67_24" section="Services Accordion" label="Text">{service.description}</PageText></span></div>
+          </PageLink>;
+        })}
+      </div>
     </div>
-    <div className="expertise-showcase-footer"><span role="status" aria-live="polite">{String(page * pageSize + 1).padStart(2, "0")}-{String(Math.min((page + 1) * pageSize, services.length)).padStart(2, "0")} / {String(services.length).padStart(2, "0")} SERVICES</span><a href="#contact">Find the right service for your brand <ArrowUpRight size={16} aria-hidden="true" /></a></div>
+    <div className="expertise-showcase-footer"><span><PageText field="9e2bafc67_25" section="Services Accordion" label="Text">{String(expertiseServices.length).padStart(2, "0")}</PageText> <PageText field="9e2bafc67_26" section="Services Accordion" label="Text">{"SERVICES. ONE CREATIVE PARTNER."}</PageText></span><span><PageText field="9e2bafc67_27" section="Services Accordion" label="Text">{"Swipe to explore "}</PageText><ArrowRight size={15} aria-hidden="true" /></span></div>
   </section>;
 }

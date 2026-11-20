@@ -6,7 +6,7 @@
 .cx-header-2 .cx-desktop{gap:clamp(14px,1.4vw,24px);font-size:12px}
 .cx-header-2 .cx-nav-contact{border-radius:8px;min-height:40px;padding:8px 16px;font-size:12px}
 .cx-header-2 .cx-nav-toggle{border-radius:8px}
-.cx-header-2 .cx-nav-dropdown{background:#131313f5;backdrop-filter:blur(20px)}
+.cx-header-2 .cx-nav-dropdown{background:#131313}
 .cx-header-2 .cx-mobile-dialog{width:100%;border:0;padding-inline:max(24px,calc((100vw - 640px)/2));}
 .cx-header-2 .cx-mobile-dialog nav{max-width:640px;margin-inline:auto}
 .cx-header-2 .cx-mobile-top{max-width:640px;margin-inline:auto}
@@ -29,8 +29,28 @@
 .cx-nav-dropdown a{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:44px;padding:10px 0;border-bottom:1px solid #ffffff12;line-height:1.4;font-size:13px}
 .cx-nav-dropdown a:last-child{border-bottom:0}
 .cx-nav-services .cx-nav-dropdown{width:300px}
-.cx-nav-contact{display:inline-flex;align-items:center;justify-content:center;gap:16px;background:#e4002b;border-radius:30px;min-height:46px;padding:10px 20px;white-space:nowrap;font-size:13px}
-.cx-nav-contact:hover{background:#b8001f}
+.cx-nav-contact{display:inline-flex;align-items:center;justify-content:center;gap:16px;background:#DC0208;border-radius:30px;min-height:46px;padding:10px 20px;white-space:nowrap;font-size:13px}
+.cx-nav-contact:hover{background:#A50106}
+.cx-desktop>a,.cx-nav-group>summary{position:relative;transition:color .25s ease}
+.cx-desktop>a::after,.cx-nav-group>summary::after{content:"";position:absolute;left:0;right:0;bottom:5px;height:2px;background:#DC0208;transform:scaleX(0);transform-origin:left;transition:transform .3s cubic-bezier(.22,1,.36,1)}
+.cx-desktop>a:hover::after,.cx-desktop>a:focus-visible::after,.cx-nav-group>summary:hover::after,.cx-nav-group[open]>summary::after{transform:scaleX(1)}
+.cx-nav-group summary svg,.cx-nav-contact svg,.cx-nav-dropdown a svg,.cx-mobile-dialog nav a svg{transition:transform .3s cubic-bezier(.22,1,.36,1)}
+.cx-nav-contact{transition:background .25s ease,box-shadow .3s ease,transform .3s ease}
+.cx-nav-contact:hover{transform:translateY(-2px);box-shadow:0 6px 22px #DC020833}
+.cx-nav-contact:hover svg,.cx-nav-dropdown a:hover svg,.cx-mobile-dialog nav a:hover svg{transform:translate(2px,-2px)}
+.cx-nav-dropdown a{transition:color .25s ease,background .25s ease}
+.cx-nav-dropdown a:hover,.cx-nav-dropdown a:focus-visible{background:#DC02080d;color:#fff}
+.cx-nav-group[open]>.cx-nav-dropdown{transform-origin:top center;animation:cx-dropdown-reveal .65s cubic-bezier(.22,1,.36,1) both}
+.cx-nav-group[open]>.cx-nav-dropdown>a,.cx-mobile-dialog details[open]>div>a{animation:cx-dropdown-link .55s cubic-bezier(.22,1,.36,1) both}
+.cx-mobile-dialog details[open]>div{animation:cx-dropdown-reveal .65s cubic-bezier(.22,1,.36,1) both}
+.cx-nav-toggle,.cx-mobile-top button{transition:background .25s ease,border-color .25s ease}
+.cx-nav-toggle:hover,.cx-mobile-top button:hover{background:#310005;border-color:#DC0208}
+.cx-mobile-dialog nav>a,.cx-mobile-dialog summary,.cx-mobile-dialog details a{transition:color .25s ease,padding-left .3s ease}
+@media(hover:hover){.cx-mobile-dialog nav>a:hover,.cx-mobile-dialog summary:hover,.cx-mobile-dialog details a:hover{color:#DC0208;padding-left:6px}}
+@keyframes cx-dropdown-reveal{from{opacity:0;transform:translate3d(0,-8px,0)}to{opacity:1;transform:translate3d(0,0,0)}}
+@keyframes cx-dropdown-link{from{opacity:0;transform:translate3d(0,6px,0)}to{opacity:1;transform:translate3d(0,0,0)}}
+@media(prefers-reduced-motion:reduce){.cx-nav-group[open]>.cx-nav-dropdown>a,.cx-mobile-dialog details[open]>div,.cx-mobile-dialog details[open]>div>a{animation:none}}
+@media(prefers-reduced-motion:reduce){.cx-site-header a,.cx-site-header summary,.cx-site-header button,.cx-site-header svg,.cx-desktop>a::after,.cx-nav-group>summary::after{transition:none!important}.cx-nav-group[open]>.cx-nav-dropdown{animation:none}.cx-nav-contact:hover,.cx-site-header a:hover svg{transform:none}}
 .cx-nav-toggle{display:none;place-items:center;width:46px;height:46px;border:1px solid #ffffff55;border-radius:50%;background:#101010;color:#fff;flex-shrink:0}
 .cx-site-header a:focus-visible,.cx-site-header button:focus-visible,.cx-site-header summary:focus-visible,.cx-mobile-dialog a:focus-visible,.cx-mobile-dialog button:focus-visible,.cx-mobile-dialog summary:focus-visible{outline:2px solid #ff7b96;outline-offset:4px}
 .cx-mobile-dialog{position:fixed;inset:0;margin:0 0 0 auto;width:min(480px,100%);height:100dvh;max-height:100dvh;max-width:100%;padding:24px 24px max(32px,env(safe-area-inset-bottom));border:0;border-left:1px solid #333;background:#0d0d0d;color:#fff;overflow-y:auto;overscroll-behavior:contain;font-family:var(--font-body),sans-serif}

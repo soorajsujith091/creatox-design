@@ -1,5 +1,9 @@
 "use client";
 
+/* cms-native-links */
+import { PageAnchor } from "@/components/cms/PageContent";
+/* cms-page-fields */
+import { PageNativeImage, PageText } from "@/components/cms/PageContent";
 import * as React from "react";
 import { ArrowUpRight } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -73,7 +77,7 @@ export function NotchedProjectCard({
     : "transition-[scale] duration-500";
 
   return (
-    <a
+    <PageAnchor field="anchor_18a9b3835_1" section="notched-project-card"
       href={href}
       className={cn(
         "group flex flex-col rounded-[28px] outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-4 focus-visible:ring-offset-background",
@@ -83,7 +87,7 @@ export function NotchedProjectCard({
       <div className="relative">
         {/* the cover */}
         <div className="relative aspect-[4/3] overflow-hidden rounded-[28px] bg-muted">
-          <img
+          <PageNativeImage field="ff34a4aff_1" section="notched project card"
             src={image}
             loading="lazy"
             width={740}
@@ -100,7 +104,7 @@ export function NotchedProjectCard({
             <div aria-hidden className="absolute inset-0" style={{ backgroundColor: `rgb(0 0 0 / ${dim})` }} />
           )}
           {screen && (
-            <img
+            <PageNativeImage field="ff34a4aff_2" section="notched project card"
               src={screen.src}
               loading="lazy"
               alt={screen.alt}
@@ -114,7 +118,7 @@ export function NotchedProjectCard({
           {badge && (
             <div className="pointer-events-none absolute inset-x-0 top-0 flex justify-center pt-4">
               <span className="rounded-full border border-white/40 bg-black/30 px-2.5 py-1 text-[11px] font-medium text-white backdrop-blur-md">
-                {badge}
+                <PageText field="ff34a4aff_3" section="notched project card" label="Text">{badge}</PageText>
               </span>
             </div>
           )}
@@ -166,8 +170,8 @@ export function NotchedProjectCard({
         </span>
       </div>
 
-      <h3 className="mt-5 text-2xl font-medium tracking-tight text-foreground">{title}</h3>
-      {description && <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{description}</p>}
+      <h3 className="mt-5 text-2xl font-medium tracking-tight text-foreground"><PageText field="ff34a4aff_4" section="notched project card" label="Heading">{title}</PageText></h3>
+      {description && <p className="mt-2 text-sm leading-relaxed text-muted-foreground"><PageText field="ff34a4aff_5" section="notched project card" label="Text">{description}</PageText></p>}
       {tags.length > 0 && (
         <ul className="mt-4 flex flex-wrap gap-2">
           {tags.map((t, i) => (
@@ -175,12 +179,12 @@ export function NotchedProjectCard({
               key={`${t}-${i}`}
               className="rounded-md bg-secondary px-2 py-1 text-[10px] font-semibold uppercase tracking-wider text-secondary-foreground"
             >
-              {t}
+              <PageText field="ff34a4aff_6" section="notched project card" label="Text">{t}</PageText>
             </li>
           ))}
         </ul>
       )}
-    </a>
+    </PageAnchor>
   );
 }
 

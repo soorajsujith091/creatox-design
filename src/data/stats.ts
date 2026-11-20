@@ -7,20 +7,20 @@ export interface Stat {
 
 export const stats: Stat[] = [
   {
-    value: "6+",
-    numericValue: 6,
-    suffix: "+",
+    value: "7",
+    numericValue: 7,
+    suffix: "",
     label: "Years of Digital Excellence",
   },
   {
-    value: "1k+",
-    numericValue: 1000,
+    value: "2k+",
+    numericValue: 2000,
     suffix: "+",
     label: "Successful Projects",
   },
   {
-    value: "22+",
-    numericValue: 22,
+    value: "28+",
+    numericValue: 28,
     suffix: "+",
     label: "Team Members",
   },

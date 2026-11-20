@@ -1,8 +1,10 @@
 "use client";
 
+/* cms-page-fields */
+import { PageText, PageLink } from "@/components/cms/PageContent";
 import { useEffect, useId, useRef, useState } from "react";
 import { createPortal } from "react-dom";
-import Link from "next/link";
+
 import { usePathname } from "next/navigation";
 import { motion, useReducedMotion } from "framer-motion";
 import { ChevronDown, Plus } from "lucide-react";
@@ -51,7 +53,7 @@ export default function FloatingMenu({ items }: { items: MenuItem[] }) {
   if (!desktop || !scrolled) return null;
   const close = () => setOpen(false);
   const active = (href: string) => pathname.replace(/\/$/, "") === href.replace(/\/$/, "");
-  const label = (text: string) => <span className="cx-liquid-label" aria-label={text}><span aria-hidden="true">{Array.from(text).map((char, index) => <span className="cx-liquid-char" key={index}><span style={{ transitionDelay: reduced ? "0ms" : `${index * 20}ms` }}><span>{char === " " ? "\u00a0" : char}</span><span>{char === " " ? "\u00a0" : char}</span></span></span>)}</span></span>;
+  const label = (text: string) => <span className="cx-liquid-label" aria-label={text}><span aria-hidden="true">{Array.from(text).map((char, index) => <span className="cx-liquid-char" key={index}><span style={{ transitionDelay: reduced ? "0ms" : `${index * 20}ms` }}><span><PageText field="a02fd42c6_1" section="liquid morph floating menu" label="Text">{char === " " ? "\u00a0" : char}</PageText></span><span><PageText field="a02fd42c6_2" section="liquid morph floating menu" label="Text">{char === " " ? "\u00a0" : char}</PageText></span></span></span>)}</span></span>;
 
   return createPortal(<div ref={root} className="cx-liquid-menu" onBlur={event => {
     if (!event.currentTarget.contains(event.relatedTarget as Node | null)) close();
@@ -64,12 +66,12 @@ export default function FloatingMenu({ items }: { items: MenuItem[] }) {
       {open && <motion.nav id={id} aria-label="Floating site navigation" className="cx-liquid-links" data-lenis-prevent
         initial={{ opacity: reduced ? 1 : 0, y: reduced ? 0 : 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: reduced ? 0 : .35, delay: reduced ? 0 : .1 }}>
         {items.map(item => item.children ? <details key={item.label}>
-          <summary aria-label={item.label}>{label(item.label)}<ChevronDown size={16} aria-hidden="true" /></summary>
-          <div className="cx-liquid-submenu">{item.children.map(child => <Link key={child.href} href={child.href} aria-current={active(child.href) ? "page" : undefined} onClick={close}>{child.label}</Link>)}</div>
-        </details> : <Link key={item.label} href={item.href!} aria-label={item.label} aria-current={active(item.href!) ? "page" : undefined} onClick={close}>{label(item.label)}</Link>)}
+          <summary aria-label={item.label}><PageText field="a02fd42c6_3" section="liquid morph floating menu" label="Text">{label(item.label)}</PageText><ChevronDown size={16} aria-hidden="true" /></summary>
+          <div className="cx-liquid-submenu">{item.children.map(child => <PageLink field="a02fd42c6_4" section="liquid morph floating menu" key={child.href} href={child.href} aria-current={active(child.href) ? "page" : undefined} onClick={close}><PageText field="a02fd42c6_5" section="liquid morph floating menu" label="Text">{child.label}</PageText></PageLink>)}</div>
+        </details> : <PageLink field="a02fd42c6_6" section="liquid morph floating menu" key={item.label} href={item.href!} aria-label={item.label} aria-current={active(item.href!) ? "page" : undefined} onClick={close}><PageText field="a02fd42c6_7" section="liquid morph floating menu" label="Text">{label(item.label)}</PageText></PageLink>)}
       </motion.nav>}
       <button ref={trigger} type="button" className="cx-liquid-trigger" aria-expanded={open} aria-controls={open ? id : undefined} aria-label={open ? "Close floating navigation" : "Open floating navigation"} onClick={() => setOpen(value => !value)}>
-        <span>Menu</span><motion.span animate={{ rotate: open ? 45 : 0 }} transition={{ duration: reduced ? 0 : .3 }}><Plus size={22} aria-hidden="true" /></motion.span>
+        <span><PageText field="a02fd42c6_8" section="liquid morph floating menu" label="Text">{"Menu"}</PageText></span><motion.span animate={{ rotate: open ? 45 : 0 }} transition={{ duration: reduced ? 0 : .3 }}><Plus size={22} aria-hidden="true" /></motion.span>
       </button>
     </motion.div>
   </div>, document.body);

@@ -1,7 +1,11 @@
 "use client";
 
+/* cms-native-links */
+import { PageAnchor } from "@/components/cms/PageContent";
+/* cms-page-fields */
+import { PageText, PageLink } from "@/components/cms/PageContent";
 import { useEffect, useRef } from "react";
-import Link from "next/link";
+
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { companyInfo } from "@/data/stats";
@@ -89,39 +93,36 @@ export function CTABanner() {
         </h2>
 
         <p className="font-body text-[16px] text-[#666] max-w-md mb-10">
-          Have a project in mind? We&apos;d love to hear about it.
-        </p>
+          <PageText field="4b794b0ef_1" section="CTABanner" label="Text">{"Have a project in mind? We'd love to hear about it."}</PageText></p>
 
         <div className="flex flex-col sm:flex-row gap-4 mb-12">
-          <Link
+          <PageLink field="4b794b0ef_2" section="CTABanner"
             href="/contact-us/"
             className="bg-red text-white px-8 py-4 text-[14px] font-body text-center hover:bg-redDark transition-colors duration-300 w-full sm:w-auto"
           >
-            Start a Project →
-          </Link>
-          <Link
+            <PageText field="4b794b0ef_3" section="CTABanner" label="Text">{"Start a Project →"}</PageText></PageLink>
+          <PageLink field="4b794b0ef_4" section="CTABanner"
             href="/projects/"
             className="border border-white text-white px-8 py-4 text-[14px] font-body text-center hover:bg-[#111111] hover:text-white transition-all duration-300 w-full sm:w-auto"
           >
-            View Our Work ↗
-          </Link>
+            <PageText field="4b794b0ef_5" section="CTABanner" label="Text">{"View Our Work ↗"}</PageText></PageLink>
         </div>
 
         <div className="flex flex-wrap gap-8 items-center border-t border-border pt-8">
-          <a
+          <PageAnchor field="anchor_903b94642_1" section="CTABanner"
             href={`mailto:${companyInfo.email}`}
             className="font-mono text-[13px] text-[#555] hover:text-white transition-colors"
           >
-            📧 {companyInfo.email}
-          </a>
-          <a
+            <PageText field="4b794b0ef_6" section="CTABanner" label="Text">{"📧 "}</PageText><PageText field="4b794b0ef_7" section="CTABanner" label="Text">{companyInfo.email}</PageText>
+          </PageAnchor>
+          <PageAnchor field="anchor_903b94642_2" section="CTABanner"
             href={`tel:${companyInfo.phone1.replace(/\s/g, "")}`}
             className="font-mono text-[13px] text-[#555] hover:text-white transition-colors"
           >
-            📞 {companyInfo.phone1}
-          </a>
+            <PageText field="4b794b0ef_8" section="CTABanner" label="Text">{"📞 "}</PageText><PageText field="4b794b0ef_9" section="CTABanner" label="Text">{companyInfo.phone1}</PageText>
+          </PageAnchor>
           <span className="font-mono text-[13px] text-[#555]">
-            📍 {companyInfo.addressShort}
+            <PageText field="4b794b0ef_10" section="CTABanner" label="Text">{"📍 "}</PageText><PageText field="4b794b0ef_11" section="CTABanner" label="Text">{companyInfo.addressShort}</PageText>
           </span>
         </div>
       </div>

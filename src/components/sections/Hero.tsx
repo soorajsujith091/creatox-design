@@ -1,7 +1,9 @@
 "use client";
 
+/* cms-page-fields */
+import { PageText, PageLink } from "@/components/cms/PageContent";
 import { useEffect, useRef } from "react";
-import Link from "next/link";
+
 import { gsap } from "gsap";
 import ShimmerText from "@/components/ShimmerText";
 
@@ -113,8 +115,7 @@ export function Hero() {
           ref={badgeRef}
           className="inline-block font-mono text-[11px] text-red uppercase tracking-[0.12em] mb-8 opacity-0"
         >
-          ✦ FULL-SERVICE DIGITAL AGENCY — KANNUR, KERALA
-        </span>
+          <PageText field="5d72f34ce_1" section="Hero" label="Text">{"✦ FULL-SERVICE DIGITAL AGENCY — KANNUR, KERALA"}</PageText></span>
 
         {/* Headline */}
         <h1 className="font-heading font-bold tracking-[-0.02em] leading-[0.95]">
@@ -146,28 +147,23 @@ export function Hero() {
           ref={subRef}
           className="font-body text-[16px] text-[#BBBBBB] max-w-lg leading-[1.7] mt-8 opacity-0"
         >
-          We blend creativity, strategy, and technology to craft brand
-          identities, websites, and campaigns that look premium and perform with
-          purpose.
-        </p>
+          <PageText field="5d72f34ce_2" section="Hero" label="Text">{"We blend creativity, strategy, and technology to craft brand identities, websites, and campaigns that look premium and perform with purpose."}</PageText></p>
 
         {/* CTA Row */}
         <div
           ref={ctaRef}
           className="flex flex-col sm:flex-row gap-4 mt-10 opacity-0"
         >
-          <Link
+          <PageLink field="5d72f34ce_3" section="Hero"
             href="/projects/"
             className="border border-[#BBBBBB] text-white px-7 py-3.5 text-[14px] font-body text-center hover:bg-red hover:border-red hover:text-white transition-all duration-300"
           >
-            See Our Work ↗
-          </Link>
-          <Link
+            <PageText field="5d72f34ce_4" section="Hero" label="Text">{"See Our Work ↗"}</PageText></PageLink>
+          <PageLink field="5d72f34ce_5" section="Hero"
             href="/contact-us/"
             className="text-[#888888] px-7 py-3.5 text-[14px] font-body text-center hover:text-white transition-colors duration-300"
           >
-            Let&apos;s Talk →
-          </Link>
+            <PageText field="5d72f34ce_6" section="Hero" label="Text">{"Let's Talk →"}</PageText></PageLink>
         </div>
       </div>
 
@@ -177,15 +173,13 @@ export function Hero() {
         aria-hidden="true"
       >
         <span className="font-mono text-[11px] text-[#BBBBBB]">
-          Kannur, Kerala · Est. 2019
-        </span>
+          <PageText field="5d72f34ce_7" section="Hero" label="Text">{"Kannur, Kerala · Est. 2019"}</PageText></span>
         <div className="flex items-center gap-3">
           <span
             className="font-mono text-[10px] text-[#BBBBBB] tracking-widest"
             style={{ writingMode: "vertical-lr", transform: "rotate(180deg)" }}
           >
-            SCROLL
-          </span>
+            <PageText field="5d72f34ce_8" section="Hero" label="Text">{"SCROLL"}</PageText></span>
           <div className="w-[1px] h-12 bg-[#CCCCCC] animate-pulse-line" />
         </div>
       </div>

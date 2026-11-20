@@ -8,8 +8,8 @@ import { OurStory } from "@/components/sections/OurStory";
 import { Stats } from "@/components/sections/Stats";
 import TimelineBlock01 from "@/components/ui/timeline-01";
 import { Testimonials } from "@/components/sections/Testimonials";
+import { CmsArticles } from "@/components/CmsArticles";
 import { BlogGrid } from "@/components/sections/BlogGrid";
-import { ContactMini } from "@/components/sections/ContactMini";
 import { Footer } from "@/components/sections/Footer";
 import { CinematicHero } from "@/components/ui/cinematic-landing-hero";
 import "./home-layout.css";
@@ -33,9 +33,9 @@ export default function Home() {
       <Stats />
       <TimelineBlock01 />
       <div id="testimonials"><Testimonials /></div>
+      <CmsArticles />
       <BlogGrid />
-      <div id="contact"><ContactMini /></div>
-      <Footer />
+      <div id="contact"><Footer /></div>
     </div>
   );
 }

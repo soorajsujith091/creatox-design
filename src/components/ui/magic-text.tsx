@@ -1,5 +1,7 @@
 "use client";
 
+/* cms-page-fields */
+import { usePageText } from "@/components/cms/PageContent";
 import { useRef } from "react";
 import { motion, useScroll, useTransform, useReducedMotion, type MotionValue } from "framer-motion";
 
@@ -19,7 +21,8 @@ export function MagicText({ text, progress, highlightedPhrases = [] }: MagicText
   const container = useRef<HTMLSpanElement>(null);
   const reduced = useReducedMotion();
   const { scrollYProgress } = useScroll({ target: container, offset: ["start 0.9", "start 0.25"] });
-  const words = text.trim().split(/\s+/);
+  const managedText = usePageText("animated_text", "Animated introduction", text);
+  const words = managedText.trim().split(/\s+/);
   const highlightedWords = new Set<number>();
   highlightedPhrases.forEach(phrase => {
     const phraseWords = phrase.trim().split(/\s+/);

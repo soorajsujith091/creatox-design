@@ -11,6 +11,8 @@
 // The whole thing is one number - `turn` - read by a single rAF pass that writes
 // transforms straight to the DOM. 0 is the ring, 1 is the drum with item 0 at
 // the front, and every whole number after that is one more item turned past.
+/* cms-page-fields */
+import { PageNativeImage, PageText } from "@/components/cms/PageContent";
 import * as React from "react";
 
 import { cn } from "@/lib/utils";
@@ -345,7 +347,7 @@ export function WorksWheel({
                   }}
                 >
                   <span className="bg-muted shadow-foreground/12 relative block size-full overflow-hidden rounded-lg shadow-[0_18px_40px_-18px_var(--tw-shadow-color)]">
-                    <img
+                    <PageNativeImage field="81cafa85f_1" section="works wheel"
                       src={item.image}
                       alt={item.title}
                       draggable={false}
@@ -369,7 +371,7 @@ export function WorksWheel({
                             strokeLinejoin="round"
                           />
                         </svg>
-                        {action}
+                        <PageText field="81cafa85f_2" section="works wheel" label="Text">{action}</PageText>
                       </span>
                     ) : null}
                   </span>
@@ -414,12 +416,12 @@ export function WorksWheel({
                 i === active && "text-foreground font-medium",
               )}
             >
-              {item.title}
+              <PageText field="81cafa85f_3" section="works wheel" label="Text">{item.title}</PageText>
             </button>
           </li>
         ))}
       </ol>
-      <span id={`${uid}-instructions`} className="sr-only">Scroll or drag to browse projects. Use the up and down arrow keys, or select a project from the index. Select the front card to view the project.</span>
+      <span id={`${uid}-instructions`} className="sr-only"><PageText field="81cafa85f_4" section="works wheel" label="Text">{"Scroll or drag to browse projects. Use the up and down arrow keys, or select a project from the index. Select the front card to view the project."}</PageText></span>
     </section>
   );
 }

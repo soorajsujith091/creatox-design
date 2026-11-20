@@ -1,4 +1,6 @@
-"use client";
+"use client";/* cms-page-fields */
+import { PageText } from "@/components/cms/PageContent";
+
 
 export function TickerMarquee() {
   const row1Text =
@@ -19,7 +21,7 @@ export function TickerMarquee() {
               key={`r1-${i}`}
               className="font-mono text-[13px] text-white uppercase tracking-[0.12em] mx-0 shrink-0"
             >
-              {row1Text}
+              <PageText field="c50b0874b_1" section="Ticker Marquee" label="Text">{row1Text}</PageText>
             </span>
           ))}
         </div>
@@ -33,7 +35,7 @@ export function TickerMarquee() {
               key={`r2-${i}`}
               className="font-mono text-[11px] text-white/70 uppercase tracking-[0.12em] mx-0 shrink-0"
             >
-              {row2Text}
+              <PageText field="c50b0874b_2" section="Ticker Marquee" label="Text">{row2Text}</PageText>
             </span>
           ))}
         </div>

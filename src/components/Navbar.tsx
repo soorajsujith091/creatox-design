@@ -1,7 +1,11 @@
 "use client";
 
+/* cms-native-links */
+import { PageAnchor } from "@/components/cms/PageContent";
+/* cms-page-fields */
+import { PageLink, PageText } from "@/components/cms/PageContent";
 import { useEffect, useRef, useState } from "react";
-import Link from "next/link";
+
 import { BrandLogo } from "@/components/BrandLogo";
 import { usePathname } from "next/navigation";
 import { gsap } from "gsap";
@@ -139,43 +143,42 @@ export function Navbar() {
       >
         <div className="max-w-[1400px] mx-auto px-6 flex items-center justify-between h-[72px]">
           {/* Logo */}
-          <Link
+          <PageLink field="d4df0e3e8_1" section="Navbar"
             href="/"
             className="flex items-center gap-0 shrink-0"
             aria-label="Creatox Designs Home"
           >
             <BrandLogo className="w-[140px] md:w-[160px]" priority />
-          </Link>
+          </PageLink>
 
           {/* Desktop Center Links */}
           <div className="hidden md:flex items-center gap-8">
             {navLinks.map((link) => (
-              <Link
+              <PageLink field="d4df0e3e8_2" section="Navbar"
                 key={link.name}
                 href={link.href}
                 className={`nav-link font-body text-[14px] text-white tracking-[0.04em] hover:text-red transition-colors ${
                   pathname === link.href ? "active" : ""
                 }`}
               >
-                {link.name}
-              </Link>
+                <PageText field="d4df0e3e8_3" section="Navbar" label="Text">{link.name}</PageText>
+              </PageLink>
             ))}
           </div>
 
           {/* Desktop Right */}
           <div className="hidden md:flex items-center gap-6">
-            <a
+            <PageAnchor field="anchor_58e1457f9_1" section="Navbar"
               href={`tel:${companyInfo.phone1.replace(/\s/g, "")}`}
               className="font-mono text-[12px] text-gray hover:text-white transition-colors"
             >
-              {companyInfo.phone1}
-            </a>
-            <Link
+              <PageText field="d4df0e3e8_4" section="Navbar" label="Text">{companyInfo.phone1}</PageText>
+            </PageAnchor>
+            <PageLink field="d4df0e3e8_5" section="Navbar"
               href="/contact-us/"
               className="border border-[#BBBBBB] text-white text-[14px] px-5 py-2 font-body hover:bg-red hover:border-red hover:text-white transition-all duration-300"
             >
-              Start a Project →
-            </Link>
+              <PageText field="d4df0e3e8_6" section="Navbar" label="Text">{"Start a Project →"}</PageText></PageLink>
           </div>
 
           {/* Mobile Hamburger */}
@@ -209,7 +212,7 @@ export function Navbar() {
         >
           <div ref={mobileLinksRef} className="flex flex-col gap-6 mb-12">
             {navLinks.map((link) => (
-              <Link
+              <PageLink field="d4df0e3e8_7" section="Navbar"
                 key={link.name}
                 href={link.href}
                 className={`mobile-link font-heading text-[36px] text-white opacity-0 ${
@@ -219,27 +222,27 @@ export function Navbar() {
                 }`}
                 onClick={() => setIsMobileMenuOpen(false)}
               >
-                {link.name}
-              </Link>
+                <PageText field="d4df0e3e8_8" section="Navbar" label="Text">{link.name}</PageText>
+              </PageLink>
             ))}
           </div>
 
           {/* Phone numbers */}
           <div className="flex flex-col gap-2 mb-8 mobile-link opacity-0">
-            <a
+            <PageAnchor field="anchor_58e1457f9_2" section="Navbar"
               href={`tel:${companyInfo.phone1.replace(/\s/g, "")}`}
               className="font-mono text-gray text-[14px] flex items-center gap-2"
             >
               <Phone size={14} />
-              {companyInfo.phone1}
-            </a>
-            <a
+              <PageText field="d4df0e3e8_9" section="Navbar" label="Text">{companyInfo.phone1}</PageText>
+            </PageAnchor>
+            <PageAnchor field="anchor_58e1457f9_3" section="Navbar"
               href={`tel:${companyInfo.phone2.replace(/\s/g, "")}`}
               className="font-mono text-gray text-[14px] flex items-center gap-2"
             >
               <Phone size={14} />
-              {companyInfo.phone2}
-            </a>
+              <PageText field="d4df0e3e8_10" section="Navbar" label="Text">{companyInfo.phone2}</PageText>
+            </PageAnchor>
           </div>
 
           {/* Social icons */}
@@ -247,7 +250,7 @@ export function Navbar() {
             {socialLinks.map((social) => {
               const IconComponent = iconMap[social.icon];
               return (
-                <a
+                <PageAnchor field="anchor_58e1457f9_4" section="Navbar"
                   key={social.name}
                   href={social.url}
                   target="_blank"
@@ -255,8 +258,8 @@ export function Navbar() {
                   aria-label={`Follow on ${social.name}`}
                   className="text-[#CCCCCC] hover:text-red transition-colors duration-300"
                 >
-                  {IconComponent ? <IconComponent size={24} /> : <span className="text-[14px] font-mono">{social.name.substring(0, 2)}</span>}
-                </a>
+                  {IconComponent ? <IconComponent size={24} /> : <span className="text-[14px] font-mono"><PageText field="d4df0e3e8_11" section="Navbar" label="Text">{social.name.substring(0, 2)}</PageText></span>}
+                </PageAnchor>
               );
             })}
           </div>
@@ -265,13 +268,12 @@ export function Navbar() {
           <div className="border-t border-[#303030] mb-8" />
 
           {/* CTA */}
-          <Link
+          <PageLink field="d4df0e3e8_12" section="Navbar"
             href="/contact-us/"
             className="mobile-link opacity-0 bg-red text-white text-center py-4 px-6 font-mono text-[14px] tracking-wide hover:bg-redDark transition-colors"
             onClick={() => setIsMobileMenuOpen(false)}
           >
-            Start a Project →
-          </Link>
+            <PageText field="d4df0e3e8_13" section="Navbar" label="Text">{"Start a Project →"}</PageText></PageLink>
         </div>
       )}
     </>

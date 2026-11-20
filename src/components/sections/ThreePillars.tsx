@@ -1,8 +1,11 @@
 ﻿"use client";
 
+/* cms-page-fields */
+import { PageText, PageImage, PageLink } from "@/components/cms/PageContent";
 import { motion, useReducedMotion } from "framer-motion";
-import Image from "next/image";
-import Link from "next/link";
+import { useState } from "react";
+
+
 import { ArrowUpRight, Plus } from "lucide-react";
 import { SectionLabel } from "../SectionLabel";
 import { Component as GradientBlurBackground } from "@/components/ui/gradient-blur-bg";
@@ -47,25 +50,30 @@ const disciplines = [
 
 export function ThreePillars() {
   const reduced = useReducedMotion();
+  const [openDetail, setOpenDetail] = useState<string | null>("0-0");
   return <section className="expertise-columns" aria-label="What We Do">
     <GradientBlurBackground fixed className="expertise-columns-background" />
     <header className="expertise-columns-label"><SectionLabel text="WHAT WE DO"/></header>
     <div className="expertise-columns-grid">{disciplines.map((discipline, index) => <motion.article key={discipline.title} className={`expertise-column expertise-column-${index}`} initial={reduced ? false : { opacity: 0, y: 25 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: .1 }} transition={{ duration: reduced ? 0 : .6 }}>
       <div className="expertise-column-heading">
-        <span className="expertise-column-number">0{index + 1} / CREATOX EXPERTISE</span>
-        <h3>{discipline.heading[0]}<br /><span>{discipline.heading[1]}</span></h3>
+        <span className="expertise-column-number"><PageText field="e82ddaeb9_1" section="Three Pillars" label="Text">{"0"}</PageText><PageText field="e82ddaeb9_2" section="Three Pillars" label="Text">{index + 1}</PageText> <PageText field="e82ddaeb9_3" section="Three Pillars" label="Text">{"/ CREATOX EXPERTISE"}</PageText></span>
+        <h3><PageText field="e82ddaeb9_4" section="Three Pillars" label="Heading">{discipline.heading[0]}</PageText><br /><span><PageText field="e82ddaeb9_5" section="Three Pillars" label="Text">{discipline.heading[1]}</PageText></span></h3>
         <div className="expertise-column-butterfly" aria-hidden="true">
-          {discipline.title === "Build & Transform" ? <div className="expertise-column-orb"><Image src="/images/build-transform-orb.jpeg" alt="" fill sizes="160px" /></div> : <Image src={discipline.title === "Market & Grow" ? (reduced ? "/images/market-grow-ring-still.png" : "/images/market-grow-ring.gif") : (reduced ? "/images/expertise-papillon-still.png" : "/images/expertise-papillon.gif")} alt="" fill unoptimized sizes="160px" />}
+          {discipline.title === "Build & Transform" ? <div className="expertise-column-orb"><PageImage field="e82ddaeb9_6" section="Three Pillars" src="/images/build-transform-orb.jpeg" alt="" fill sizes="160px" /></div> : <PageImage field="e82ddaeb9_7" section="Three Pillars" src={discipline.title === "Market & Grow" ? (reduced ? "/images/market-grow-ring-still.png" : "/images/market-grow-ring.gif") : (reduced ? "/images/expertise-papillon-still.png" : "/images/expertise-papillon.gif")} alt="" fill unoptimized sizes="160px" />}
         </div>
       </div>
       <div className="expertise-column-content">
         <div className="expertise-column-intro">
-          <p>{discipline.description}</p>
-          <Link className="expertise-column-cta" href={discipline.link}>{discipline.button}<ArrowUpRight size={17} aria-hidden="true" /></Link>
+          <p><PageText field="e82ddaeb9_8" section="Three Pillars" label="Text">{discipline.description}</PageText></p>
+          <PageLink field="e82ddaeb9_9" section="Three Pillars" className="expertise-column-cta" href={discipline.link}><PageText field="e82ddaeb9_10" section="Three Pillars" label="Text">{discipline.button}</PageText><ArrowUpRight size={17} aria-hidden="true" /></PageLink>
         </div>
-        <div className="expertise-column-details">{discipline.details.map((detail, detailIndex) => <details key={detail.title} open={detailIndex === 0}>
-          <summary><h4>{detail.title}</h4><Plus size={18} aria-hidden="true" /></summary>
-          <p>{detail.text}</p>
+        <div className="expertise-column-details">{discipline.details.map((detail, detailIndex) => <details key={detail.title} open={openDetail === `${index}-${detailIndex}`}>
+          <summary onClick={event => {
+            event.preventDefault();
+            const id = `${index}-${detailIndex}`;
+            setOpenDetail(current => current === id ? null : id);
+          }} aria-expanded={openDetail === `${index}-${detailIndex}`}><h4><PageText field="e82ddaeb9_11" section="Three Pillars" label="Heading">{detail.title}</PageText></h4><Plus size={18} aria-hidden="true" /></summary>
+          <p><PageText field="e82ddaeb9_12" section="Three Pillars" label="Text">{detail.text}</PageText></p>
         </details>)}</div>
       </div>
     </motion.article>)}</div>

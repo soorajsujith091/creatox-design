@@ -1,12 +1,9 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
-import { CustomCursor } from "@/components/CustomCursor";
-import { Preloader } from "@/components/Preloader";
-import { Navbar } from "@/components/Navbar";
-import { MobileStickyBar } from "@/components/MobileStickyBar";
-import { PageTransition } from "@/components/PageTransition";
-import { ScrollToTop } from "@/components/ScrollToTop";
+import { SiteChrome } from "@/components/SiteChrome";
+import { PageContentProvider } from "@/components/cms/PageContent";
+    import { PageTransition } from "@/components/PageTransition";
 
 const dmSans = localFont({
   src: "./fonts/DMSans-Latin.woff2",
@@ -71,22 +68,15 @@ export default function RootLayout({
           Skip to main content
         </a>
 
-        <Preloader />
-        <CustomCursor />
-        <Navbar />
-
-        {/* Noise grain overlay */}
-        <div className="noise-overlay" aria-hidden="true" />
-
-        {/* Grid lines overlay */}
-        <div className="grid-overlay" aria-hidden="true" />
+        <PageContentProvider><SiteChrome />
 
         <PageTransition>
           <main id="main-content">{children}</main>
         </PageTransition>
 
-        <MobileStickyBar />
-        <ScrollToTop />
+        <SiteChrome bottom />
+        </PageContentProvider>
+
       </body>
     </html>
   );

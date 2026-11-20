@@ -4,11 +4,12 @@
 
 /* ─── CSS Custom Properties ─── */
 :root {
+  --color-brand-dark: #100001;
   --color-black: #0A0A0A;
   --color-surface: #111111;
   --color-surface2: #1A1A1A;
-  --color-red: #E4002B;
-  --color-red-dark: #B8001F;
+  --color-red: #DC0208;
+  --color-red-dark: #A50106;
   --color-white: #FFFFFF;
   --color-gray: #888888;
   --color-border: #303030;
@@ -270,7 +271,7 @@ body {
 
 .input-light:focus {
   outline: none;
-  border-color: #E4002B;
+  border-color: #DC0208;
   box-shadow: 0 0 0 3px rgba(228, 0, 43, 0.08);
 }
 

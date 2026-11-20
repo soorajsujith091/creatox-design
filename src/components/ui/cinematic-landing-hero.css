@@ -2,12 +2,12 @@
 .creatox-cinematic h2,.creatox-cinematic h3{font-family:var(--font-heading),sans-serif}
 .creatox-cinematic .cta-wrapper>p{color:#555}
 .creatox-cinematic a{min-height:48px;cursor:pointer}
-.creatox-cinematic a:focus-visible{outline:3px solid #e4002b;outline-offset:5px}
-.creatox-cinematic .btn-modern-light{background:#e4002b;color:white}
-.creatox-cinematic .btn-modern-light:hover{background:#b8001f}
+.creatox-cinematic a:focus-visible{outline:3px solid #DC0208;outline-offset:5px}
+.creatox-cinematic .btn-modern-light{background:#DC0208;color:white}
+.creatox-cinematic .btn-modern-light:hover{background:#A50106}
 .creatox-cinematic .progress-ring{stroke-dashoffset:60}
 .creatox-cinematic .card-left-text p{color:#ddd}
-.creatox-cinematic .premium-depth-card{background:linear-gradient(110deg,rgba(0,0,0,.7),rgba(0,0,0,.35) 55%,rgba(0,0,0,.65)),url('/images/ChatGPT%20Image%20May%2026%2C%202026%2C%2011_43_47%20AM.png') center/cover no-repeat}
+.creatox-cinematic .premium-depth-card{background:linear-gradient(110deg,rgba(0,0,0,.7),rgba(0,0,0,.35) 55%,rgba(0,0,0,.65)),var(--cms-background-image,url('/images/2B5A1178.JPG.jpeg')) center/cover no-repeat}
 @media(max-width:767px),(prefers-reduced-motion:reduce){
   .creatox-cinematic{height:auto;min-height:0;display:flex;flex-direction:column;gap:35px;padding:55px 20px;overflow:hidden}
   .creatox-cinematic .gsap-reveal{visibility:visible}

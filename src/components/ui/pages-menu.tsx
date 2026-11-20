@@ -1,7 +1,9 @@
 "use client";
 
+/* cms-page-fields */
+import { PageText, PageLink } from "@/components/cms/PageContent";
 import { useEffect, useRef } from "react";
-import Link from "next/link";
+
 import { ArrowUpRight, ChevronDown } from "lucide-react";
 import { pageGroups } from "@/data/page-navigation";
 import { innerServices } from "@/data/inner-services";
@@ -17,10 +19,10 @@ export function PagesMenu() {
     return () => { document.removeEventListener("pointerdown", outside); document.removeEventListener("keydown", escape); };
   }, []);
   return <details ref={details} className="creatox-pages-menu">
-    <summary>Pages <ChevronDown size={14} aria-hidden="true" /></summary>
+    <summary><PageText field="518d84198_1" section="pages menu" label="Text">{"Pages "}</PageText><ChevronDown size={14} aria-hidden="true" /></summary>
     <div className="creatox-pages-panel" data-lenis-prevent>
-      {pageGroups.map(group => <div key={group.title}><p>{group.title}</p>{group.links.map(link => <Link key={link.href} href={link.href} onClick={() => { if (details.current) details.current.open = false; }}>{link.label}<ArrowUpRight size={13} aria-hidden="true" /></Link>)}</div>)}
-      <div><p>Our expertise</p>{innerServices.map(service => <Link key={service.slug} href={`/service/${service.slug}/`} onClick={() => { if (details.current) details.current.open = false; }}>{service.title}<ArrowUpRight size={13} aria-hidden="true" /></Link>)}</div>
+      {pageGroups.map(group => <div key={group.title}><p><PageText field="518d84198_2" section="pages menu" label="Text">{group.title}</PageText></p>{group.links.map(link => <PageLink field="518d84198_3" section="pages menu" key={link.href} href={link.href} onClick={() => { if (details.current) details.current.open = false; }}><PageText field="518d84198_4" section="pages menu" label="Text">{link.label}</PageText><ArrowUpRight size={13} aria-hidden="true" /></PageLink>)}</div>)}
+      <div><p><PageText field="518d84198_5" section="pages menu" label="Text">{"Our expertise"}</PageText></p>{innerServices.map(service => <PageLink field="518d84198_6" section="pages menu" key={service.slug} href={`/service/${service.slug}/`} onClick={() => { if (details.current) details.current.open = false; }}><PageText field="518d84198_7" section="pages menu" label="Text">{service.title}</PageText><ArrowUpRight size={13} aria-hidden="true" /></PageLink>)}</div>
     </div>
   </details>;
 }

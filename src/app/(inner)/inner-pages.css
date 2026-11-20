@@ -1,14 +1,14 @@
 body:has(.inner-site)>nav{display:none}
 body:has(.inner-site){cursor:auto}
 body:has(.inner-site) .creatox-custom-cursor,body:has(.inner-site) .cursor-dot,body:has(.inner-site) .cursor-ring{display:none}
-.inner-site{--ip-accent:#e4002b;background:#0a0a0a;color:#f5f5f5;font-family:var(--font-body),sans-serif;min-width:0;overflow:clip}
+.inner-site{--ip-accent:#DC0208;background:#0a0a0a;color:#f5f5f5;font-family:var(--font-body),sans-serif;min-width:0;overflow:clip}
 .inner-site *{box-sizing:border-box}
 .inner-site a:focus-visible,.inner-site button:focus-visible,.inner-site summary:focus-visible{outline:2px solid #ff6b87;outline-offset:5px}
 .ip-nav{position:relative;z-index:50;display:flex;align-items:center;justify-content:space-between;gap:24px;padding:24px clamp(20px,4vw,80px);border-bottom:1px solid #ffffff1a;background:#0a0a0a}
 .ip-logo{width:150px;height:auto}
 .ip-nav nav{display:flex;align-items:center;gap:28px;font-size:13px}
 .ip-nav nav>a{display:flex;align-items:center;gap:8px;min-height:44px}
-.ip-nav-cta{background:#e4002b;border-radius:30px;padding:8px 20px}
+.ip-nav-cta{background:#DC0208;border-radius:30px;padding:8px 20px}
 .ip-section,.ip-hero{padding:clamp(56px,7vw,112px) clamp(20px,4vw,80px)}
 .ip-hero{position:relative;isolation:isolate;overflow:hidden;min-height:560px;padding-top:32px;background:#0a0a0a;display:flex;flex-direction:column;justify-content:center}
 .ip-hero-background{position:absolute;inset:0;z-index:-2;pointer-events:none}
@@ -70,9 +70,9 @@ body:has(.inner-site) .creatox-custom-cursor,body:has(.inner-site) .cursor-dot,b
 .ip-faq summary:after{content:'+';color:#ff6685;font-size:24px}
 .ip-faq details[open] summary:after{content:'−'}
 .ip-faq details p{color:#aaa;max-width:800px;line-height:1.8;font-size:15px;padding-top:20px}
-.ip-button{display:inline-flex;align-items:center;justify-content:center;gap:18px;background:#e4002b;border:1px solid #e4002b;border-radius:32px;min-height:50px;padding:13px 24px;color:#fff;font-size:14px;line-height:1.5}
-.ip-button:hover{background:#b8001f;border-color:#b8001f}
-.ip-cta{background:radial-gradient(ellipse at 85% 85%,#e4002b18,transparent 65%);display:flex;flex-direction:column;align-items:flex-start;gap:8px}
+.ip-button{display:inline-flex;align-items:center;justify-content:center;gap:18px;background:#DC0208;border:1px solid #DC0208;border-radius:32px;min-height:50px;padding:13px 24px;color:#fff;font-size:14px;line-height:1.5}
+.ip-button:hover{background:#A50106;border-color:#A50106}
+.ip-cta{background:radial-gradient(ellipse at 85% 85%,#DC020818,transparent 65%);display:flex;flex-direction:column;align-items:flex-start;gap:8px}
 .ip-cta h2{font-size:clamp(44px,7vw,110px);margin-bottom:32px}
 .ip-cta h2 span{color:#777}
 .ip-card-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:48px 28px}
@@ -82,7 +82,7 @@ body:has(.inner-site) .creatox-custom-cursor,body:has(.inner-site) .cursor-dot,b
 .ip-list-controls{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;margin-bottom:24px}
 .ip-filters{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
 .ip-filters button{padding:10px 18px;border:1px solid #444;border-radius:24px;font-size:12px;min-height:44px}
-.ip-filters button[aria-pressed=true]{background:#e4002b;border-color:#e4002b;color:#fff}
+.ip-filters button[aria-pressed=true]{background:#DC0208;border-color:#DC0208;color:#fff}
 .ip-search{display:flex;align-items:center;gap:12px;border-bottom:1px solid #666;min-height:44px;max-width:100%}
 .ip-search input{background:transparent;color:#fff;padding:10px 0;width:190px;max-width:100%;outline-offset:4px}
 .ip-results{font:10px var(--font-mono);color:#888;margin-bottom:32px}

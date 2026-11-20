@@ -1,5 +1,7 @@
 "use client";
 
+/* cms-page-fields */
+import { PageText } from "@/components/cms/PageContent";
 import { useRef, useEffect } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -46,7 +48,6 @@ export function SectionLabel({ text, className = "" }: SectionLabelProps) {
       ref={labelRef}
       className={`section-label font-mono block opacity-0 ${className}`}
     >
-      [ {text} ]
-    </span>
+      <PageText field="8a1b66a49_1" section="Section Label" label="Text">{"[ "}</PageText><PageText field="8a1b66a49_2" section="Section Label" label="Text">{text}</PageText> <PageText field="8a1b66a49_3" section="Section Label" label="Text">{"]"}</PageText></span>
   );
 }

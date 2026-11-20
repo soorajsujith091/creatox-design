@@ -18,8 +18,8 @@ const config: Config = {
         white: "#FFFFFF",
         gray: "#888888",        // muted text (unchanged)
         // Brand
-        red: "#E4002B",
-        redDark: "#B8001F",
+        red: "#DC0208",
+        redDark: "#A50106",
         // Borders
         border: "#E8E8E8",      // was #222222
         borderMed: "#D0D0D0",

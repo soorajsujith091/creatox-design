@@ -1,5 +1,7 @@
 "use client";
 
+/* cms-page-fields */
+import { PageText } from "@/components/cms/PageContent";
 import DiagonalMarqueeCarousel from "@/components/ui/great-ui-diagonal-marquee-carousel";
 import { projects } from "@/data/projects";
 import { projectCoverImages } from "@/data/project-cover-images";
@@ -15,8 +17,8 @@ export function ProjectImageMarquee() {
     <section className="project-image-marquee" aria-labelledby="project-images-heading">
       <header className="project-image-marquee-header site-gutter">
         <div>
-          <p className="project-image-marquee-label">/ THE CREATIVE MIX</p>
-          <h2 id="project-images-heading">A different angle on our work.</h2>
+          <p className="project-image-marquee-label"><PageText field="cb88e92b4_1" section="Project Image Marquee" label="Text">{"/ THE CREATIVE MIX"}</PageText></p>
+          <h2 id="project-images-heading"><PageText field="cb88e92b4_2" section="Project Image Marquee" label="Heading">{"A different angle on our work."}</PageText></h2>
         </div>
       </header>
       <DiagonalMarqueeCarousel

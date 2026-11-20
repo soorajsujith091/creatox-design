@@ -1,3 +1,5 @@
+/* cms-page-fields */
+import { PageText } from "@/components/cms/PageContent";
 import Timeline, { type TimelineItem } from "@/components/ui/timeline-01-utils/timeline";
 import { Badge } from "@/components/ui/badge";
 import "./timeline-01.css";
@@ -24,7 +26,7 @@ const timelineData: TimelineItem[] = [
 export default function TimelineBlock01() {
   return <section className="event-timeline site-gutter" aria-labelledby="event-timeline-heading">
     <div className="event-timeline-frame">
-      <header className="event-timeline-header"><Badge variant="outline" className="font-normal">Event partnerships</Badge><h2 id="event-timeline-heading">Creative partnerships.<br /><span>Real impact.</span></h2><p>Connecting people, brands and communities through creative content and digital campaigns.</p></header>
+      <header className="event-timeline-header"><Badge variant="outline" className="font-normal">Event partnerships</Badge><h2 id="event-timeline-heading"><PageText field="d19744410_1" section="timeline 01" label="Heading">{"Creative partnerships."}</PageText><br /><span><PageText field="d19744410_2" section="timeline 01" label="Text">{"Real impact."}</PageText></span></h2><p><PageText field="d19744410_3" section="timeline 01" label="Text">{"Connecting people, brands and communities through creative content and digital campaigns."}</PageText></p></header>
       <Timeline items={timelineData} />
       <div className="event-timeline-end" aria-hidden="true" />
     </div>
